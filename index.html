@@ -117,7 +117,7 @@
   .svc-top{display:flex;justify-content:space-between;align-items:center}
   .svc-ic{width:34px;height:34px}
   .svc-n{font-size:18px;font-weight:700;color:#7C93B2}
-  .svc-card h3{font-size:clamp(21px,1.7vw,25px);line-height:1.15}
+  .svc-card h3{font-size:clamp(20px,1.6vw,23px);line-height:1.15;white-space:nowrap}
   .svc-sub{font-size:16px;color:var(--muted);line-height:1.45}
   .svc-list{list-style:none;display:grid;gap:10px;font-size:15px;line-height:1.45;margin-top:2px}
   .svc-list li{display:flex;gap:9px;align-items:flex-start}
@@ -145,7 +145,8 @@
   .case.flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
   .case.flip .txt{order:2}
   .case + .case{margin-top:clamp(64px,7vw,104px)}
-  .case h3{font-size:clamp(25px,2.2vw,34px);margin-bottom:6px}
+  .case h3{font-size:clamp(23px,2vw,30px);margin-bottom:6px}
+  @media (min-width:1200px){.case h3{white-space:nowrap}}
   .case .tags{font-size:var(--fs-small);font-weight:600;color:var(--teal);margin-bottom:16px}
   .case .outcome{font-size:var(--fs-sub);font-weight:700;line-height:1.35;margin-bottom:16px}
   .case p{font-size:17px}
@@ -247,11 +248,12 @@
   .c-mid .btn{min-height:58px;font-size:18px}
   .contact .li{margin-top:16px;font-size:16px;color:var(--muted)}
   footer{padding:clamp(48px,5vw,64px) 0 36px}
-  footer .wrap{display:flex;align-items:center;gap:24px;flex-wrap:wrap;font-size:var(--fs-small);color:var(--muted)}
+  footer .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;font-size:var(--fs-small);color:var(--muted)}
+  .f-brand{grid-column:2;display:flex;align-items:center;gap:24px}
   footer .wm img{width:88px;height:88px}
   .f-tag{font-size:var(--fs-sub);font-weight:700;letter-spacing:-.02em;line-height:1.25;color:var(--ink)}
   .f-tag span{color:var(--teal)}
-  .f-copy{margin-left:auto}
+  .f-copy{grid-column:3;justify-self:end}
 
   /* ---------- motion ---------- */
   .js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
@@ -261,7 +263,7 @@
   .js .loaded h1 .ln > span{transform:none}
 
   /* ---------- tablet & phone ---------- */
-  @media (max-width:1100px){
+  @media (max-width:1279px){
     .svc{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
   }
   @media (max-width:960px){
@@ -278,6 +280,7 @@
   }
   @media (max-width:640px){
     h1{white-space:normal;font-size:10.6vw}
+    .case h3,.svc-card h3{white-space:normal}
     .ptable thead{display:none}
     .ptable,.ptable tbody,.ptable tr,.ptable td{display:block}
     .ptable tr{padding:14px 0;border-bottom:1px solid rgba(11,26,51,.22)}
@@ -303,7 +306,9 @@
     .tbl-in input{font-size:17vw}
     .contact .btn{width:100%}
     footer .wm img{width:72px;height:72px}
-    .f-copy{margin-left:0;width:100%}
+    footer .wrap{grid-template-columns:1fr;justify-items:center;text-align:center}
+    .f-brand,.f-copy{grid-column:1;justify-self:center}
+    .f-brand{flex-direction:column;gap:14px}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -372,7 +377,7 @@
         <li class="rv" style="--d:.14s"><strong>2</strong><b>Countries Planned</b><span>A demand-driven min/max model plans U.S. and Canadian replenishment.</span></li>
         <li class="rv" style="--d:.21s"><strong>3+</strong><b>Years on SAP B1</b><span>Reporting, master data, month-end reconciliation and import compliance.</span></li>
       </ul>
-      <p class="where rv">At Trux Accessories, a cross-border truck-parts distributor, and Café Mystique Coffee in Montréal.</p>
+      <p class="where rv">At Trux Accessories, a cross-border truck-parts distributor, and Café Mystique Coffee, a coffee manufacturer in Montréal.</p>
     </div>
   </section>
 
@@ -418,7 +423,7 @@
         <article class="svc-card core rv" style="--d:0.07s" aria-labelledby="sv2">
           <span class="svc-tag">Core Offer</span>
           <div class="svc-top"><svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"></line><rect x="5" y="12" width="3" height="8"></rect><rect x="10.5" y="7" width="3" height="13"></rect><rect x="16" y="3" width="3" height="17"></rect></svg><span class="svc-n">02</span></div>
-          <h3 id="sv2">SAP B1 Reporting Stack</h3>
+          <h3 id="sv2">Reporting Stack</h3>
           <p class="svc-sub">Reports That Refresh Themselves: Excel for Your Staff, Power BI for Owners.</p>
           <ul class="svc-list">
             <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Sales by Rep, Customer and Item, Net of Credit Memos and Freight</span></li>
@@ -446,7 +451,7 @@
         </article>
         <article class="svc-card rv" style="--d:0.21s" aria-labelledby="sv4">
           <div class="svc-top"><svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"></path></svg><span class="svc-n">04</span></div>
-          <h3 id="sv4">Trade and Customs Data</h3>
+          <h3 id="sv4">Trade &amp; Customs</h3>
           <p class="svc-sub">Import Into Canada and Sell Into the U.S.? Price Tariffs In and Claim Duty Back.</p>
           <ul class="svc-list">
             <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>HTS / HS Code and Country of Origin on Every Item</span></li>
@@ -518,7 +523,7 @@
 
       <article class="case flip" aria-labelledby="c2">
         <div class="txt">
-          <h3 id="c2" class="rv">Inventory Min/Max and Reorder</h3>
+          <h3 id="c2" class="rv">Inventory Min/Max Model</h3>
           <p class="tags rv">SQL Server · Power BI · Demand Planning</p>
           <p class="outcome rv">Replenishment planned from real demand, warehouse by warehouse.</p>
           <p class="rv"><b>The Problem.</b> Reorder points were typed in once and never updated, so stock ran out in one warehouse while it sat idle in another.</p>
@@ -571,7 +576,7 @@
 
       <article class="case flip" aria-labelledby="c4">
         <div class="txt">
-          <h3 id="c4" class="rv">CBSA Duty Drawback, Automated</h3>
+          <h3 id="c4" class="rv">Duty Drawback Automation</h3>
           <p class="tags rv">CBSA · K32 · CARM · CUSMA</p>
           <p class="outcome rv">A manual spreadsheet claim process replaced by an end-to-end SQL pipeline.</p>
           <p class="rv"><b>The Problem.</b> Duty paid on goods imported into Canada can be recovered when the same goods are re-exported to the U.S., but matching thousands of export lines by hand made every claim slow and risky.</p>
@@ -598,7 +603,7 @@
 
       <article class="case" aria-labelledby="c5">
         <div class="txt">
-          <h3 id="c5" class="rv">HTS Classification and Tariff Exposure</h3>
+          <h3 id="c5" class="rv">HTS and Tariff Exposure</h3>
           <p class="tags rv">HTS / HS · Sections 232, 301, 338 · Landed Cost</p>
           <p class="outcome rv">HTS code, country of origin and landed cost kept complete on every active item.</p>
           <p class="rv"><b>The Problem.</b> U.S. tariffs changed almost monthly in 2026. Quotes left out Chapter 99 duties, and goods shipped from Canada risked being declared Canadian origin by default.</p>
@@ -628,7 +633,7 @@
 
       <article class="case flip" aria-labelledby="c6">
         <div class="txt">
-          <h3 id="c6" class="rv">Sales Analytics That Ties to SAP</h3>
+          <h3 id="c6" class="rv">Sales Analytics in Power BI</h3>
           <p class="tags rv">SQL · Power BI · DAX · Power Query</p>
           <p class="outcome rv">Leadership sees sales, inventory and margin directly, in numbers that match SAP.</p>
           <p class="rv"><b>The Problem.</b> Sales reports overstated revenue: cancelled invoices and their reversals were both counted, credit memos were ignored and freight repeated on every line.</p>
@@ -658,13 +663,13 @@
       <div class="body">
         <h2 id="about-h" class="rv">About Rishad Ahmed</h2>
         <p class="rv" style="--d:.06s">SAPlytics is how I package what I do: turning a live SAP Business One database into reporting people actually make decisions with.</p>
-        <p class="rv" style="--d:.12s">For more than three years I have owned SAP reporting, master data and import compliance data for a distributor and a coffee company, as the person the CEO, finance, purchasing, sales and warehouse teams all come to for numbers. I document how things work today, find the gaps, and replace manual work with SQL, Power BI, Excel and Power Automate, then support people until the new way sticks.</p>
+        <p class="rv" style="--d:.12s">For more than three years I have owned SAP reporting, master data and import compliance data for a distributor and a coffee manufacturer, as the person the CEO, finance, purchasing, sales and warehouse teams all come to for numbers. I document how things work today, find the gaps, and replace manual work with SQL, Power BI, Excel and Power Automate, then support people until the new way sticks.</p>
         <div class="exp">
           <div class="rv">
             <h3>Experience</h3>
             <ul class="jobs">
               <li><b>Trux Accessories (Your Truck Shop Inc.)</b><span>BI &amp; SAP Data Analyst · 2026 – Present</span><em>Business Operations Analyst · 2025 – 2026 · Cross-Border Truck-Parts Distributor, Québec</em></li>
-              <li><b>Café Mystique Coffee Inc.</b><span>SAP Business Analyst · 2023 – 2025</span><em>Business Intelligence Analyst · 2023 · Montréal</em></li>
+              <li><b>Café Mystique Coffee Inc.</b><span>SAP Business Analyst · 2023 – 2025</span><em>Business Intelligence Analyst · 2023 · Coffee Manufacturer, Montréal</em></li>
               <li><b>First Capital University of Bangladesh</b><span>Lecturer, Electrical &amp; Electronic Engineering · 2016 – 2017</span><em>Programming, Electronics and Signal Processing</em></li>
             </ul>
           </div>
@@ -777,7 +782,7 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
               <a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Book a Free 30-Min Review</a>
               <a class="btn ghost" href="mailto:ahm.rishad@outlook.com?subject=SAPlytics%20Enquiry">Email Me</a>
             </div>
-            <p class="li">30 Minutes, on Your Own SAP Screens · Or Connect on <a class="tlink" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">LinkedIn</a></p>
+            <p class="li">Free, No Obligation · Or Connect on <a class="tlink" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">LinkedIn</a></p>
           </div>
           <svg class="cta-art" viewBox="0 0 210 90" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="84" x2="206" y2="84" stroke="#2B4468" stroke-width="2"></line><rect x="14" y="58" width="22" height="26" rx="3" fill="#3CC8BE" opacity="0.45" stroke="none"></rect><rect x="54" y="46" width="22" height="38" rx="3" fill="#3CC8BE" opacity="0.6" stroke="none"></rect><rect x="94" y="38" width="22" height="46" rx="3" fill="#3CC8BE" opacity="0.75" stroke="none"></rect><rect x="134" y="24" width="22" height="60" rx="3" fill="#3CC8BE" stroke="none"></rect><rect x="174" y="10" width="22" height="74" rx="3" fill="#F39C12" stroke="none"></rect><path d="M25 48 C 50 42, 70 36, 105 28 S 160 14, 185 2" stroke="#F2F6FB" stroke-width="2" stroke-dasharray="4 5"></path></svg>
         </div>
@@ -788,8 +793,10 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
 
 <footer>
   <div class="wrap">
-    <a href="#top" class="wm" aria-label="SAPlytics, back to top"><img src="assets/saplytics-badge-dark.svg" alt="SAPlytics" width="72" height="72"></a>
-    <p class="f-tag">Your ERP Knows Everything. <span>Your Reports Should Too.</span></p>
+    <div class="f-brand">
+      <a href="#top" class="wm" aria-label="SAPlytics, back to top"><img src="assets/saplytics-badge-dark.svg" alt="SAPlytics" width="72" height="72"></a>
+      <p class="f-tag">Your ERP Knows Everything. <span>Your Reports Should Too.</span></p>
+    </div>
     <span class="f-copy">© 2026 Rishad Ahmed</span>
   </div>
 </footer>
