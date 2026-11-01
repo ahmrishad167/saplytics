@@ -6,13 +6,13 @@
 <link rel="canonical" href="https://ahmrishad167.github.io/saplytics/">
 <meta name="theme-color" content="#0B1A33">
 <title>SAPlytics — Smarter Insights for SAP B1</title>
-<meta name="description" content="SAPlytics — smarter insights for SAP Business One. SQL reporting, Power BI dashboards, Excel report automation, HTS tariff analysis and CBSA duty drawback. By Rishad Ahmed, Montréal QC.">
+<meta name="description" content="SAPlytics — SAP Business One reporting for distributors and manufacturers. SQL, Power BI and Excel reports that reconcile to SAP, plus HTS tariff and CBSA drawback data. Bilingual, Montréal-based, remote or on site. By Rishad Ahmed.">
 <link rel="icon" type="image/svg+xml" href="assets/saplytics-badge-dark.svg">
 <link rel="apple-touch-icon" href="Logo/saplytics-logo.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SAPlytics — Smarter Insights for SAP B1">
 <meta property="og:url" content="https://ahmrishad167.github.io/saplytics/">
-<meta property="og:description" content="SAP B1 SQL reporting, Power BI dashboards, Excel automation, HTS tariff analysis and CBSA duty drawback. By Rishad Ahmed.">
+<meta property="og:description" content="SAP B1 reporting that reconciles: SQL, Power BI, Excel automation, HTS tariffs and CBSA drawback. Bilingual, Montréal. Free 30-minute reporting review.">
 <meta property="og:image" content="https://ahmrishad167.github.io/saplytics/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,6 +51,9 @@
   h1,h2,h3{font-weight:700;letter-spacing:-.025em;line-height:1.08}
   .wrap{max-width:calc(var(--max) + 2 * var(--m));margin:0 auto;padding:0 var(--m)}
   section{padding:clamp(96px,11vw,160px) 0 0}
+  .sec-head{max-width:46em;margin-bottom:clamp(40px,5vw,72px)}
+  .sec-head h2{font-size:var(--fs-head)}
+  .sec-head p{margin-top:16px;font-size:var(--fs-sub);color:var(--muted);line-height:1.45}
 
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;background:var(--accent);color:var(--navy-ink);font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:transform .25s var(--ease),background .25s}
   .btn:hover{background:#FFB238;transform:translateY(-2px)}
@@ -59,17 +62,17 @@
   .btn.ghost:hover{background:#21437A}
   .tlink{font-weight:600;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;text-decoration-color:transparent;transition:text-decoration-color .25s,text-underline-offset .25s}
   .tlink:hover,.tlink:focus-visible{text-decoration-color:currentColor;text-underline-offset:4px}
+  .cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
 
   /* ---------- bar ---------- */
   .bar{position:sticky;top:0;z-index:50;background:var(--ground)}
   .bar .wrap{display:flex;align-items:center;gap:32px;height:88px}
-  .wm{display:flex;align-items:center;gap:12px;font-weight:800;font-size:21px;letter-spacing:-.02em;text-decoration:none}
+  .wm{display:flex;align-items:center;text-decoration:none}
   .wm img{width:72px;height:72px;flex:none}
-  .wm b{color:var(--teal);font-weight:800}
-  .bar nav{margin-left:auto;display:flex;gap:30px;font-size:16px}
   .tagline{margin-left:-14px;font-size:15px;font-weight:600;line-height:1.35;color:var(--muted);white-space:nowrap}
-  @media (min-width:961px) and (max-width:1199px){.tagline{display:none}}
+  .bar nav{margin-left:auto;display:flex;gap:28px;font-size:16px}
   .bar .btn{min-height:44px;padding:0 18px;font-size:15px}
+  @media (min-width:961px) and (max-width:1279px){.tagline{display:none}}
 
   /* ---------- hero ---------- */
   .hero{padding:clamp(48px,7vw,96px) 0 0}
@@ -79,14 +82,22 @@
   h1 > span:last-child{color:var(--teal)}
   .lede{margin-top:32px;font-size:var(--fs-sub);line-height:1.45;max-width:30em}
   .lede b{font-weight:700}
-  .cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
-  .hero figure img{width:100%}
+  .meta{margin-top:18px;font-size:16px;font-weight:600;color:var(--teal)}
+  .hero figure img{width:100%;transition:transform 1.2s var(--ease)}
+  .hero figure:hover img{transform:scale(1.015)}
   .hero figcaption{margin-top:12px;font-size:var(--fs-small);color:var(--muted)}
 
   .proof{margin-top:clamp(64px,8vw,112px);background:var(--ground-2)}
   .proof ul{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;padding:40px 0}
-  .proof li b{display:block;font-size:19px;font-weight:700;color:var(--teal);margin-bottom:6px}
   .proof li{font-size:16px}
+  .proof li b{display:block;font-size:19px;font-weight:700;color:var(--teal);margin-bottom:6px}
+
+  /* ---------- results ---------- */
+  .results .figs{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,3vw,48px)}
+  .results .figs strong{display:block;font-size:clamp(44px,5vw,76px);font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--accent);font-variant-numeric:lining-nums}
+  .results .figs b{display:block;margin-top:14px;font-size:19px;font-weight:700}
+  .results .figs span{display:block;margin-top:6px;font-size:16px;color:var(--muted)}
+  .results .where{margin-top:40px;font-size:16px;color:var(--muted)}
 
   /* ---------- practices ---------- */
   .practices{background:var(--accent);color:var(--navy-ink);padding:clamp(72px,8vw,112px) 0;margin-top:clamp(96px,11vw,160px)}
@@ -99,24 +110,44 @@
   .practices li:hover strong{transform:translateX(10px)}
   .practices li span{font-size:17px;font-weight:600}
 
+  /* ---------- packages ---------- */
+  .packs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+  .pack{background:var(--ground-2);padding:34px 30px 32px;display:flex;flex-direction:column}
+  .pack.core{background:var(--ground-3);outline:3px solid var(--accent);outline-offset:-3px}
+  .pack .lvl{font-size:16px;font-weight:700;color:var(--teal)}
+  .pack.core .lvl{color:var(--accent)}
+  .pack h3{margin-top:8px;font-size:clamp(24px,2vw,30px)}
+  .pack p{margin-top:12px;font-size:17px;color:var(--muted)}
+  .pack ul{margin-top:20px;list-style:none;display:grid;gap:11px;font-size:16px}
+  .pack li{padding-left:24px;position:relative}
+  .pack li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:10px;background:var(--teal)}
+  .pack.core li::before{background:var(--accent)}
+  .addon{margin-top:20px;background:var(--ground-2);padding:24px 30px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .addon p{font-size:17px;max-width:46em}
+  .addon p b{color:var(--teal)}
+
+  /* ---------- steps ---------- */
+  .steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
+  .steps li{counter-increment:s;background:var(--ground-2);padding:28px 26px}
+  .steps li::before{content:counter(s);display:grid;place-items:center;width:44px;height:44px;background:var(--accent);color:var(--navy-ink);font-weight:800;font-size:20px;margin-bottom:18px}
+  .steps h3{font-size:21px;letter-spacing:-.01em;margin-bottom:8px}
+  .steps p{font-size:16px;color:var(--muted)}
+
   /* ---------- case studies ---------- */
-  .sec-head{max-width:46em;margin-bottom:clamp(48px,6vw,80px)}
-  .sec-head h2{font-size:var(--fs-head)}
-  .sec-head p{margin-top:16px;font-size:var(--fs-sub);color:var(--muted);line-height:1.45}
   .case{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:center}
-  .case + .case{margin-top:clamp(96px,10vw,150px)}
+  .case + .case{margin-top:clamp(88px,9vw,140px)}
+  .case.flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
   .case.flip .txt{order:2}
   .case h3{font-size:clamp(26px,2.4vw,36px);margin-bottom:8px}
-  .case .tags{font-size:var(--fs-small);font-weight:600;color:var(--teal);margin-bottom:22px}
+  .case .tags{font-size:var(--fs-small);font-weight:600;color:var(--teal);margin-bottom:18px}
+  .case .outcome{font-size:var(--fs-sub);font-weight:700;line-height:1.35;margin-bottom:18px}
   .case p{font-size:17px}
   .case p + p{margin-top:12px}
   .case p b{font-weight:700}
-  .case .res{margin-top:18px;padding:16px 18px;background:var(--ground-2);font-weight:600}
-  .case .res b{color:var(--accent)}
+  .case .where{margin-top:16px;font-size:var(--fs-small);color:var(--muted)}
   .case figure img{width:100%}
   .case figcaption{margin-top:12px;font-size:var(--fs-small);color:var(--muted)}
 
-  /* interface fragments (data-ui keep their own borders) */
   [data-ui].ui{background:#F7F9FC;color:#0B1A33;font-size:14px;padding:22px 22px 18px;overflow-x:auto}
   .ui .ui-t{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:12px}
   .ui .ui-t b{font-size:17px;font-weight:700}
@@ -137,23 +168,55 @@
   .ui .kv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px}
   .ui .kv div{background:#EDF2F8;padding:9px 11px;font-size:12.5px;color:#4B5B70}
   .ui .kv div b{display:block;font-size:15px;color:#0B1A33}
+  .ui .kv.big div b{font-size:28px;line-height:1.1;margin-top:2px}
   .ui .total td{font-size:16px;color:#0B1A33;background:#EAF7F6}
 
-  /* ---------- SQL ---------- */
+  /* ---------- about & experience ---------- */
+  .about .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,72px);align-items:start}
+  .about .photo{width:min(300px,100%)}
+  .about dl{margin-top:28px;display:grid;gap:14px;font-size:16px}
+  .about dt{color:var(--muted);font-size:var(--fs-small)}
+  .about dd{font-weight:700}
+  .about h2{font-size:var(--fs-head);margin-bottom:24px}
+  .about .body > p{font-size:var(--fs-sub);line-height:1.5;max-width:34em}
+  .about .body > p + p{margin-top:16px}
+  .exp{margin-top:56px;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,4vw,56px)}
+  .exp h3{font-size:22px;letter-spacing:-.01em;margin-bottom:18px}
+  .jobs{list-style:none;display:grid;gap:22px}
+  .jobs li b{display:block;font-size:17px}
+  .jobs li span{display:block;font-size:16px;color:var(--teal);font-weight:600}
+  .jobs li em{display:block;font-style:normal;font-size:15px;color:var(--muted)}
+  .edu{list-style:none;display:grid;gap:14px;font-size:16px}
+  .edu li span{display:block;color:var(--muted);font-size:15px}
+  .kit{margin-top:56px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+  .kit h3{font-size:17px;letter-spacing:0;color:var(--teal);margin-bottom:12px}
+  .kit ul{list-style:none;display:grid;gap:8px;font-size:16px}
+
+  /* ---------- FAQ ---------- */
+  .faq .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,72px);align-items:start}
+  .faq h2{font-size:var(--fs-head)}
+  .faq .lead{margin-top:16px;font-size:var(--fs-sub);color:var(--muted);line-height:1.45}
+  .faq details{background:var(--ground-2)}
+  .faq details + details{margin-top:10px}
+  .faq summary{cursor:pointer;list-style:none;padding:22px 64px 22px 26px;font-size:19px;font-weight:700;position:relative}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";position:absolute;right:26px;top:50%;transform:translateY(-50%);font-size:28px;font-weight:600;color:var(--accent);transition:transform .25s var(--ease)}
+  .faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+  .faq summary:hover{color:var(--teal)}
+  .faq details p{padding:0 26px 24px;font-size:17px;color:var(--muted);max-width:44em}
+
+  /* ---------- IT team: SQL + lookup ---------- */
   .sql .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:start}
   .sql h2{font-size:var(--fs-head)}
   .sql .lead{margin-top:16px;font-size:var(--fs-sub);color:var(--muted);line-height:1.45}
   .rules{list-style:none;margin-top:32px;display:grid;gap:18px}
   .rules li{font-size:17px}
   .rules li b{display:block;color:var(--teal);font-weight:700}
-  pre{background:#081428;padding:26px 26px;overflow-x:auto;font-family:Consolas,'Cascadia Code',Menlo,monospace;font-size:14px;line-height:1.6;color:#D5E1F0;tab-size:4}
+  pre{background:#081428;padding:26px;overflow-x:auto;font-family:Consolas,'Cascadia Code',Menlo,monospace;font-size:14px;line-height:1.6;color:#D5E1F0;tab-size:4}
   pre .k{color:#3CC8BE;font-weight:600}
   pre .s{color:#F7B955}
-  pre .c{color:#7E94B0}
   pre .n{color:#9FC2FF}
   .sql figcaption{margin-top:12px;font-size:var(--fs-small);color:var(--muted)}
-
-  /* ---------- lookup ---------- */
   .lookup .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,72px);align-items:center}
   .lookup h2{font-size:var(--fs-head)}
   .lookup .lead{margin-top:14px;color:var(--muted);font-size:var(--fs-sub);line-height:1.45}
@@ -173,34 +236,17 @@
   .answer p.use{color:var(--muted)}
   .answer p.use strong{color:var(--ink);font-weight:700}
 
-  /* ---------- about ---------- */
-  .about .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,72px);align-items:start}
-  .about .badge{width:min(240px,100%)}
-  .about dl{margin-top:32px;display:grid;gap:16px;font-size:16px}
-  .about dt{color:var(--muted);font-size:var(--fs-small)}
-  .about dd{font-weight:700}
-  .about h2{font-size:var(--fs-head);margin-bottom:24px}
-  .about .body p{font-size:var(--fs-sub);line-height:1.5;max-width:34em}
-  .about .body p + p{margin-top:16px}
-  .kit{margin-top:48px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
-  .kit h3{font-size:17px;letter-spacing:0;color:var(--teal);margin-bottom:12px}
-  .kit ul{list-style:none;display:grid;gap:8px;font-size:16px}
-
   /* ---------- contact & footer ---------- */
   .contact .box{background:var(--ground-2);padding:clamp(40px,6vw,88px) clamp(28px,5vw,80px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:end}
   .contact h2{font-size:var(--fs-display);letter-spacing:-.04em;line-height:1}
   .contact h2 span{display:block;color:var(--teal)}
   .contact p.lead{margin-top:20px;font-size:var(--fs-sub);max-width:26em}
-  .contact .cta{margin-top:32px}
   .contact dl{display:grid;grid-template-columns:auto 1fr;gap:14px 24px;font-size:17px}
   .contact dt{color:var(--muted)}
   .contact dd{font-weight:700}
   footer{padding:56px 0 40px}
-  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:var(--fs-small);color:var(--muted)}
-  footer .wm{font-size:18px;color:var(--ink)}
+  footer .wrap{display:flex;justify-content:flex-start;align-items:center;gap:24px;flex-wrap:wrap;font-size:var(--fs-small);color:var(--muted)}
   footer .wm img{width:88px;height:88px}
-  footer .wrap{align-items:center}
-  footer .wrap{justify-content:flex-start;gap:24px}
   .f-tag{font-size:var(--fs-sub);font-weight:700;letter-spacing:-.02em;line-height:1.25;color:var(--ink)}
   .f-tag span{color:var(--teal)}
   .f-copy{margin-left:auto}
@@ -212,45 +258,44 @@
   .js h1 .ln > span{display:block;transform:translateY(105%);transition:transform .9s var(--ease)}
   .js .loaded h1 .ln > span{transform:none}
   .js .loaded h1 .ln:nth-child(2) > span{transition-delay:.11s}
-  .hero figure img{transition:transform 1.2s var(--ease)}
-  .hero figure:hover img{transform:scale(1.015)}
 
   /* ---------- tablet & phone ---------- */
   @media (max-width:960px){
     .bar nav{display:none}
     .bar .btn{margin-left:auto}
-    .hero > .wrap,.practices .wrap,.case,.sql .wrap,.lookup .wrap,.about .wrap,.contact .box{grid-template-columns:minmax(0,1fr)}
+    .hero > .wrap,.practices .wrap,.case,.case.flip,.sql .wrap,.lookup .wrap,.about .wrap,.faq .wrap,.contact .box,.exp{grid-template-columns:minmax(0,1fr)}
     .case > *,.sql .wrap > *{min-width:0}
     .case.flip .txt{order:0}
-    .proof ul{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .about .badge{width:160px}
+    .proof ul,.results .figs{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .packs{grid-template-columns:minmax(0,1fr)}
+    .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .about .photo{width:220px}
     .kit{grid-template-columns:repeat(2,minmax(0,1fr))}
   }
   @media (max-width:560px){
     .bar .wrap{height:72px}
     .wm img{width:56px;height:56px}
-    footer .wm img{width:72px;height:72px}
     .tagline{display:none}
-    .f-copy{margin-left:0;width:100%}
-    .wm{font-size:19px}
     h1{font-size:10.6vw}
     .contact h2{font-size:9vw}
-    .proof ul{grid-template-columns:1fr;gap:22px}
+    .proof ul,.steps{grid-template-columns:1fr;gap:16px}
+    .results .figs{gap:28px 20px}
+    .results .figs strong{font-size:12vw}
     .practices li{grid-template-columns:1fr;gap:4px;padding:12px 0}
     .practices li strong{font-size:8.6vw}
-    .ui .kv{grid-template-columns:1fr 1fr}
-    [data-ui].ui{padding:16px 14px;font-size:13px}
-    .ui th,.ui td{padding:7px 5px}
-    .ui .hide-s{display:none}
-    .ui .sub{display:none}
     .ui .kv{grid-template-columns:1fr 1fr 1fr;gap:6px}
     .ui .kv div{padding:7px 8px}
+    [data-ui].ui{padding:16px 14px;font-size:13px}
+    .ui th,.ui td{padding:7px 5px}
+    .ui .hide-s,.ui .sub{display:none}
     pre{font-size:12.5px;padding:18px 16px}
     .tbl-in input{font-size:17vw}
     .kit{grid-template-columns:1fr}
     .contact .btn{width:100%}
     .contact dl{grid-template-columns:1fr;gap:2px}
     .contact dd{margin-bottom:12px}
+    footer .wm img{width:72px;height:72px}
+    .f-copy{margin-left:0;width:100%}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -266,16 +311,16 @@
 <header class="bar">
   <div class="wrap">
     <a href="#top" class="wm" aria-label="SAPlytics, back to top">
-      <img src="assets/saplytics-badge-dark.svg" alt="SAPlytics" width="64" height="64">
+      <img src="assets/saplytics-badge-dark.svg" alt="SAPlytics" width="72" height="72">
     </a>
     <p class="tagline">For Distributors and Manufacturers Running SAP Business One</p>
     <nav aria-label="Primary">
+      <a class="tlink" href="#services">Services</a>
       <a class="tlink" href="#work">Case Studies</a>
-      <a class="tlink" href="#sql">SQL</a>
       <a class="tlink" href="#about">About</a>
-      <a class="tlink" href="#contact">Contact</a>
+      <a class="tlink" href="#faq">FAQ</a>
     </nav>
-    <a class="btn" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">Message Me</a>
+    <a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Free Review</a>
   </div>
 </header>
 
@@ -285,10 +330,11 @@
     <div class="wrap">
       <div>
         <h1 id="hero-h"><span class="ln"><span>Smarter Insights</span></span><span class="ln"><span>for SAP B1.</span></span></h1>
-        <p class="lede rv" style="--d:.4s">I'm <b>Rishad Ahmed</b>, a BI and SAP Business One analyst in Montréal, Québec. I turn SAP B1 data into SQL reports, Power BI dashboards and Excel automation people trust, and I handle the customs data behind cross-border trade.</p>
+        <p class="lede rv" style="--d:.4s">I'm <b>Rishad Ahmed</b>, a bilingual BI and SAP Business One analyst in Montréal. I build SQL, Power BI and Excel reports that reconcile to SAP, refresh themselves and land in your inbox every morning.</p>
+        <p class="meta rv" style="--d:.45s">English &amp; French · Remote, or On Site Within 300 km of Montréal</p>
         <div class="cta rv" style="--d:.5s">
-          <a class="btn" href="#work">See Case Studies</a>
-          <a class="btn ghost" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">Message Me on LinkedIn</a>
+          <a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Book a Free 30-Min Reporting Review</a>
+          <a class="btn ghost" href="#work">See Case Studies</a>
         </div>
       </div>
       <figure class="rv" style="--d:.25s">
@@ -302,9 +348,25 @@
           <li class="rv"><b>Read-Only</b>I never write to your SAP database.</li>
           <li class="rv" style="--d:.07s"><b>Reconciled</b>Totals tie to SAP's own Sales and Purchasing Analysis.</li>
           <li class="rv" style="--d:.14s"><b>Documented</b>Every query is handed over. You own it.</li>
-          <li class="rv" style="--d:.21s"><b>Query Manager-Ready</b>Runs inside SAP, with drill-down to documents.</li>
+          <li class="rv" style="--d:.21s"><b>Access You Control</b>A least-privilege login you can revoke at any time.</li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="results" aria-labelledby="res-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="res-h" class="rv">Results From Real Projects</h2>
+        <p class="rv" style="--d:.06s">Delivered in-house on SAP Business One, for teams from the CEO to the warehouse.</p>
+      </div>
+      <ul class="figs">
+        <li class="rv"><strong>260</strong><b>Report Defects Found</b><span>Audit of a 93-query SAP reporting library, closed with a review standard and a change log.</span></li>
+        <li class="rv" style="--d:.07s"><strong>½ Day</strong><b>Cut to Minutes</b><span>Multi-format supplier price files merged into one master price list with AI-assisted tooling.</span></li>
+        <li class="rv" style="--d:.14s"><strong>2</strong><b>Countries Planned</b><span>A demand-driven min/max model now plans U.S. and Canadian replenishment.</span></li>
+        <li class="rv" style="--d:.21s"><strong>3+</strong><b>Years on SAP B1</b><span>Reporting, master data, month-end reconciliation and import compliance.</span></li>
+      </ul>
+      <p class="where rv">At Trux Accessories, a cross-border truck-parts distributor, and Café Mystique Coffee in Montréal.</p>
     </div>
   </section>
 
@@ -324,40 +386,121 @@
     </div>
   </div>
 
+  <section id="services" aria-labelledby="svc-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="svc-h" class="rv">Three Ways to Start</h2>
+        <p class="rv" style="--d:.06s">Start with a health check, build the reporting stack, or go straight to analytics. Each one works on its own.</p>
+      </div>
+      <div class="packs">
+        <article class="pack rv" aria-labelledby="p1">
+          <span class="lvl">Start Here</span>
+          <h3 id="p1">Data Health Check</h3>
+          <p>A read-only scan of your SAP data and saved reports, with a ranked fix list.</p>
+          <ul>
+            <li>Saved Reports: Errors, Wrong Joins, Double-Counted Totals</li>
+            <li>Price Lists: Missing, Zero or Stale Prices</li>
+            <li>Item Master: Duplicates, Inactive Items Still Selling</li>
+            <li>Customers: Duplicates, Wrong Groups, No Rep</li>
+            <li>Old Open Orders and POs Inflating Your Backlog</li>
+          </ul>
+        </article>
+        <article class="pack core rv" style="--d:.07s" aria-labelledby="p2">
+          <span class="lvl">Core Offer</span>
+          <h3 id="p2">SAP B1 Reporting Stack</h3>
+          <p>Reports that refresh themselves: Excel for your staff, Power BI for owners.</p>
+          <ul>
+            <li>Sales by Rep, Customer and Item, Net of Credits and Freight</li>
+            <li>Open Orders and Backorders With PO Arrival Dates</li>
+            <li>AR Aging Your Collections Team Can Work From</li>
+            <li>Reports Emailed Automatically Every Morning</li>
+            <li>A Reconciliation Page That Matches SAP's Sales Analysis</li>
+          </ul>
+        </article>
+        <article class="pack rv" style="--d:.14s" aria-labelledby="p3">
+          <span class="lvl">Go Deeper</span>
+          <h3 id="p3">Business Analytics</h3>
+          <p>See where you make and lose money, and exactly what to buy next.</p>
+          <ul>
+            <li>Min/Max and Reorder Points From Real Lead Times</li>
+            <li>Buy-Now List With Order Multiples</li>
+            <li>Dead and Slow Stock Ranked by Cash Tied Up</li>
+            <li>Supplier Scorecard: Promised vs. Actual Delivery</li>
+            <li>Margin by Customer and Product, Before and After a Price Change</li>
+          </ul>
+        </article>
+      </div>
+      <div class="addon rv">
+        <p><b>Import into Canada and sell into the U.S.?</b> Add HTS classification, tariff exposure and CBSA duty drawback to any package.</p>
+        <a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Not Sure? Book the Free Review</a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="how-h" class="rv">How It Works</h2>
+        <p class="rv" style="--d:.06s">From first call to a report your team trusts, without touching your live data.</p>
+      </div>
+      <ol class="steps">
+        <li class="rv"><h3>Free 30-Min Review</h3><p>On your own SAP screens, you show me the report that's off. I explain why, and what fixing it takes.</p></li>
+        <li class="rv" style="--d:.07s"><h3>Read-Only Access</h3><p>A least-privilege login you create, control and can revoke. Nothing is ever written to SAP.</p></li>
+        <li class="rv" style="--d:.14s"><h3>Build and Reconcile</h3><p>Every figure is tied to SAP's Sales and Purchasing Analysis before you see it.</p></li>
+        <li class="rv" style="--d:.21s"><h3>Handover and Support</h3><p>Documented queries you own, with rollout support in English or French.</p></li>
+      </ol>
+    </div>
+  </section>
+
   <section id="work" aria-labelledby="work-h">
     <div class="wrap">
       <div class="sec-head">
         <h2 id="work-h" class="rv">Case Studies</h2>
-        <p class="rv" style="--d:.06s">Four projects, shown with demo data for a fictional distributor. The numbers are invented; the methods are the ones I use.</p>
+        <p class="rv" style="--d:.06s">Real projects. The visuals use demo data so no company figures are shown; the methods and results are real.</p>
       </div>
 
       <article class="case" aria-labelledby="c1">
         <div class="txt">
-          <h3 id="c1" class="rv">Sales Analytics That Ties to SAP</h3>
-          <p class="tags rv">SQL · Power BI · DAX · Power Query</p>
-          <p class="rv"><b>The Problem.</b> Sales reports overstated revenue: cancelled invoices and their cancellation documents were both counted, credit memos were ignored and freight repeated on every line.</p>
-          <p class="rv"><b>What I Built.</b> A line-level SAP B1 → Power BI model: invoices minus credit memos, freight at document level, same-pace YTD versus last year, and a many-to-many bridge so customers can sit in several segments at once.</p>
-          <p class="res rv"><b>Result:</b> one model that reconciles to SAP's Sales Analysis, with a data-quality page that proves it.</p>
+          <h3 id="c1" class="rv">SAP Reporting Library Audit</h3>
+          <p class="tags rv">SQL · Query Review · Documentation</p>
+          <p class="outcome rv">93 production queries reviewed, 260 defects found and closed.</p>
+          <p class="rv"><b>The Problem.</b> Years of saved SAP queries, written by different people, with no shared rules. Nobody knew which reports could be trusted.</p>
+          <p class="rv"><b>What I Built.</b> An automated review that scored every query for correctness and performance, a prioritized three-sheet remediation workbook, and coding conventions, a review standard and a change log applied to every report since.</p>
+          <p class="where rv">Trux Accessories · 2026</p>
         </div>
-        <figure class="rv" style="--d:.1s">
-          <img src="assets/dashboard-customer-segmentation-demo.jpg" alt="Customer Segmentation dashboard: sales by customer property and a segment trend by year, demo data" width="1600" height="536" loading="lazy">
-          <figcaption>Customer segmentation through the property bridge. Demo data.</figcaption>
-        </figure>
+        <div class="rv" style="--d:.1s">
+          <div data-ui class="ui" role="img" aria-label="Reporting library audit summary">
+            <div class="ui-t"><b>Reporting Library Audit</b><span>Summary · example checks</span></div>
+            <div class="kv big"><div>Queries Reviewed<b>93</b></div><div>Defects Found<b>260</b></div><div>Workbook Sheets<b>3</b></div></div>
+            <table>
+              <thead><tr><th>Check</th><th>What It Catches</th></tr></thead>
+              <tbody>
+                <tr><td>Cancelled Documents</td><td>Cancelled invoices and their reversals counted as sales</td></tr>
+                <tr><td>Credit Memos</td><td>Returns left out, so sales are overstated</td></tr>
+                <tr><td>Freight</td><td>Document freight repeated on every line</td></tr>
+                <tr><td>Date Ranges</td><td>BETWEEN on datetimes dropping the last day</td></tr>
+                <tr><td>Performance</td><td>Functions on indexed columns slowing SAP for everyone</td></tr>
+              </tbody>
+            </table>
+            <p class="note">Every report since follows the same conventions, passes the review checklist and is logged.</p>
+          </div>
+        </div>
       </article>
 
       <article class="case flip" aria-labelledby="c2">
         <div class="txt">
           <h3 id="c2" class="rv">Inventory Min/Max and Reorder</h3>
-          <p class="tags rv">SQL · Power BI · Demand Planning</p>
-          <p class="rv"><b>The Problem.</b> Buyers reordered from memory, while stock sat in one warehouse and the other one backordered.</p>
-          <p class="rv"><b>What I Built.</b> Min/max and reorder points from real lead times, measured purchase order to receipt; rolling 12-month average and peak demand; A/B/C/D/S movement classes; transfer suggestions that protect open sales orders; buy quantities rounded to the order multiple.</p>
-          <p class="res rv"><b>Result:</b> a buy-now list and a transfer list the team works from every day.</p>
+          <p class="tags rv">SQL Server · Power BI · Demand Planning</p>
+          <p class="outcome rv">Static reorder levels replaced by a demand-driven model that now plans U.S. and Canadian replenishment.</p>
+          <p class="rv"><b>The Problem.</b> Reorder points were typed in once and never updated, so stock ran out in one warehouse while it sat idle in another.</p>
+          <p class="rv"><b>What I Built.</b> Min/max per warehouse from 12-month demand, real lead times and the purchasing cycle, built in SQL Server and Power BI over both the live and legacy SAP databases.</p>
+          <p class="where rv">Trux Accessories · 2026</p>
         </div>
         <div class="rv" style="--d:.1s">
           <div data-ui class="ui" role="img" aria-label="Reorder suggestions table with demo data">
             <div class="ui-t"><b>Reorder Suggestions</b><span>Main warehouse · demo data</span></div>
             <table>
-              <thead><tr><th>Item</th><th>Class</th><th class="r">On hand</th><th class="r hide-s">Lead time</th><th class="r">Min</th><th class="r">Max</th><th class="r">Buy</th></tr></thead>
+              <thead><tr><th>Item</th><th>Class</th><th class="r">On Hand</th><th class="r hide-s">Lead Time</th><th class="r">Min</th><th class="r">Max</th><th class="r">Buy</th></tr></thead>
               <tbody>
                 <tr><td>Hydraulic hose, 1/2 in</td><td><span class="pill">A</span></td><td class="r">14</td><td class="r hide-s">38 d</td><td class="r">40</td><td class="r">96</td><td class="r strong">84</td></tr>
                 <tr><td>Brake pad set</td><td><span class="pill">A</span></td><td class="r">63</td><td class="r hide-s">21 d</td><td class="r">55</td><td class="r">120</td><td class="r dim">0</td></tr>
@@ -366,26 +509,52 @@
                 <tr><td>Fuel cap</td><td><span class="pill d">D</span></td><td class="r">48</td><td class="r hide-s">—</td><td class="r">0</td><td class="r">0</td><td class="r dim">0</td></tr>
               </tbody>
             </table>
-            <p class="note">Min = average daily demand × lead time + safety stock. Buy = Max − on hand − on order, rounded up to the order multiple (12 for hose, 100 for cable ties).</p>
+            <p class="note">Min = average daily demand × lead time + safety stock. Buy = Max − on hand − on order, rounded up to the order multiple.</p>
           </div>
         </div>
       </article>
 
       <article class="case" aria-labelledby="c3">
         <div class="txt">
-          <h3 id="c3" class="rv">CBSA Duty Drawback, Automated</h3>
+          <h3 id="c3" class="rv">Multi-Level Pricing Model</h3>
+          <p class="tags rv">Pricing · Landed Cost · Excel · AI-Assisted Tooling</p>
+          <p class="outcome rv">One landed-cost base price drives every customer level, and a half-day pricing task now takes minutes.</p>
+          <p class="rv"><b>The Problem.</b> Prices for warehouse distributors, OES and OEM customers were kept by hand, and supplier price files arrived in different formats.</p>
+          <p class="rv"><b>What I Built.</b> A single landed-cost base price from which every customer level's price and margin is calculated automatically, plus a tool that merges multi-format supplier files into one master price list.</p>
+          <p class="where rv">Trux Accessories · 2026</p>
+        </div>
+        <div class="rv" style="--d:.1s">
+          <div data-ui class="ui" role="img" aria-label="Price ladder from landed cost, demo data">
+            <div class="ui-t"><b>Price Ladder</b><span>One item · demo data</span></div>
+            <div class="kv"><div>FOB Cost<b>$7.40</b></div><div>Freight + Duty<b>$2.60</b></div><div>Landed Cost<b>$10.00</b></div></div>
+            <table>
+              <thead><tr><th>Customer Level</th><th class="r">Margin</th><th class="r">Price</th></tr></thead>
+              <tbody>
+                <tr><td>Warehouse Distributor</td><td class="r">30%</td><td class="r strong">$14.29</td></tr>
+                <tr><td>OES</td><td class="r">35%</td><td class="r strong">$15.38</td></tr>
+                <tr><td>OEM</td><td class="r">25%</td><td class="r strong">$13.33</td></tr>
+              </tbody>
+            </table>
+            <p class="note">Price = landed cost ÷ (1 − margin). Change the landed cost once and every level updates.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="case flip" aria-labelledby="c4">
+        <div class="txt">
+          <h3 id="c4" class="rv">CBSA Duty Drawback, Automated</h3>
           <p class="tags rv">CBSA · K32 · CARM · CUSMA</p>
-          <p class="rv"><b>The Problem.</b> Duty paid on goods imported into Canada can be recovered when the same goods are re-exported to the U.S. Matching thousands of export lines to the right import entries by hand made every claim slow and risky.</p>
-          <p class="rv"><b>What I Built.</b> An SAP extract of Canada → U.S. export sales; a first-in, first-out match of each line to the B3 entry that paid its duty; the CUSMA lesser-of-two-duties rule; duty-free tariff headings dropped early, since they recover nothing but use up matching; and output straight into the CARM claim template.</p>
-          <p class="rv"><b>The Rule That Matters.</b> Same-condition goods are not processed, so their origin never changes. That one fact drives both the drawback claim and the U.S. tariff side.</p>
-          <p class="res rv"><b>Result:</b> repeatable, auditable claims, filed well inside the four-year limit.</p>
+          <p class="outcome rv">A manual spreadsheet claim process replaced by an end-to-end SQL pipeline.</p>
+          <p class="rv"><b>The Problem.</b> Duty paid on goods imported into Canada can be recovered when the same goods are re-exported to the U.S., but matching thousands of export lines by hand made every claim slow and risky.</p>
+          <p class="rv"><b>What I Built.</b> First-in, first-out matching of each export line to the import entry that paid its duty, five eligibility gates, the CUSMA lesser-of-two-duties rule and the claim arithmetic, all in SQL.</p>
+          <p class="where rv">Trux Accessories · 2026</p>
         </div>
         <div class="rv" style="--d:.1s">
           <div data-ui class="ui" role="img" aria-label="Drawback matching table with demo data">
             <div class="ui-t"><b>Drawback Claim · Line Matching</b><span>Demo claim · CAD</span></div>
-            <div class="kv"><div>Export lines<b>3</b></div><div>Matched to B3<b>3 of 3</b></div><div>Duty-free dropped<b>1</b></div></div>
+            <div class="kv"><div>Export Lines<b>3</b></div><div>Matched to B3<b>3 of 3</b></div><div>Duty-Free Dropped<b>1</b></div></div>
             <table>
-              <thead><tr><th>Export line</th><th class="hide-s">B3 entry</th><th class="r">Duty paid in Canada</th><th class="r">Duty owed in U.S.</th><th class="r">Recoverable</th></tr></thead>
+              <thead><tr><th>Export Line</th><th class="hide-s">B3 Entry</th><th class="r">Duty Paid in Canada</th><th class="r">Duty Owed in U.S.</th><th class="r">Recoverable</th></tr></thead>
               <tbody>
                 <tr><td>Steel lug nut M22 × 2,400<span class="sub">Invoice 10421 · line 1</span></td><td class="hide-s">…0412</td><td class="r">201.60</td><td class="r">1,512.00</td><td class="r strong">201.60</td></tr>
                 <tr><td>Toolbox latch × 300<span class="sub">Invoice 10421 · line 2</span></td><td class="hide-s">…0398</td><td class="r">183.00</td><td class="r">92.40</td><td class="r strong">92.40</td></tr>
@@ -398,18 +567,19 @@
         </div>
       </article>
 
-      <article class="case flip" aria-labelledby="c4">
+      <article class="case" aria-labelledby="c5">
         <div class="txt">
-          <h3 id="c4" class="rv">HTS Classification and Tariff Exposure</h3>
+          <h3 id="c5" class="rv">HTS Classification and Tariff Exposure</h3>
           <p class="tags rv">HTS / HS · Sections 232, 301, 338 · Landed Cost</p>
-          <p class="rv"><b>The Problem.</b> U.S. tariffs changed almost monthly in 2026. Landed-cost quotes left out Chapter 99 duties, and goods shipped from Canada were at risk of being declared Canadian origin by default.</p>
-          <p class="rv"><b>What I Built.</b> A classification audit in SAP (missing HS codes, wrong lengths, missing origin); a duty stack per item (base rate, Chapter 99, MPF and HMF); an origin check, since re-exported goods keep their true origin; a Section 232 flag for steel and aluminum content; and a landed-cost check comparing duty paid with the expected rate on every purchase order line.</p>
-          <p class="res rv"><b>Result:</b> duty exposure is visible per item before anyone quotes a price, and overpayments are flagged before they happen.</p>
+          <p class="outcome rv">HTS code, country of origin and landed cost kept complete on every active item.</p>
+          <p class="rv"><b>The Problem.</b> U.S. tariffs changed almost monthly in 2026. Quotes left out Chapter 99 duties, and goods shipped from Canada risked being declared Canadian origin by default.</p>
+          <p class="rv"><b>What I Built.</b> A classification audit in SAP, a duty stack per item (base rate, Chapter 99, MPF and HMF), an origin check for re-exported goods, a Section 232 flag for steel and aluminum content, and a landed-cost check on every purchase order line.</p>
+          <p class="where rv">Trux Accessories · 2026</p>
         </div>
         <div class="rv" style="--d:.1s">
           <div data-ui class="ui" role="img" aria-label="Landed duty stack for one item, illustrative rates">
             <div class="ui-t"><b>Landed Duty Stack</b><span>Illustrative rates · not a quote</span></div>
-            <div class="kv"><div>Item<b>Steel hub cover</b></div><div>Origin<b>China</b></div><div>Shipped from<b>Canada, by truck</b></div></div>
+            <div class="kv"><div>Item<b>Steel hub cover</b></div><div>Origin<b>China</b></div><div>Shipped From<b>Canada, by truck</b></div></div>
             <table>
               <thead><tr><th>Layer</th><th class="hide-s">Code</th><th class="r">Rate</th><th>Why</th></tr></thead>
               <tbody>
@@ -426,14 +596,92 @@
           </div>
         </div>
       </article>
+
+      <article class="case flip" aria-labelledby="c6">
+        <div class="txt">
+          <h3 id="c6" class="rv">Sales Analytics That Ties to SAP</h3>
+          <p class="tags rv">SQL · Power BI · DAX · Power Query</p>
+          <p class="outcome rv">Leadership sees sales, inventory and margin directly, in numbers that match SAP.</p>
+          <p class="rv"><b>The Problem.</b> Sales reports overstated revenue: cancelled invoices and their reversals were both counted, credit memos were ignored and freight repeated on every line.</p>
+          <p class="rv"><b>What I Built.</b> A line-level SAP B1 → Power BI model: invoices minus credit memos, freight at document level, same-pace year-to-date versus last year, and a customer bridge so one customer can sit in several segments.</p>
+          <p class="where rv">Power BI reporting at Café Mystique Coffee and Trux Accessories</p>
+        </div>
+        <figure class="rv" style="--d:.1s">
+          <img src="assets/dashboard-customer-segmentation-demo.jpg" alt="Customer Segmentation dashboard: sales by customer property and a segment trend by year, demo data" width="1600" height="536" loading="lazy">
+          <figcaption>Customer segmentation through the property bridge. Demo data.</figcaption>
+        </figure>
+      </article>
+    </div>
+  </section>
+
+  <section id="about" class="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <div>
+        <img class="photo rv" src="assets/rishad-ahmed.jpg" alt="Rishad Ahmed" width="640" height="800" loading="lazy">
+        <dl class="rv" style="--d:.06s">
+          <div><dt>Role</dt><dd>BI &amp; SAP Data Analyst</dd></div>
+          <div><dt>Languages</dt><dd>English &amp; French</dd></div>
+          <div><dt>Based in</dt><dd>Montréal, Québec, Canada</dd></div>
+          <div><dt>Service Area</dt><dd>Remote, or On Site Within 300 km, Including Ottawa</dd></div>
+          <div><dt>Databases</dt><dd>SAP B1 on SQL Server or HANA</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <h2 id="about-h" class="rv">Data That Reconciles</h2>
+        <p class="rv" style="--d:.06s">SAPlytics is how I package what I do: turning a live SAP Business One database into reporting people actually make decisions with.</p>
+        <p class="rv" style="--d:.12s">For more than three years I have owned SAP reporting, master data and import compliance data for a distributor and a coffee company, as the person the CEO, finance, purchasing, sales and warehouse teams all come to for numbers. I document how things work today, find the gaps, and replace manual work with SQL, Power BI, Excel and Power Automate, then support people until the new way sticks.</p>
+
+        <div class="exp">
+          <div class="rv">
+            <h3>Experience</h3>
+            <ul class="jobs">
+              <li><b>Trux Accessories (Your Truck Shop Inc.)</b><span>BI &amp; SAP Data Analyst · 2026 – Present</span><em>Business Operations Analyst · 2025 – 2026 · Cross-border truck-parts distributor, Québec</em></li>
+              <li><b>Café Mystique Coffee Inc.</b><span>SAP Business Analyst · 2023 – 2025</span><em>Business Intelligence Analyst · 2023 · Montréal</em></li>
+              <li><b>First Capital University of Bangladesh</b><span>Lecturer, Electrical &amp; Electronic Engineering · 2016 – 2017</span><em>Programming, electronics and signal processing</em></li>
+            </ul>
+          </div>
+          <div class="rv" style="--d:.08s">
+            <h3>Education</h3>
+            <ul class="edu">
+              <li><b>AEC, Business Intelligence Analyst</b><span>College Canada, Montréal · 2023</span></li>
+              <li><b>M.Eng., Computer Science &amp; Technology</b><span>University of Jinan, China · 2020</span></li>
+              <li><b>B.Sc., Applied Physics &amp; Electronic Engineering</b><span>University of Rajshahi, Bangladesh · 2013</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="kit rv">
+          <div><h3>Data</h3><ul><li>SAP Business One 10</li><li>SQL Server, T-SQL</li><li>Crystal Reports</li><li>Python (Pandas)</li></ul></div>
+          <div><h3>Reporting</h3><ul><li>Power BI, DAX</li><li>Power Query (M)</li><li>Excel Automation</li><li>Power Automate</li></ul></div>
+          <div><h3>Automation &amp; Trade</h3><ul><li>Claude Code</li><li>Landed Cost</li><li>HTS / HS Classification</li><li>CBSA Drawback, CARM</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <div>
+        <h2 id="faq-h" class="rv">Questions Owners Ask</h2>
+        <p class="lead rv" style="--d:.06s">Straight answers before you book.</p>
+      </div>
+      <div class="rv" style="--d:.08s">
+        <details><summary>Is My SAP Data Safe?</summary><p>Yes. I work read-only, through a least-privilege login that you create, control and can revoke at any time. Nothing is ever written to your SAP database.</p></details>
+        <details><summary>What Happens in the Free 30-Min Review?</summary><p>You share your screen and show me a report that doesn't match, or a question SAP can't answer. I explain why, and what fixing it would involve. No obligation.</p></details>
+        <details><summary>Do You Work With SAP Business One on HANA?</summary><p>Yes. I work with SAP B1 on SQL Server or HANA, as long as I can connect to a valid company database.</p></details>
+        <details><summary>Remote or On Site?</summary><p>Both. I work remotely anywhere, and on site in Montréal and within about 300 km, including Ottawa.</p></details>
+        <details><summary>Do You Work in French?</summary><p>Oui. I'm bilingual and work, document and train in English or French.</p></details>
+        <details><summary>Who Owns the Reports?</summary><p>You do. Every query and model is documented and handed over, so your team can run and change it without me.</p></details>
+        <details><summary>Will It Slow Down SAP?</summary><p>No. Every query is reviewed for performance before it runs against your live database,.</p></details>
+      </div>
     </div>
   </section>
 
   <section id="sql" class="sql" aria-labelledby="sql-h">
     <div class="wrap">
       <div>
-        <h2 id="sql-h" class="rv">How I Write SQL</h2>
-        <p class="lead rv" style="--d:.06s">Clean, auditable T-SQL that runs in SAP's Query Manager. The rules behind every query:</p>
+        <h2 id="sql-h" class="rv">For Your IT Team: How I Write SQL</h2>
+        <p class="lead rv" style="--d:.06s">Clean, auditable SQL that runs in SAP's Query Manager. The rules behind every query:</p>
         <ul class="rules">
           <li class="rv"><b>Cancelled Means Both Documents</b>CANCELED = 'N' drops the cancelled invoice and the cancellation document that reverses it.</li>
           <li class="rv" style="--d:.06s"><b>Credit Memos Are Netted</b>Returns and price corrections come off sales, by the same customer, item and period.</li>
@@ -469,7 +717,7 @@ SELECT S.CardCode       AS [Customer],
 FROM SalesLines S
 JOIN OCRD C ON C.CardCode = S.CardCode
 GROUP BY S.CardCode, C.CardName;</code></pre>
-        <figcaption>Net sales by customer for 2026: invoices minus credit memos, cancelled documents excluded.</figcaption>
+        <figcaption>Net sales by customer for 2026 on SQL Server: invoices minus credit memos, cancelled documents excluded. HANA versions follow the same rules.</figcaption>
       </figure>
     </div>
   </section>
@@ -491,41 +739,22 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
     </div>
   </section>
 
-  <section id="about" class="about" aria-labelledby="about-h">
-    <div class="wrap">
-      <div>
-        <img class="badge rv" src="assets/saplytics-badge-dark.svg" alt="SAPlytics badge: Smarter insights for SAP B1" width="240" height="240" loading="lazy">
-        <dl class="rv" style="--d:.06s">
-          <div><dt>Role</dt><dd>BI &amp; SAP Data Analyst</dd></div>
-          <div><dt>Practice</dt><dd>SAPlytics</dd></div>
-          <div><dt>Based in</dt><dd>Montréal, Québec, Canada</dd></div>
-          <div><dt>Focus</dt><dd>SAP B1 Reporting &amp; Trade Data</dd></div>
-        </dl>
-      </div>
-      <div class="body">
-        <h2 id="about-h" class="rv">Data That Reconciles</h2>
-        <p class="rv" style="--d:.06s">SAPlytics is how I package what I do: turning a live SAP Business One database into reporting people actually make decisions with.</p>
-        <p class="rv" style="--d:.12s">I write auditable SQL and deliver it through Power BI and Excel, across inventory, sales, purchasing, pricing and margin. For businesses that import into Canada and re-export to the U.S., I also handle the data side of trade: HTS classification, tariff exposure and duty drawback.</p>
-        <div class="kit rv" style="--d:.18s">
-          <div><h3>Data</h3><ul><li>SAP Business One 10</li><li>SQL Server, T-SQL</li><li>Query Manager</li><li>Python</li></ul></div>
-          <div><h3>Reporting</h3><ul><li>Power BI, DAX</li><li>Power Query (M)</li><li>Excel Automation</li><li>Scheduled Email Reports</li></ul></div>
-          <div><h3>Trade</h3><ul><li>HTS / HS Classification</li><li>Sections 232, 301, 338</li><li>CBSA Drawback, CARM</li><li>CUSMA Origin</li></ul></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="contact" class="contact" aria-labelledby="contact-h">
     <div class="wrap">
       <div class="box">
         <div>
           <h2 id="contact-h" class="rv">Numbers Off?<span>Let's Fix Them.</span></h2>
-          <p class="lead rv" style="--d:.06s">Tell me which report doesn't match and what it should say. I'll show you why, on your own SAP screens.</p>
-          <div class="cta rv" style="--d:.12s"><a class="btn" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">Message Me on LinkedIn</a></div>
+          <p class="lead rv" style="--d:.06s">Book a free 30-minute reporting review. Show me which report doesn't match and what it should say; I'll show you why, on your own SAP screens.</p>
+          <div class="cta rv" style="--d:.12s">
+            <a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Book a Free 30-Min Review</a>
+            <a class="btn ghost" href="mailto:ahm.rishad@outlook.com?subject=SAPlytics%20Enquiry">Email Me</a>
+          </div>
         </div>
         <dl class="rv" style="--d:.12s">
           <dt>Connect</dt><dd><a class="tlink" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">LinkedIn</a></dd>
-          <dt>Based in</dt><dd>Montréal, Québec, Canada</dd>
+          <dt>Languages</dt><dd>English &amp; French</dd>
+          <dt>Based in</dt><dd>Montréal, Québec</dd>
+          <dt>On Site</dt><dd>Within 300 km, Including Ottawa</dd>
         </dl>
       </div>
     </div>
@@ -534,7 +763,7 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
 
 <footer>
   <div class="wrap">
-    <a href="#top" class="wm" aria-label="SAPlytics, back to top"><img src="assets/saplytics-badge-dark.svg" alt="SAPlytics" width="64" height="64"></a>
+    <a href="#top" class="wm" aria-label="SAPlytics, back to top"><img src="assets/saplytics-badge-dark.svg" alt="SAPlytics" width="72" height="72"></a>
     <p class="f-tag">Your ERP Knows Everything. <span>Your Reports Should Too.</span></p>
     <span class="f-copy">© 2026 Rishad Ahmed</span>
   </div>
@@ -548,12 +777,16 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
+  // free review emails arrive with a short brief already written
+  const brief='Hi Rishad,\n\nWe run SAP Business One and would like a free 30-minute reporting review.\n\nCompany:\nThe report that is off:\nWhat it should show:\nBest days and times:\n';
+  document.querySelectorAll('.js-review').forEach(a=>{a.href='mailto:ahm.rishad@outlook.com?subject='+encodeURIComponent('Free 30-Min Reporting Review')+'&body='+encodeURIComponent(brief);});
+
   // light SQL highlighting
   const code=document.getElementById('code');
   if(code){
     const K='SET|TRANSACTION|ISOLATION|LEVEL|READ|UNCOMMITTED|NOCOUNT|ON|WITH|AS|SELECT|FROM|JOIN|WHERE|AND|UNION|ALL|SUM|GROUP|BY';
     let h=code.textContent.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
-    h=h.replace(/('[^']*')|(\[[^\]]*\])|\b(OINV|INV1|ORIN|RIN1|OCRD)\b|\b(K)\b/g,(m,s,b,t)=>s?'<span class="s">'+s+'</span>':b?'<span class="n">'+b+'</span>':t?'<span class="n">'+t+'</span>':m);
+    h=h.replace(/('[^']*')|(\[[^\]]*\])|\b(OINV|INV1|ORIN|RIN1|OCRD)\b/g,(m,s,b,t)=>s?'<span class="s">'+s+'</span>':'<span class="n">'+(b||t)+'</span>');
     h=h.replace(new RegExp('\\b('+K+')\\b(?![^<]*<\\/span>)','g'),'<span class="k">$1</span>');
     code.innerHTML=h;
   }
@@ -573,7 +806,8 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
     OPDN:['Goods receipt PO','What actually arrived from a vendor, and when.','real lead times, measured from purchase order to receipt, which feed reorder points.'],
     OPCH:['A/P invoices','Vendor bills for goods and services received.','spend by vendor that ties to SAP Purchasing Analysis, and duty amounts for drawback.'],
     ORTT:['Exchange rates','Daily rates between the local currency and foreign currencies.','converting CAD and USD with the latest rate on or before each document date.'],
-    OWHS:['Warehouses','The list of warehouses and their settings.','splitting stock and demand by location so transfers come before buying.']
+    OWHS:['Warehouses','The list of warehouses and their settings.','splitting stock and demand by location so transfers come before buying.'],
+    ITM1:['Price list lines','The price of each item on each price list.','checking orders billed off-list and finding missing, zero or stale prices.']
   };
   const tin=document.getElementById('tbl'),tout=document.getElementById('tbl-out');
   const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
