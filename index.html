@@ -152,7 +152,7 @@
   .case h3{font-size:clamp(23px,2vw,30px);margin-bottom:6px}
   @media (min-width:1200px){.case h3{white-space:nowrap}}
   .case .tags{font-size:var(--fs-small);font-weight:600;color:var(--teal);margin-bottom:16px}
-  .case .outcome{font-size:var(--fs-sub);font-weight:700;line-height:1.35;margin-bottom:16px}
+  .case .outcome{font-size:var(--fs-sub);font-weight:700;line-height:1.35;margin-bottom:16px;text-wrap:balance}
   .case p{font-size:17px}
   .case p + p{margin-top:10px}
   .case p b{font-weight:700}
@@ -277,7 +277,7 @@
   .f-copy{grid-column:3;justify-self:end}
 
   /* justified explanations, only where the column is wide enough */
-  .case .txt p:not(.tags):not(.src),.about .body > p,.faq details p,.rules li,.answer p{text-align:justify;hyphens:auto}
+  .case .txt p:not(.tags):not(.src):not(.outcome),.about .body > p,.faq details p,.rules li,.answer p{text-align:justify;hyphens:manual}
 
   /* ---------- motion ---------- */
   .js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
@@ -401,7 +401,7 @@
         <li class="rv"><strong>260</strong><b>Report Defects Found</b><span>In a 93-query SAP reporting library, then closed with a review standard.</span></li>
         <li class="rv" style="--d:.07s"><strong>½ Day</strong><b>Cut to Minutes</b><span>Supplier price files merged into one master price list with AI-assisted tooling.</span></li>
         <li class="rv" style="--d:.14s"><strong>2</strong><b>Countries Planned</b><span>A demand-driven min/max model plans U.S. and Canadian replenishment.</span></li>
-        <li class="rv" style="--d:.21s"><strong>3+</strong><b>Years on SAP B1</b><span>Reporting, master data, month-end reconciliation and import compliance.</span></li>
+        <li class="rv" style="--d:.21s"><strong>5+</strong><b>Years of Experience</b><span>Reporting, master data, month-end reconciliation and import compliance.</span></li>
       </ul>
     </div>
   </section>
@@ -529,7 +529,6 @@
           <p class="outcome rv">A reporting library the whole company can trust again.</p>
           <p class="rv"><b>The Problem.</b> Years of saved SAP queries, written by different people, with no shared rules. Nobody knew which reports could be trusted.</p>
           <p class="rv"><b>What I Built.</b> An automated review that scored every query for correctness and performance, and a prioritized remediation workbook.</p>
-          <p class="src rv">Trux Accessories · 2026</p>
         </div>
         <figure class="vis img rv" style="--d:.1s">
           <img src="assets/case-reporting-audit.png" alt="SAP Reporting Library Audit: 93 queries reviewed, 260 defects flagged, 2.8 defects per query, 3 workbook sheets; delivered coding conventions, review standard, change log and remediation workbook" width="1400" height="635" loading="lazy">
@@ -543,7 +542,6 @@
           <p class="outcome rv">Replenishment planned from real demand, warehouse by warehouse.</p>
           <p class="rv"><b>The Problem.</b> Reorder points were typed in once and never updated, so stock ran out in one warehouse while it sat idle in another.</p>
           <p class="rv"><b>What I Built.</b> Min/max per warehouse from 12-month demand, real lead times and the purchasing cycle, in SQL Server and Power BI over both the live and legacy SAP databases.</p>
-          <p class="src rv">Trux Accessories · 2026</p>
         </div>
         <div class="vis rv" style="--d:.1s">
           <div data-ui class="ui" role="img" aria-label="Reorder suggestions table">
@@ -570,7 +568,6 @@
           <p class="outcome rv">Every customer price level calculated from one landed cost.</p>
           <p class="rv"><b>The Problem.</b> Prices for warehouse distributors, OES and OEM customers were kept by hand, and supplier price files arrived in different formats.</p>
           <p class="rv"><b>What I Built.</b> A single landed-cost base price that drives every level's price and margin automatically, plus a tool that merges multi-format supplier files into one master price list.</p>
-          <p class="src rv">Trux Accessories · 2026</p>
         </div>
         <figure class="vis img rv" style="--d:.1s">
           <img src="assets/case-price-ladder.png" alt="Price ladder: landed cost from FOB, freight and duty, and the price for OEM, warehouse distributor and OES customers at 30% and 55% tariff" width="1400" height="744" loading="lazy">
@@ -584,7 +581,6 @@
           <p class="outcome rv">A manual spreadsheet claim process replaced by an end-to-end SQL pipeline.</p>
           <p class="rv"><b>The Problem.</b> Duty paid on goods imported into Canada can be recovered when the same goods are re-exported to the U.S., but matching thousands of export lines by hand made every claim slow and risky.</p>
           <p class="rv"><b>What I Built.</b> First-in, first-out matching of each export line to the import entry that paid its duty, five eligibility gates, the CUSMA lesser-of-two-duties rule and the claim arithmetic, all in SQL.</p>
-          <p class="src rv">Trux Accessories · 2026</p>
         </div>
         <div class="vis rv" style="--d:.1s">
           <div data-ui class="ui" role="img" aria-label="Drawback matching table">
@@ -611,7 +607,6 @@
           <p class="outcome rv">HTS code, country of origin and landed cost kept complete on every active item.</p>
           <p class="rv"><b>The Problem.</b> U.S. tariffs changed almost monthly in 2026. Quotes left out Chapter 99 duties, and goods shipped from Canada risked being declared Canadian origin by default.</p>
           <p class="rv"><b>What I Built.</b> A classification audit in SAP, a duty stack per item, an origin check for re-exported goods, a Section 232 flag for steel and aluminum content, and a landed-cost check on every purchase order line.</p>
-          <p class="src rv">Trux Accessories · 2026</p>
         </div>
         <div class="vis rv" style="--d:.1s">
           <div data-ui class="ui" role="img" aria-label="Landed duty stack for one item, illustrative rates">
@@ -640,7 +635,6 @@
           <p class="outcome rv">Leadership sees sales, inventory and margin directly, in numbers that match SAP.</p>
           <p class="rv"><b>The Problem.</b> Sales reports overstated revenue: cancelled invoices and their reversals were both counted, credit memos were ignored and freight repeated on every line.</p>
           <p class="rv"><b>What I Built.</b> A line-level SAP B1 → Power BI model: invoices minus credit memos, freight at document level, same-pace year-to-date versus last year, and a customer bridge so one customer can sit in several segments.</p>
-          <p class="src rv">Café Mystique Coffee and Trux Accessories</p>
         </div>
         <figure class="vis img rv" style="--d:.1s">
           <img src="assets/case-sales-product-rep.png" alt="Product and rep performance in Power BI: net sales by item group and by sales rep, 2026 year to date" width="1410" height="778" loading="lazy">
@@ -811,7 +805,7 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
   // case tables: if content is taller than its text-height panel, scale it to fit
-  const fitVis=()=>{document.querySelectorAll('.vis > [data-ui].ui').forEach(u=>{u.style.zoom='';if(innerWidth<=960)return;const need=u.scrollHeight,have=u.clientHeight;if(need>have+1)u.style.zoom=Math.max(.82,have/need-.015).toFixed(3);});};
+  const fitVis=()=>{document.querySelectorAll('.vis > [data-ui].ui').forEach(u=>{u.style.zoom='';if(innerWidth<=960)return;let z=1;while(u.scrollHeight>u.clientHeight+1&&z>.8){z-=.01;u.style.zoom=z.toFixed(2);}});};
   addEventListener('load',fitVis);addEventListener('resize',fitVis);
 
   // free review emails arrive with a short brief already written
