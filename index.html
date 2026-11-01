@@ -131,10 +131,6 @@
   .quality ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 40px}
   .quality li{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:600}
   .q-ic{width:22px;height:22px;flex:none}
-  .svc-cta{margin-top:clamp(40px,4vw,56px);padding-top:26px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:40px}
-  .svc-cta > div{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
-  .svc-cta .btn{min-height:62px;font-size:20px;padding:0 36px}
-  .svc-cta span{font-size:16px;color:var(--muted)}
   .cta-art{width:210px;height:90px;flex:none}
 
   /* ---------- steps ---------- */
@@ -242,12 +238,14 @@
   .answer p.use strong{color:var(--ink);font-weight:700}
 
   /* ---------- contact & footer ---------- */
-  .contact .box{background:var(--ground-2);padding:clamp(40px,5vw,72px) clamp(28px,5vw,72px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,4vw,56px);align-items:center}
-  .contact h2{font-size:var(--fs-display);letter-spacing:-.04em;line-height:1}
-  .contact h2 span{display:block;color:var(--teal)}
-  .contact .lead{font-size:var(--fs-sub);line-height:1.45}
-  .contact .cta{margin-top:24px}
-  .contact .li{margin-top:18px;font-size:16px;color:var(--muted)}
+  .contact .box{background:var(--ground-2);padding:clamp(40px,5vw,72px) clamp(24px,4vw,64px);text-align:center}
+  .contact h2{font-size:var(--fs-display);letter-spacing:-.04em;line-height:1.05}
+  .contact h2 span{color:var(--teal)}
+  .contact .lead{margin:18px auto 0;font-size:var(--fs-sub);line-height:1.45;max-width:40em;color:var(--muted)}
+  .c-row{margin-top:clamp(28px,3vw,40px);display:flex;align-items:center;justify-content:center;gap:clamp(24px,4vw,56px)}
+  .c-mid .cta{justify-content:center}
+  .c-mid .btn{min-height:58px;font-size:18px}
+  .contact .li{margin-top:16px;font-size:16px;color:var(--muted)}
   footer{padding:clamp(48px,5vw,64px) 0 36px}
   footer .wrap{display:flex;align-items:center;gap:24px;flex-wrap:wrap;font-size:var(--fs-small);color:var(--muted)}
   footer .wm img{width:88px;height:88px}
@@ -293,8 +291,7 @@
     .contact h2{font-size:9vw}
     .svc,.steps{grid-template-columns:1fr}
     .quality ul{grid-template-columns:1fr}
-    .svc-cta .btn{font-size:17px;padding:0 20px;width:100%}
-    .figs{gap:28px 20px}
+      .figs{gap:28px 20px}
     .figs strong{font-size:12vw}
     .ui .kv{grid-template-columns:1fr 1fr 1fr;gap:6px}
     .ui .kv div{padding:7px 8px}
@@ -475,7 +472,6 @@
           <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"></polyline></svg><span>Built Not to Slow Down Your Users' SAP</span></li>
         </ul>
       </div>
-      <div class="svc-cta rv"><svg class="cta-art" viewBox="0 0 210 90" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="84" x2="206" y2="84" stroke="#2B4468" stroke-width="2"></line><path d="M6 74 C 40 70, 55 52, 85 56 S 135 30, 160 32 S 190 14, 204 8" stroke="#3CC8BE" stroke-width="3"></path><circle cx="85" cy="56" r="4.5" fill="#3CC8BE" stroke="none"></circle><circle cx="160" cy="32" r="4.5" fill="#3CC8BE" stroke="none"></circle><circle cx="204" cy="8" r="5.5" fill="#F39C12" stroke="none"></circle></svg><div><a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Book a Free Reporting Review</a><span>30 Minutes, on Your Own SAP Screens</span></div><svg class="cta-art" viewBox="0 0 210 90" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="84" x2="206" y2="84" stroke="#2B4468" stroke-width="2"></line><rect x="14" y="58" width="22" height="26" rx="3" fill="#3CC8BE" opacity="0.45" stroke="none"></rect><rect x="54" y="46" width="22" height="38" rx="3" fill="#3CC8BE" opacity="0.6" stroke="none"></rect><rect x="94" y="38" width="22" height="46" rx="3" fill="#3CC8BE" opacity="0.75" stroke="none"></rect><rect x="134" y="24" width="22" height="60" rx="3" fill="#3CC8BE" stroke="none"></rect><rect x="174" y="10" width="22" height="74" rx="3" fill="#F39C12" stroke="none"></rect><path d="M25 48 C 50 42, 70 36, 105 28 S 160 14, 185 2" stroke="#F2F6FB" stroke-width="2" stroke-dasharray="4 5"></path></svg></div>
     </div>
   </section>
 
@@ -772,14 +768,18 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
   <section id="contact" class="contact" aria-labelledby="contact-h">
     <div class="wrap">
       <div class="box">
-        <h2 id="contact-h" class="rv">Numbers Off?<span>Let's Fix Them.</span></h2>
-        <div>
-          <p class="lead rv" style="--d:.06s">Book a free 30-minute reporting review. Show me which report doesn't match and what it should say; I'll show you why, on your own SAP screens.</p>
-          <div class="cta rv" style="--d:.12s">
-            <a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Book a Free 30-Min Review</a>
-            <a class="btn ghost" href="mailto:ahm.rishad@outlook.com?subject=SAPlytics%20Enquiry">Email Me</a>
+        <h2 id="contact-h" class="rv">Numbers Off? <span>Let's Fix Them.</span></h2>
+        <p class="lead rv" style="--d:.06s">Show me which report doesn't match and what it should say; I'll show you why, on your own SAP screens.</p>
+        <div class="c-row rv" style="--d:.12s">
+          <svg class="cta-art" viewBox="0 0 210 90" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="84" x2="206" y2="84" stroke="#2B4468" stroke-width="2"></line><path d="M6 74 C 40 70, 55 52, 85 56 S 135 30, 160 32 S 190 14, 204 8" stroke="#3CC8BE" stroke-width="3"></path><circle cx="85" cy="56" r="4.5" fill="#3CC8BE" stroke="none"></circle><circle cx="160" cy="32" r="4.5" fill="#3CC8BE" stroke="none"></circle><circle cx="204" cy="8" r="5.5" fill="#F39C12" stroke="none"></circle></svg>
+          <div class="c-mid">
+            <div class="cta">
+              <a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Book a Free 30-Min Review</a>
+              <a class="btn ghost" href="mailto:ahm.rishad@outlook.com?subject=SAPlytics%20Enquiry">Email Me</a>
+            </div>
+            <p class="li">30 Minutes, on Your Own SAP Screens · Or Connect on <a class="tlink" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">LinkedIn</a></p>
           </div>
-          <p class="li rv" style="--d:.16s">Or connect on <a class="tlink" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">LinkedIn</a>.</p>
+          <svg class="cta-art" viewBox="0 0 210 90" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="84" x2="206" y2="84" stroke="#2B4468" stroke-width="2"></line><rect x="14" y="58" width="22" height="26" rx="3" fill="#3CC8BE" opacity="0.45" stroke="none"></rect><rect x="54" y="46" width="22" height="38" rx="3" fill="#3CC8BE" opacity="0.6" stroke="none"></rect><rect x="94" y="38" width="22" height="46" rx="3" fill="#3CC8BE" opacity="0.75" stroke="none"></rect><rect x="134" y="24" width="22" height="60" rx="3" fill="#3CC8BE" stroke="none"></rect><rect x="174" y="10" width="22" height="74" rx="3" fill="#F39C12" stroke="none"></rect><path d="M25 48 C 50 42, 70 36, 105 28 S 160 14, 185 2" stroke="#F2F6FB" stroke-width="2" stroke-dasharray="4 5"></path></svg>
         </div>
       </div>
     </div>
