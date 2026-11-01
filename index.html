@@ -81,13 +81,14 @@
   .hero{padding-top:clamp(40px,5vw,72px)}
   h1{font-size:var(--fs-display);letter-spacing:-.04em;line-height:1;white-space:nowrap}
   h1 .t2{font-style:normal;color:var(--teal)}
-  .hero-grid{margin-top:clamp(28px,3vw,44px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,6fr);gap:clamp(32px,5vw,72px);align-items:center}
+  .hero-grid{margin-top:clamp(28px,3vw,44px);display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:clamp(32px,5vw,72px);align-items:stretch}
   .lede{font-size:var(--fs-sub);font-weight:600}
-  .pains{list-style:none;margin-top:14px;display:grid;gap:10px;font-size:var(--fs-body);font-weight:500}
+  .pains{list-style:none;margin-top:14px;display:grid;gap:12px;font-size:var(--fs-body);font-weight:500}
   .pains li{padding-left:26px;position:relative}
   .pains li::before{content:"";position:absolute;left:0;top:.5em;width:11px;height:11px;background:var(--accent)}
   .meta{margin-top:20px;font-size:16px;font-weight:600;color:var(--teal)}
   .hero .cta{margin-top:26px}
+  .hero-fig{display:flex;flex-direction:column;justify-content:space-between;gap:12px;height:100%}
   .hero figure img{width:100%;transition:transform 1.2s var(--ease)}
   .hero figure:hover img{transform:scale(1.015)}
 
@@ -364,8 +365,9 @@
             <a class="btn ghost" href="#services">See Services</a>
           </div>
         </div>
-        <figure class="rv" style="--d:.2s">
+        <figure class="hero-fig rv" style="--d:.2s">
           <img src="assets/dashboard-executive-sales-demo.jpg" alt="Executive Sales Overview dashboard in Power BI" width="1600" height="651">
+          <img src="assets/dashboard-customer-segmentation-demo.jpg" alt="Customer Segmentation dashboard in Power BI" width="1600" height="536">
         </figure>
       </div>
     </div>
