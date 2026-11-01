@@ -6,7 +6,7 @@
 <link rel="canonical" href="https://ahmrishad167.github.io/saplytics/">
 <meta name="theme-color" content="#0B1A33">
 <title>SAPlytics — Smarter Insights for SAP B1</title>
-<meta name="description" content="SAPlytics — smarter insights for SAP Business One. SQL reporting, Power BI dashboards, Excel report automation, HTS tariff analysis and CBSA duty drawback. By Rishad Ahmed, Laval QC.">
+<meta name="description" content="SAPlytics — smarter insights for SAP Business One. SQL reporting, Power BI dashboards, Excel report automation, HTS tariff analysis and CBSA duty drawback. By Rishad Ahmed, Montréal QC.">
 <link rel="icon" type="image/svg+xml" href="assets/saplytics-badge-dark.svg">
 <link rel="apple-touch-icon" href="Logo/saplytics-logo.png">
 <meta property="og:type" content="website">
@@ -67,7 +67,8 @@
   .wm img{width:72px;height:72px;flex:none}
   .wm b{color:var(--teal);font-weight:800}
   .bar nav{margin-left:auto;display:flex;gap:30px;font-size:16px}
-  .tagline{margin-left:-14px;font-size:15px;font-weight:600;line-height:1.35;color:var(--muted)}
+  .tagline{margin-left:-14px;font-size:15px;font-weight:600;line-height:1.35;color:var(--muted);white-space:nowrap}
+  @media (min-width:961px) and (max-width:1199px){.tagline{display:none}}
   .bar .btn{min-height:44px;padding:0 18px;font-size:15px}
 
   /* ---------- hero ---------- */
@@ -201,7 +202,7 @@
   footer .wrap{align-items:center}
   footer .wrap{justify-content:flex-start;gap:24px}
   .f-tag{font-size:var(--fs-sub);font-weight:700;letter-spacing:-.02em;line-height:1.25;color:var(--ink)}
-  .f-tag span{display:block;color:var(--teal)}
+  .f-tag span{color:var(--teal)}
   .f-copy{margin-left:auto}
 
   /* ---------- motion ---------- */
@@ -267,7 +268,7 @@
     <a href="#top" class="wm" aria-label="SAPlytics, back to top">
       <img src="assets/saplytics-badge-dark.svg" alt="SAPlytics" width="64" height="64">
     </a>
-    <p class="tagline">For Distributors and Manufacturers<br>Running SAP Business One</p>
+    <p class="tagline">For Distributors and Manufacturers Running SAP Business One</p>
     <nav aria-label="Primary">
       <a class="tlink" href="#work">Case Studies</a>
       <a class="tlink" href="#sql">SQL</a>
@@ -284,7 +285,7 @@
     <div class="wrap">
       <div>
         <h1 id="hero-h"><span class="ln"><span>Smarter Insights</span></span><span class="ln"><span>for SAP B1.</span></span></h1>
-        <p class="lede rv" style="--d:.4s">I'm <b>Rishad Ahmed</b>, a BI and SAP Business One analyst in Laval, Québec. I turn SAP B1 data into SQL reports, Power BI dashboards and Excel automation people trust, and I handle the customs data behind cross-border trade.</p>
+        <p class="lede rv" style="--d:.4s">I'm <b>Rishad Ahmed</b>, a BI and SAP Business One analyst in Montréal, Québec. I turn SAP B1 data into SQL reports, Power BI dashboards and Excel automation people trust, and I handle the customs data behind cross-border trade.</p>
         <div class="cta rv" style="--d:.5s">
           <a class="btn" href="#work">See Case Studies</a>
           <a class="btn ghost" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">Message Me on LinkedIn</a>
@@ -497,7 +498,7 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
         <dl class="rv" style="--d:.06s">
           <div><dt>Role</dt><dd>BI &amp; SAP Data Analyst</dd></div>
           <div><dt>Practice</dt><dd>SAPlytics</dd></div>
-          <div><dt>Based in</dt><dd>Laval, Québec, Canada</dd></div>
+          <div><dt>Based in</dt><dd>Montréal, Québec, Canada</dd></div>
           <div><dt>Focus</dt><dd>SAP B1 reporting &amp; trade data</dd></div>
         </dl>
       </div>
@@ -524,7 +525,7 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
         </div>
         <dl class="rv" style="--d:.12s">
           <dt>Connect</dt><dd><a class="tlink" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">LinkedIn</a></dd>
-          <dt>Based in</dt><dd>Laval, Québec, Canada</dd>
+          <dt>Based in</dt><dd>Montréal, Québec, Canada</dd>
         </dl>
       </div>
     </div>
@@ -534,7 +535,7 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
 <footer>
   <div class="wrap">
     <a href="#top" class="wm" aria-label="SAPlytics, back to top"><img src="assets/saplytics-badge-dark.svg" alt="SAPlytics" width="64" height="64"></a>
-    <p class="f-tag">Your ERP Knows Everything.<span>Your Reports Should Too.</span></p>
+    <p class="f-tag">Your ERP Knows Everything. <span>Your Reports Should Too.</span></p>
     <span class="f-copy">© 2026 Rishad Ahmed</span>
   </div>
 </footer>
