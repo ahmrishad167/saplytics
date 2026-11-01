@@ -7,7 +7,8 @@
 <meta name="theme-color" content="#0B1A33">
 <title>SAPlytics — Smarter Insights for SAP B1</title>
 <meta name="description" content="SAPlytics — smarter insights for SAP Business One. SQL reporting, Power BI dashboards, Excel report automation, HTS tariff analysis and CBSA duty drawback. By Md Rishad Ahmed, Laval QC.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1A33'/%3E%3Crect x='5' y='18' width='4.5' height='9' rx='1' fill='%232D6BB0'/%3E%3Crect x='11' y='14' width='4.5' height='13' rx='1' fill='%231A86B0'/%3E%3Crect x='17' y='10' width='4.5' height='17' rx='1' fill='%2313A6A0'/%3E%3Ccircle cx='25.5' cy='7' r='3' fill='%23F39C12'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="assets/saplytics-badge-dark.svg">
+<link rel="apple-touch-icon" href="Logo/saplytics-logo.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="SAPlytics — Smarter Insights for SAP B1">
 <meta property="og:url" content="https://ahmrishad167.github.io/saplytics/">
@@ -38,7 +39,7 @@
     --ease:cubic-bezier(.19,1,.22,1);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  html{scroll-behavior:smooth;scroll-padding-top:96px}
   body{background:var(--ground);color:var(--ink);font-family:'Montserrat',system-ui,sans-serif;font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit}
   img{display:block;max-width:100%;height:auto}
@@ -61,9 +62,9 @@
 
   /* ---------- bar ---------- */
   .bar{position:sticky;top:0;z-index:50;background:var(--ground)}
-  .bar .wrap{display:flex;align-items:center;gap:32px;height:76px}
-  .wm{display:flex;align-items:center;gap:11px;font-weight:800;font-size:21px;letter-spacing:-.02em;text-decoration:none}
-  .wm svg{width:28px;height:28px}
+  .bar .wrap{display:flex;align-items:center;gap:32px;height:88px}
+  .wm{display:flex;align-items:center;gap:12px;font-weight:800;font-size:21px;letter-spacing:-.02em;text-decoration:none}
+  .wm img{width:64px;height:64px;flex:none}
   .wm b{color:var(--teal);font-weight:800}
   .bar nav{margin-left:auto;display:flex;gap:30px;font-size:16px}
   .bar .btn{min-height:44px;padding:0 18px;font-size:15px}
@@ -195,7 +196,8 @@
   footer{padding:56px 0 40px}
   footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:var(--fs-small);color:var(--muted)}
   footer .wm{font-size:18px;color:var(--ink)}
-  footer .wm svg{width:24px;height:24px}
+  footer .wm img{width:88px;height:88px}
+  footer .wrap{align-items:center}
 
   /* ---------- motion ---------- */
   .js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
@@ -219,7 +221,9 @@
     .kit{grid-template-columns:repeat(2,minmax(0,1fr))}
   }
   @media (max-width:560px){
-    .bar .wrap{height:68px}
+    .bar .wrap{height:72px}
+    .wm img{width:52px;height:52px}
+    footer .wm img{width:72px;height:72px}
     .wm{font-size:19px}
     h1{font-size:10.6vw}
     .contact h2{font-size:9vw}
@@ -254,7 +258,7 @@
 <header class="bar">
   <div class="wrap">
     <a href="#top" class="wm" aria-label="SAPlytics, back to top">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="17" width="5.5" height="12" rx="1" fill="#2D6BB0"/><rect x="10.5" y="12" width="5.5" height="17" rx="1" fill="#1A86B0"/><rect x="18" y="7" width="5.5" height="22" rx="1" fill="#13A6A0"/><circle cx="28" cy="5" r="3.2" fill="#F39C12"/></svg>
+      <img src="assets/saplytics-badge-dark.svg" alt="" width="64" height="64">
       <span>SAP<b>lytics</b></span>
     </a>
     <nav aria-label="Primary">
@@ -523,7 +527,7 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
 
 <footer>
   <div class="wrap">
-    <a href="#top" class="wm" aria-label="SAPlytics, back to top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="17" width="5.5" height="12" rx="1" fill="#2D6BB0"/><rect x="10.5" y="12" width="5.5" height="17" rx="1" fill="#1A86B0"/><rect x="18" y="7" width="5.5" height="22" rx="1" fill="#13A6A0"/><circle cx="28" cy="5" r="3.2" fill="#F39C12"/></svg><span>SAP<b>lytics</b></span></a>
+    <a href="#top" class="wm" aria-label="SAPlytics, back to top"><img src="assets/saplytics-badge-dark.svg" alt="" width="64" height="64"><span>SAP<b>lytics</b></span></a>
     <span>Smarter insights for SAP B1 · © 2026 Md Rishad Ahmed</span>
   </div>
 </footer>
