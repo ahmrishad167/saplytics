@@ -96,7 +96,6 @@
   .figs strong{display:block;font-size:clamp(44px,4.6vw,72px);font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--accent)}
   .figs b{display:block;margin-top:12px;font-size:19px;font-weight:700}
   .figs span{display:block;margin-top:6px;font-size:16px;color:var(--muted)}
-  .where{margin-top:28px;font-size:16px;color:var(--muted)}
 
   /* ---------- practices (accent field) ---------- */
   .practices{margin-top:var(--gap);background:var(--accent);color:var(--navy-ink);padding:clamp(56px,6vw,88px) 0}
@@ -121,6 +120,7 @@
   .svc-key{font-size:var(--fs-sub);font-weight:600;line-height:1.4;color:var(--ink)}
   .svc-list{list-style:none;display:grid;gap:10px;font-size:16px;font-weight:600;line-height:1.4;margin-top:6px;color:var(--muted)}
   .svc-list li{display:flex;gap:9px;align-items:flex-start}
+  .svc-list li span{white-space:nowrap}
   .svc-list .ck{width:15px;height:15px;flex:none;margin-top:3px}
   .svc-foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:grid;gap:10px}
   .svc-foot span{font-size:15px;font-weight:700;color:var(--muted)}
@@ -190,15 +190,16 @@
   .about h2{font-size:var(--fs-head);margin-bottom:20px}
   .about .body > p{font-size:var(--fs-sub);line-height:1.5;max-width:36em}
   .about .body > p + p{margin-top:14px}
-  .exp{margin-top:40px;display:grid;gap:36px}
+  .exp{margin-top:40px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,4vw,56px)}
   .exp h3{font-size:21px;letter-spacing:-.01em;margin-bottom:16px}
   .jobs{list-style:none;display:grid;gap:20px}
   .jobs b{display:block;font-size:17px}
   .jobs span{display:block;font-size:16px;color:var(--teal);font-weight:600}
+  .jobs em{display:block;font-style:normal;font-size:15px;color:var(--muted)}
   .edu{list-style:none;display:grid;gap:10px;font-size:16px}
-  .edu li{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
-  .edu b{font-size:17px}
-  .edu span{color:var(--muted);font-size:15px}
+  .edu b{display:block;font-size:16px}
+  @media (min-width:1400px){.edu b{white-space:nowrap}}
+  .edu span{display:block;color:var(--muted);font-size:15px}
 
 
   /* ---------- FAQ ---------- */
@@ -281,7 +282,7 @@
   }
   @media (max-width:640px){
     h1{white-space:normal;font-size:10.6vw}
-    .case h3,.svc-card h3{white-space:normal}
+    .case h3,.svc-card h3,.edu b{white-space:normal}
     .ptable thead{display:none}
     .ptable,.ptable tbody,.ptable tr,.ptable td{display:block}
     .ptable tr{padding:14px 0;border-bottom:1px solid rgba(11,26,51,.22)}
@@ -378,7 +379,6 @@
         <li class="rv" style="--d:.14s"><strong>2</strong><b>Countries Planned</b><span>A demand-driven min/max model plans U.S. and Canadian replenishment.</span></li>
         <li class="rv" style="--d:.21s"><strong>3+</strong><b>Years on SAP B1</b><span>Reporting, master data, month-end reconciliation and import compliance.</span></li>
       </ul>
-      <p class="where rv">At Trux Accessories, a cross-border truck-parts distributor, and Café Mystique Coffee, a coffee manufacturer in Montréal.</p>
     </div>
   </section>
 
@@ -413,9 +413,11 @@
           <h3 id="sv1">Data Health Check</h3>
           <p class="svc-key">Know Which Numbers You Can Trust, and What to Fix First.</p>
   <ul class="svc-list">
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Report Accuracy Audit</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Master Data Clean-Up</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Ranked Fix Plan</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Saved-Report Error Review</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Missing or Stale Prices</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Duplicate or Inactive Items</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Customer Data Clean-Up</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Old Open Orders and POs</span></li>
   </ul>
           <div class="svc-foot"><span>Start Here</span><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true"><polygon points="67,4 73,4 70,9" fill="#F2F6FB"></polygon><rect x="0" y="14" width="44" height="12" rx="4" fill="#FF8A8A"></rect><rect x="49" y="14" width="44" height="12" rx="4" fill="#FFB86B"></rect><rect x="98" y="14" width="44" height="12" rx="4" fill="#F39C12" opacity="0.55"></rect><rect x="147" y="14" width="44" height="12" rx="4" fill="#13A6A0" opacity="0.55"></rect><rect x="196" y="14" width="44" height="12" rx="4" fill="#3CC8BE" opacity="0.55"></rect><rect x="0" y="32" width="120" height="3" rx="1.5" fill="#3A5070"></rect><rect x="0" y="32" width="70" height="3" rx="1.5" fill="#A9B6C8"></rect></svg></div>
         </article>
@@ -425,9 +427,12 @@
           <h3 id="sv2">Reporting Stack</h3>
           <p class="svc-key">The Reports You Run the Business On, Refreshed and in Your Inbox Every Morning.</p>
   <ul class="svc-list">
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Sales, Orders and AR</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Excel and Power BI</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Reconciled to SAP</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Net Sales by Rep and Item</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Open Orders and Backorders</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>AR Aging for Collections</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Daily Emailed Reports</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>SAP Reconciliation Page</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>AI Plain-English Summaries</span></li>
   </ul>
           <div class="svc-foot"><span>Build It Right</span><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="36" height="32" rx="7" stroke="#3CC8BE" stroke-width="2"></rect><ellipse cx="20" cy="14" rx="9" ry="3.5" stroke="#3CC8BE" stroke-width="1.8"></ellipse><path d="M11 14v12c0 2 4 3.5 9 3.5s9-1.5 9-3.5V14" stroke="#3CC8BE" stroke-width="1.8"></path><line x1="46" y1="20" x2="92" y2="20" stroke="#6B7F99" stroke-width="2" stroke-dasharray="3 4"></line><polyline points="88 16 93 20 88 24" stroke="#6B7F99" stroke-width="2"></polyline><rect x="102" y="4" width="36" height="32" rx="7" stroke="#13A6A0" stroke-width="2"></rect><line x1="110" y1="14" x2="130" y2="14" stroke="#13A6A0" stroke-width="1.8"></line><line x1="110" y1="20" x2="130" y2="20" stroke="#13A6A0" stroke-width="1.8"></line><line x1="110" y1="26" x2="130" y2="26" stroke="#13A6A0" stroke-width="1.8"></line><line x1="118" y1="10" x2="118" y2="30" stroke="#13A6A0" stroke-width="1.8"></line><line x1="146" y1="20" x2="192" y2="20" stroke="#6B7F99" stroke-width="2" stroke-dasharray="3 4"></line><polyline points="188 16 193 20 188 24" stroke="#6B7F99" stroke-width="2"></polyline><rect x="202" y="4" width="36" height="32" rx="7" stroke="#F39C12" stroke-width="2"></rect><rect x="210" y="20" width="4" height="9" fill="#F39C12" stroke="none"></rect><rect x="217" y="15" width="4" height="14" fill="#F39C12" stroke="none"></rect><rect x="224" y="10" width="4" height="19" fill="#F39C12" stroke="none"></rect></svg></div>
         </article>
@@ -436,9 +441,12 @@
           <h3 id="sv3">Business Analytics</h3>
           <p class="svc-key">See Where You Make and Lose Money, and Exactly What to Buy Next.</p>
   <ul class="svc-list">
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Margin by Customer and Product</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Reorder and Dead Stock</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Supplier Performance</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Min/Max From Lead Times</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Rolling 12-Month Demand</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Buy-Now List</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Dead and Slow Stock</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Supplier Scorecard</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Margin by Customer and Item</span></li>
   </ul>
           <div class="svc-foot"><span>Go Deeper</span><svg class="svc-art" viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="0" y1="26" x2="240" y2="26" stroke="#F39C12" stroke-width="1.5" stroke-dasharray="5 5"></line><polyline points="0,8 30,12 60,10 90,17 120,21 150,28 170,31" stroke="#3CC8BE" stroke-width="2.4"></polyline><polyline points="170,31 185,10 215,12 240,16" stroke="#13A6A0" stroke-width="2.4"></polyline><circle cx="170" cy="31" r="4" fill="#F39C12"></circle></svg></div>
         </article>
@@ -447,9 +455,12 @@
           <h3 id="sv4">Trade &amp; Customs</h3>
           <p class="svc-key">Price Tariffs In Before You Quote, and Claim Back Duty You've Paid.</p>
   <ul class="svc-list">
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>HTS and Origin Data</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Tariff and Landed Cost</span></li>
-            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>CBSA Duty Drawback</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>HTS and Origin per Item</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Duty Stack per Item</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Section 232 Metal Flag</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Landed-Cost Check per PO</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>CBSA K32 Drawback Claims</span></li>
+    <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Re-Export Origin Check</span></li>
   </ul>
           <div class="svc-foot"><span>Recover Duty</span><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="0" y="10" width="34" height="26" rx="4" fill="#3CC8BE" opacity="0.55" stroke="none"></rect><rect x="42" y="4" width="34" height="32" rx="4" fill="#3CC8BE" opacity="0.75" stroke="none"></rect><rect x="84" y="14" width="34" height="22" rx="4" fill="#3CC8BE" stroke="none"></rect><path d="M128 20 H200" stroke="#7C93B2" stroke-width="2" stroke-dasharray="3 4"></path><polyline points="196 15 202 20 196 25" stroke="#7C93B2" stroke-width="2"></polyline><circle cx="222" cy="20" r="13" fill="#F39C12" stroke="none"></circle><path d="M226 14 a6 6 0 1 0 2 8" stroke="#0B1A33" stroke-width="2.4"></path><polyline points="229 10 228 15 223 14" stroke="#0B1A33" stroke-width="2.4"></polyline></svg></div>
         </article>
@@ -658,9 +669,9 @@
           <div class="rv">
             <h3>Experience</h3>
             <ul class="jobs">
-              <li><b>Trux Accessories</b><span>BI &amp; SAP Data Analyst · July 2025 – Present</span></li>
-              <li><b>Café Mystique Coffee Inc.</b><span>SAP Business Analyst · September 2023 – June 2025</span></li>
-              <li><b>First Capital University of Bangladesh</b><span>Lecturer, Electrical &amp; Electronic Engineering · 2016 – 2017</span></li>
+              <li><b>Trux Accessories</b><span>BI &amp; SAP Data Analyst</span><em>July 2025 – Present</em></li>
+              <li><b>Café Mystique Coffee Inc.</b><span>SAP Business Analyst</span><em>September 2023 – June 2025</em></li>
+              <li><b>First Capital University of Bangladesh</b><span>Lecturer, Electrical &amp; Electronic Engineering</span><em>2016 – 2017</em></li>
             </ul>
           </div>
           <div class="rv" style="--d:.08s">
