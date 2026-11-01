@@ -110,22 +110,38 @@
   .practices li:hover strong{transform:translateX(10px)}
   .practices li span{font-size:17px;font-weight:600}
 
-  /* ---------- packages ---------- */
-  .packs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
-  .pack{background:var(--ground-2);padding:34px 30px 32px;display:flex;flex-direction:column}
-  .pack.core{background:var(--ground-3);outline:3px solid var(--accent);outline-offset:-3px}
-  .pack .lvl{font-size:16px;font-weight:700;color:var(--teal)}
-  .pack.core .lvl{color:var(--accent)}
-  .pack h3{margin-top:8px;font-size:clamp(24px,2vw,30px)}
-  .pack p{margin-top:12px;font-size:17px;color:var(--muted)}
-  .pack ul{margin-top:20px;list-style:none;display:grid;gap:11px;font-size:16px}
-  .pack li{padding-left:24px;position:relative}
-  .pack li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:10px;background:var(--teal)}
-  .pack.core li::before{background:var(--accent)}
-  .addon{margin-top:20px;background:var(--ground-2);padding:24px 30px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-  .addon p{font-size:17px;max-width:46em}
-  .addon p b{color:var(--teal)}
 
+  .pains{list-style:none;margin-top:16px;display:grid;gap:10px;font-size:var(--fs-body);font-weight:500;max-width:32em}
+  .pains li{padding-left:26px;position:relative}
+  .pains li::before{content:"";position:absolute;left:0;top:.5em;width:11px;height:11px;background:var(--accent)}
+  .svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+  .svc-card{position:relative;background:var(--ground-2);border:1px solid #24395A;padding:28px 26px 24px;display:flex;flex-direction:column;gap:14px}
+  .svc-card.core{border:2px solid var(--accent)}
+  .svc-tag{position:absolute;top:-15px;left:24px;background:var(--accent);color:var(--navy-ink);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px}
+  .svc-top{display:flex;justify-content:space-between;align-items:center}
+  .svc-ic{width:36px;height:36px}
+  .svc-n{font-size:19px;font-weight:700;color:#7C93B2}
+  .svc-card h3{font-size:clamp(23px,2vw,29px);line-height:1.12}
+  .svc-sub{font-size:17px;color:var(--muted)}
+  .svc-list{list-style:none;display:grid;gap:11px;font-size:16px;margin-top:4px}
+  .svc-list li{display:flex;gap:10px;align-items:flex-start}
+  .svc-list .ck{width:16px;height:16px;flex:none;margin-top:4px}
+  .svc-foot{margin-top:auto;padding-top:16px;border-top:1px solid #24395A;display:grid;gap:10px}
+  .svc-foot span{font-size:15px;font-weight:700;color:var(--muted)}
+  .svc-card.core .svc-foot span{color:var(--accent)}
+  .svc-art{width:100%;height:40px}
+  .addon{margin-top:20px;background:var(--ground-2);padding:22px 26px;font-size:17px}
+  .addon b{color:var(--teal)}
+  .quality{margin-top:clamp(48px,6vw,80px)}
+  .quality h3{font-size:var(--fs-sub);margin-bottom:22px}
+  .quality ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 40px}
+  .quality li{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:600}
+  .q-ic{width:22px;height:22px;flex:none}
+  .svc-cta{margin-top:clamp(48px,6vw,72px);padding-top:28px;border-top:1px solid #24395A;display:flex;align-items:center;justify-content:center;gap:40px}
+  .svc-cta > div{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+  .svc-cta .btn{min-height:62px;font-size:20px;padding:0 36px}
+  .svc-cta span{font-size:16px;color:var(--muted)}
+  .cta-art{width:210px;height:90px;flex:none}
   /* ---------- steps ---------- */
   .steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
   .steps li{counter-increment:s;background:var(--ground-2);padding:28px 26px}
@@ -266,8 +282,9 @@
     .hero > .wrap,.practices .wrap,.case,.case.flip,.sql .wrap,.lookup .wrap,.about .wrap,.faq .wrap,.contact .box,.exp{grid-template-columns:minmax(0,1fr)}
     .case > *,.sql .wrap > *{min-width:0}
     .case.flip .txt{order:0}
-    .proof ul,.results .figs{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .packs{grid-template-columns:minmax(0,1fr)}
+    .results .figs{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .svc{grid-template-columns:minmax(0,1fr);gap:28px}
+    .cta-art{display:none}
     .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
     .about .photo{width:220px}
     .kit{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -278,7 +295,9 @@
     .tagline{display:none}
     h1{font-size:10.6vw}
     .contact h2{font-size:9vw}
-    .proof ul,.steps{grid-template-columns:1fr;gap:16px}
+    .steps{grid-template-columns:1fr;gap:16px}
+    .quality ul{grid-template-columns:1fr}
+    .svc-cta .btn{font-size:17px;padding:0 20px;width:100%}
     .results .figs{gap:28px 20px}
     .results .figs strong{font-size:12vw}
     .practices li{grid-template-columns:1fr;gap:4px;padding:12px 0}
@@ -330,7 +349,14 @@
     <div class="wrap">
       <div>
         <h1 id="hero-h"><span class="ln"><span>Smarter Insights</span></span><span class="ln"><span>for SAP B1.</span></span></h1>
-        <p class="lede rv" style="--d:.4s">I'm <b>Rishad Ahmed</b>, a bilingual BI and SAP Business One analyst in Montréal. I build SQL, Power BI and Excel reports that reconcile to SAP, refresh themselves and land in your inbox every morning.</p>
+        <p class="lede rv" style="--d:.4s">Running SAP Business One, but still:</p>
+        <ul class="pains rv" style="--d:.45s">
+          <li>Rebuilding sales and month-end reports by hand in Excel?</li>
+          <li>Getting report totals that don't match SAP?</li>
+          <li>Guessing what to reorder while cash sits in slow stock?</li>
+          <li>Unsure of real margins after cost, freight and tariff changes?</li>
+          <li>Paying import duty you could be claiming back?</li>
+        </ul>
         <p class="meta rv" style="--d:.45s">English &amp; French · Remote, or On Site Within 300 km of Montréal</p>
         <div class="cta rv" style="--d:.5s">
           <a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Book a Free 30-Min Reporting Review</a>
@@ -341,16 +367,6 @@
         <img src="assets/dashboard-executive-sales-demo.jpg" alt="Executive Sales Overview dashboard in Power BI, built on demo data" width="1600" height="651">
         <figcaption>Executive Sales Overview in Power BI. Demo data for a fictional distributor.</figcaption>
       </figure>
-    </div>
-    <div class="proof" aria-label="How I work">
-      <div class="wrap">
-        <ul>
-          <li class="rv"><b>Read-Only</b>I never write to your SAP database.</li>
-          <li class="rv" style="--d:.07s"><b>Reconciled</b>Totals tie to SAP's own Sales and Purchasing Analysis.</li>
-          <li class="rv" style="--d:.14s"><b>Documented</b>Every query is handed over. You own it.</li>
-          <li class="rv" style="--d:.21s"><b>Access You Control</b>A least-privilege login you can revoke at any time.</li>
-        </ul>
-      </div>
     </div>
   </section>
 
@@ -390,50 +406,67 @@
     <div class="wrap">
       <div class="sec-head">
         <h2 id="svc-h" class="rv">Three Ways to Start</h2>
-        <p class="rv" style="--d:.06s">Start with a health check, build the reporting stack, or go straight to analytics. Each one works on its own.</p>
+        <p class="rv" style="--d:.06s">Built by a working SAP Business One analyst, not a generalist agency.</p>
       </div>
-      <div class="packs">
-        <article class="pack rv" aria-labelledby="p1">
-          <span class="lvl">Start Here</span>
-          <h3 id="p1">Data Health Check</h3>
-          <p>A read-only scan of your SAP data and saved reports, with a ranked fix list.</p>
-          <ul>
-            <li>Saved Reports: Errors, Wrong Joins, Double-Counted Totals</li>
-            <li>Price Lists: Missing, Zero or Stale Prices</li>
-            <li>Item Master: Duplicates, Inactive Items Still Selling</li>
-            <li>Customers: Duplicates, Wrong Groups, No Rep</li>
-            <li>Old Open Orders and POs Inflating Your Backlog</li>
+      <div class="svc">
+        <article class="svc-card rv" style="--d:0.00s" aria-labelledby="sv1">
+          <div class="svc-top"><svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 12 6 12 9 5 13 19 16 12 22 12"></polyline></svg><span class="svc-n">01</span></div>
+          <h3 id="sv1">Data Health Check</h3>
+          <p class="svc-sub">A Read-Only Scan of Your SAP Data and Saved Reports, With a Ranked Fix List.</p>
+          <ul class="svc-list">
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Saved-Report Review: Errors, Wrong Joins, Double-Counted Totals</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Price Lists: Missing, Zero or Stale Prices; Orders Billed Off-List</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Item Master: Duplicates, Inactive Items Still Selling, No Vendor</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Customers: Duplicates, Wrong Groups, No Rep or Territory</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Old Open Orders and POs Inflating Your Backlog</span></li>
           </ul>
+          <div class="svc-foot"><span>Start Here</span><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true"><polygon points="67,4 73,4 70,9" fill="#F2F6FB"></polygon><rect x="0" y="14" width="44" height="12" rx="4" fill="#FF8A8A"></rect><rect x="49" y="14" width="44" height="12" rx="4" fill="#FFB86B"></rect><rect x="98" y="14" width="44" height="12" rx="4" fill="#F39C12" opacity="0.55"></rect><rect x="147" y="14" width="44" height="12" rx="4" fill="#13A6A0" opacity="0.55"></rect><rect x="196" y="14" width="44" height="12" rx="4" fill="#3CC8BE" opacity="0.55"></rect><rect x="0" y="32" width="120" height="3" rx="1.5" fill="#3A5070"></rect><rect x="0" y="32" width="70" height="3" rx="1.5" fill="#A9B6C8"></rect></svg></div>
         </article>
-        <article class="pack core rv" style="--d:.07s" aria-labelledby="p2">
-          <span class="lvl">Core Offer</span>
-          <h3 id="p2">SAP B1 Reporting Stack</h3>
-          <p>Reports that refresh themselves: Excel for your staff, Power BI for owners.</p>
-          <ul>
-            <li>Sales by Rep, Customer and Item, Net of Credits and Freight</li>
-            <li>Open Orders and Backorders With PO Arrival Dates</li>
-            <li>AR Aging Your Collections Team Can Work From</li>
-            <li>Reports Emailed Automatically Every Morning</li>
-            <li>A Reconciliation Page That Matches SAP's Sales Analysis</li>
+        <article class="svc-card core rv" style="--d:0.07s" aria-labelledby="sv2">
+          <span class="svc-tag">Core Offer</span>
+          <div class="svc-top"><svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="20" y2="20"></line><rect x="5" y="12" width="3" height="8"></rect><rect x="10.5" y="7" width="3" height="13"></rect><rect x="16" y="3" width="3" height="17"></rect></svg><span class="svc-n">02</span></div>
+          <h3 id="sv2">SAP B1 Reporting Stack</h3>
+          <p class="svc-sub">Reports That Refresh Themselves: Excel for Your Staff, Power BI for Owners.</p>
+          <ul class="svc-list">
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Sales by Rep, Customer and Item, Net of Credit Memos and Freight</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Open Orders and Backorders With PO Arrival Dates</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>AR Aging Your Collections Team Can Work From</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Reports Emailed Automatically Every Morning</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>A Reconciliation Page That Matches SAP's Sales Analysis</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>AI-Assisted Reporting With Plain-English Summaries</span></li>
           </ul>
+          <div class="svc-foot"><span>Build It Right</span><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="36" height="32" rx="7" stroke="#3CC8BE" stroke-width="2"></rect><ellipse cx="20" cy="14" rx="9" ry="3.5" stroke="#3CC8BE" stroke-width="1.8"></ellipse><path d="M11 14v12c0 2 4 3.5 9 3.5s9-1.5 9-3.5V14" stroke="#3CC8BE" stroke-width="1.8"></path><line x1="46" y1="20" x2="92" y2="20" stroke="#6B7F99" stroke-width="2" stroke-dasharray="3 4"></line><polyline points="88 16 93 20 88 24" stroke="#6B7F99" stroke-width="2"></polyline><rect x="102" y="4" width="36" height="32" rx="7" stroke="#13A6A0" stroke-width="2"></rect><line x1="110" y1="14" x2="130" y2="14" stroke="#13A6A0" stroke-width="1.8"></line><line x1="110" y1="20" x2="130" y2="20" stroke="#13A6A0" stroke-width="1.8"></line><line x1="110" y1="26" x2="130" y2="26" stroke="#13A6A0" stroke-width="1.8"></line><line x1="118" y1="10" x2="118" y2="30" stroke="#13A6A0" stroke-width="1.8"></line><line x1="146" y1="20" x2="192" y2="20" stroke="#6B7F99" stroke-width="2" stroke-dasharray="3 4"></line><polyline points="188 16 193 20 188 24" stroke="#6B7F99" stroke-width="2"></polyline><rect x="202" y="4" width="36" height="32" rx="7" stroke="#F39C12" stroke-width="2"></rect><rect x="210" y="20" width="4" height="9" fill="#F39C12" stroke="none"></rect><rect x="217" y="15" width="4" height="14" fill="#F39C12" stroke="none"></rect><rect x="224" y="10" width="4" height="19" fill="#F39C12" stroke="none"></rect></svg></div>
         </article>
-        <article class="pack rv" style="--d:.14s" aria-labelledby="p3">
-          <span class="lvl">Go Deeper</span>
-          <h3 id="p3">Business Analytics</h3>
-          <p>See where you make and lose money, and exactly what to buy next.</p>
-          <ul>
-            <li>Min/Max and Reorder Points From Real Lead Times</li>
-            <li>Buy-Now List With Order Multiples</li>
-            <li>Dead and Slow Stock Ranked by Cash Tied Up</li>
-            <li>Supplier Scorecard: Promised vs. Actual Delivery</li>
-            <li>Margin by Customer and Product, Before and After a Price Change</li>
+        <article class="svc-card rv" style="--d:0.14s" aria-labelledby="sv3">
+          <div class="svc-top"><svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 17 9 11 13 15 21 7"></polyline><polyline points="15 7 21 7 21 13"></polyline></svg><span class="svc-n">03</span></div>
+          <h3 id="sv3">Business Analytics</h3>
+          <p class="svc-sub">See Where You Make, and Lose, Money, and Exactly What to Buy Next.</p>
+          <ul class="svc-list">
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Min/Max and Reorder Points From Real Lead Times (PO → Receipt)</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Rolling 12-Month Demand: Average, Peak and Lead Time</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Buy-Now List With Order Multiples, Protecting Open Orders</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Dead and Slow Stock Ranked by Cash Tied Up</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Supplier Scorecard: Promised vs. Actual Delivery</span></li>
+            <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Margin by Customer and Product, Before and After a Price Change</span></li>
           </ul>
+          <div class="svc-foot"><span>Go Deeper</span><svg class="svc-art" viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="0" y1="26" x2="240" y2="26" stroke="#F39C12" stroke-width="1.5" stroke-dasharray="5 5"></line><polyline points="0,8 30,12 60,10 90,17 120,21 150,28 170,31" stroke="#3CC8BE" stroke-width="2.4"></polyline><polyline points="170,31 185,10 215,12 240,16" stroke="#13A6A0" stroke-width="2.4"></polyline><circle cx="170" cy="31" r="4" fill="#F39C12"></circle></svg></div>
         </article>
       </div>
-      <div class="addon rv">
-        <p><b>Import into Canada and sell into the U.S.?</b> Add HTS classification, tariff exposure and CBSA duty drawback to any package.</p>
-        <a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Not Sure? Book the Free Review</a>
+      <p class="addon rv"><b>Import into Canada and sell into the U.S.?</b> Add HTS classification, tariff exposure and CBSA duty drawback to any package.</p>
+      <div class="quality rv">
+        <h3>Quality Built In</h3>
+        <ul>
+          <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg><span>Read-Only: I Never Write to Your SAP</span></li>
+          <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Reconciled to SAP's Sales and Purchasing Analysis</span></li>
+          <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><polyline points="9 12 11 14 15 10"></polyline></svg><span>Every Query Passes a QA Checklist Before Delivery</span></li>
+          <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"></circle><line x1="11" y1="12" x2="20" y2="3"></line><line x1="17" y1="6" x2="20" y2="9"></line></svg><span>Least-Privilege Login: Access You Control and Can Revoke</span></li>
+          <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h11l-3-3"></path><path d="M20 17H9l3 3"></path></svg><span>Migrated? Old and New Databases in One View</span></li>
+          <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line></svg><span>Runs in SAP Query Manager, With Drill-Down to Documents</span></li>
+          <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h9l5 5v15H6z"></path><path d="M15 2v5h5"></path><line x1="9" y1="13" x2="16" y2="13"></line><line x1="9" y1="17" x2="14" y2="17"></line></svg><span>Documented and Handed Over: You Own Every Query</span></li>
+          <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"></polyline></svg><span>Built Not to Slow Down Your Users' SAP</span></li>
+        </ul>
       </div>
+      <div class="svc-cta rv"><svg class="cta-art" viewBox="0 0 210 90" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="84" x2="206" y2="84" stroke="#24395A" stroke-width="2"></line><path d="M6 74 C 40 70, 55 52, 85 56 S 135 30, 160 32 S 190 14, 204 8" stroke="#3CC8BE" stroke-width="3"></path><circle cx="85" cy="56" r="4.5" fill="#3CC8BE" stroke="none"></circle><circle cx="160" cy="32" r="4.5" fill="#3CC8BE" stroke="none"></circle><circle cx="204" cy="8" r="5.5" fill="#F39C12" stroke="none"></circle></svg><div><a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Book a Free Reporting Review</a><span>30 Minutes, on Your Own SAP Screens</span></div><svg class="cta-art" viewBox="0 0 210 90" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="84" x2="206" y2="84" stroke="#24395A" stroke-width="2"></line><rect x="14" y="58" width="22" height="26" rx="3" fill="#3CC8BE" opacity="0.45" stroke="none"></rect><rect x="54" y="46" width="22" height="38" rx="3" fill="#3CC8BE" opacity="0.6" stroke="none"></rect><rect x="94" y="38" width="22" height="46" rx="3" fill="#3CC8BE" opacity="0.75" stroke="none"></rect><rect x="134" y="24" width="22" height="60" rx="3" fill="#3CC8BE" stroke="none"></rect><rect x="174" y="10" width="22" height="74" rx="3" fill="#F39C12" stroke="none"></rect><path d="M25 48 C 50 42, 70 36, 105 28 S 160 14, 185 2" stroke="#F2F6FB" stroke-width="2" stroke-dasharray="4 5"></path></svg></div>
     </div>
   </section>
 
