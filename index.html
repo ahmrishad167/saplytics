@@ -67,6 +67,7 @@
   .wm img{width:72px;height:72px;flex:none}
   .wm b{color:var(--teal);font-weight:800}
   .bar nav{margin-left:auto;display:flex;gap:30px;font-size:16px}
+  .tagline{margin-left:-14px;font-size:15px;font-weight:600;line-height:1.35;color:var(--muted)}
   .bar .btn{min-height:44px;padding:0 18px;font-size:15px}
 
   /* ---------- hero ---------- */
@@ -198,6 +199,10 @@
   footer .wm{font-size:18px;color:var(--ink)}
   footer .wm img{width:88px;height:88px}
   footer .wrap{align-items:center}
+  footer .wrap{justify-content:flex-start;gap:24px}
+  .f-tag{font-size:var(--fs-sub);font-weight:700;letter-spacing:-.02em;line-height:1.25;color:var(--ink)}
+  .f-tag span{display:block;color:var(--teal)}
+  .f-copy{margin-left:auto}
 
   /* ---------- motion ---------- */
   .js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
@@ -224,6 +229,8 @@
     .bar .wrap{height:72px}
     .wm img{width:56px;height:56px}
     footer .wm img{width:72px;height:72px}
+    .tagline{display:none}
+    .f-copy{margin-left:0;width:100%}
     .wm{font-size:19px}
     h1{font-size:10.6vw}
     .contact h2{font-size:9vw}
@@ -259,8 +266,8 @@
   <div class="wrap">
     <a href="#top" class="wm" aria-label="SAPlytics, back to top">
       <img src="assets/saplytics-badge-dark.svg" alt="SAPlytics" width="64" height="64">
-      
     </a>
+    <p class="tagline">For Distributors and Manufacturers<br>Running SAP Business One</p>
     <nav aria-label="Primary">
       <a class="tlink" href="#work">Case Studies</a>
       <a class="tlink" href="#sql">SQL</a>
@@ -527,7 +534,8 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
 <footer>
   <div class="wrap">
     <a href="#top" class="wm" aria-label="SAPlytics, back to top"><img src="assets/saplytics-badge-dark.svg" alt="SAPlytics" width="64" height="64"></a>
-    <span>Smarter Insights for SAP B1 · © 2026 Rishad Ahmed</span>
+    <p class="f-tag">Your ERP Knows Everything.<span>Your Reports Should Too.</span></p>
+    <span class="f-copy">© 2026 Rishad Ahmed</span>
   </div>
 </footer>
 </div>
