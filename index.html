@@ -109,17 +109,17 @@
   .ptable tr:hover td:first-child{color:#fff}
 
   /* ---------- services ---------- */
-  .svc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:stretch}
-  .svc-card{position:relative;background:var(--ground-2);border:1px solid var(--line);padding:28px 30px 24px;display:flex;flex-direction:column;gap:12px}
+  .svc{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
+  .svc-card{position:relative;background:var(--ground-2);border:1px solid var(--line);padding:26px 20px 22px;display:flex;flex-direction:column;gap:12px}
   .svc-card.core{border:2px solid var(--accent)}
   .svc-tag{position:absolute;top:-15px;left:22px;background:var(--accent);color:var(--navy-ink);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px}
   .svc-top{display:flex;justify-content:space-between;align-items:center}
   .svc-ic{width:34px;height:34px}
   .svc-n{font-size:18px;font-weight:700;color:#7C93B2}
   .svc-card h3{font-size:clamp(20px,1.6vw,23px);line-height:1.15;white-space:nowrap}
-  .svc-sub{font-size:clamp(14px,1.08vw,15.5px);color:var(--muted);line-height:1.45}
-  @media (min-width:1240px){.svc-sub,.svc-list li span{white-space:nowrap}}
-  .svc-list{list-style:none;display:grid;gap:9px;font-size:clamp(14px,1.1vw,16px);line-height:1.45;margin-top:2px}
+  .svc-sub{font-size:15px;color:var(--muted);line-height:1.45;text-wrap:balance}
+  @media (min-width:1240px){.svc-list li span{white-space:nowrap}}
+  .svc-list{list-style:none;display:grid;gap:9px;font-size:clamp(14px,1.05vw,15.5px);line-height:1.45;margin-top:2px}
   .svc-list li{display:flex;gap:9px;align-items:flex-start}
   .svc-list .ck{width:15px;height:15px;flex:none;margin-top:3px}
   .svc-foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:grid;gap:10px}
@@ -240,14 +240,15 @@
   .answer p.use strong{color:var(--ink);font-weight:700}
 
   /* ---------- contact & footer ---------- */
-  .contact .box{background:var(--ground-2);padding:clamp(40px,5vw,72px) clamp(24px,4vw,64px);text-align:center}
-  .contact h2{font-size:var(--fs-display);letter-spacing:-.04em;line-height:1.05}
+  .contact .box{background:var(--ground-2);padding:clamp(36px,4vw,56px) clamp(24px,4vw,56px);text-align:center}
+  .contact h2{font-size:var(--fs-head);letter-spacing:-.025em;line-height:1.1}
   .contact h2 span{color:var(--teal)}
-  .contact .lead{margin:18px auto 0;font-size:var(--fs-sub);line-height:1.45;max-width:40em;color:var(--muted)}
-  .c-row{margin-top:clamp(28px,3vw,40px);display:flex;align-items:center;justify-content:center;gap:clamp(24px,4vw,56px)}
+  .contact .lead{margin:12px auto 0;font-size:var(--fs-body);line-height:1.5;max-width:46em;color:var(--muted);text-wrap:balance}
+  .c-row{margin-top:clamp(22px,2.4vw,30px);display:flex;align-items:center;justify-content:center;gap:clamp(24px,3vw,44px)}
+  .c-row .cta-art{width:150px;height:64px}
   .c-mid .cta{justify-content:center}
-  .c-mid .btn{min-height:58px;font-size:18px}
-  .contact .li{margin-top:16px;font-size:16px;color:var(--muted)}
+  .c-mid .btn{min-height:52px;font-size:16px}
+  .contact .li{margin-top:12px;font-size:var(--fs-small);color:var(--muted)}
   footer{padding:clamp(48px,5vw,64px) 0 36px}
   footer .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;font-size:var(--fs-small);color:var(--muted)}
   .f-brand{grid-column:2;display:flex;align-items:center;gap:24px}
@@ -255,6 +256,9 @@
   .f-tag{font-size:var(--fs-sub);font-weight:700;letter-spacing:-.02em;line-height:1.25;color:var(--ink)}
   .f-tag span{color:var(--teal)}
   .f-copy{grid-column:3;justify-self:end}
+
+  /* justified explanations, only where the column is wide enough */
+  .case .txt p:not(.tags):not(.src):not(.outcome),.about .body > p,.faq details p,.rules li,.answer p{text-align:justify;hyphens:auto}
 
   /* ---------- motion ---------- */
   .js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
@@ -264,7 +268,7 @@
   .js .loaded h1 .ln > span{transform:none}
 
   /* ---------- tablet & phone ---------- */
-  @media (max-width:1279px){
+  @media (max-width:960px){
     .svc{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
   }
   @media (max-width:960px){
@@ -293,7 +297,7 @@
     .bar .wrap{height:72px}
     .wm img{width:56px;height:56px}
     .tagline{display:none}
-    .contact h2{font-size:9vw}
+    .contact h2{font-size:7.4vw}
     .svc,.steps{grid-template-columns:1fr}
     .quality ul{grid-template-columns:1fr}
       .figs{gap:28px 20px}
