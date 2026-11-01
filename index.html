@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://ahmrishad167.github.io/saplytics/">
+<meta name="theme-color" content="#0B1A33">
+<title>SAPlytics — Smarter Insights for SAP B1</title>
+<meta name="description" content="SAPlytics — smarter insights for SAP Business One. SQL reporting, Power BI dashboards, Excel report automation, HTS tariff analysis and CBSA duty drawback. By Md Rishad Ahmed, Laval QC.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1A33'/%3E%3Crect x='5' y='18' width='4.5' height='9' rx='1' fill='%232D6BB0'/%3E%3Crect x='11' y='14' width='4.5' height='13' rx='1' fill='%231A86B0'/%3E%3Crect x='17' y='10' width='4.5' height='17' rx='1' fill='%2313A6A0'/%3E%3Ccircle cx='25.5' cy='7' r='3' fill='%23F39C12'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SAPlytics — Smarter Insights for SAP B1">
+<meta property="og:url" content="https://ahmrishad167.github.io/saplytics/">
+<meta property="og:description" content="SAP B1 SQL reporting, Power BI dashboards, Excel automation, HTS tariff analysis and CBSA duty drawback. By Md Rishad Ahmed.">
+<meta property="og:image" content="https://ahmrishad167.github.io/saplytics/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#0B1A33;
+    --ground-2:#11284B;
+    --ground-3:#173360;
+    --ink:#F2F6FB;
+    --muted:#A9BCD3;
+    --teal:#3CC8BE;
+    --accent:#F39C12;
+    --navy-ink:#0B1A33;
+
+    --m:clamp(20px,4vw,64px);
+    --max:1280px;
+    --fs-display:clamp(38px,4.3vw,66px);
+    --fs-head:clamp(28px,3vw,46px);
+    --fs-sub:clamp(21px,1.7vw,26px);
+    --fs-body:18px;
+    --fs-small:15px;
+    --ease:cubic-bezier(.19,1,.22,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  body{background:var(--ground);color:var(--ink);font-family:'Montserrat',system-ui,sans-serif;font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit}
+  img{display:block;max-width:100%;height:auto}
+  ::selection{background:var(--accent);color:var(--navy-ink)}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:var(--navy-ink);padding:12px 18px;font-weight:700;z-index:60}
+  .skip:focus{left:0}
+  h1,h2,h3{font-weight:700;letter-spacing:-.025em;line-height:1.08}
+  .wrap{max-width:calc(var(--max) + 2 * var(--m));margin:0 auto;padding:0 var(--m)}
+  section{padding:clamp(96px,11vw,160px) 0 0}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;background:var(--accent);color:var(--navy-ink);font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:transform .25s var(--ease),background .25s}
+  .btn:hover{background:#FFB238;transform:translateY(-2px)}
+  .btn:active{transform:none}
+  .btn.ghost{background:var(--ground-3);color:var(--ink)}
+  .btn.ghost:hover{background:#21437A}
+  .tlink{font-weight:600;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;text-decoration-color:transparent;transition:text-decoration-color .25s,text-underline-offset .25s}
+  .tlink:hover,.tlink:focus-visible{text-decoration-color:currentColor;text-underline-offset:4px}
+
+  /* ---------- bar ---------- */
+  .bar{position:sticky;top:0;z-index:50;background:var(--ground)}
+  .bar .wrap{display:flex;align-items:center;gap:32px;height:76px}
+  .wm{display:flex;align-items:center;gap:11px;font-weight:800;font-size:21px;letter-spacing:-.02em;text-decoration:none}
+  .wm svg{width:28px;height:28px}
+  .wm b{color:var(--teal);font-weight:800}
+  .bar nav{margin-left:auto;display:flex;gap:30px;font-size:16px}
+  .bar .btn{min-height:44px;padding:0 18px;font-size:15px}
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(48px,7vw,96px) 0 0}
+  .hero > .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:center}
+  h1{font-size:var(--fs-display);letter-spacing:-.04em;line-height:1}
+  h1 > span{display:block}
+  h1 > span:last-child{color:var(--teal)}
+  .lede{margin-top:32px;font-size:var(--fs-sub);line-height:1.45;max-width:30em}
+  .lede b{font-weight:700}
+  .cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+  .hero figure img{width:100%}
+  .hero figcaption{margin-top:12px;font-size:var(--fs-small);color:var(--muted)}
+
+  .proof{margin-top:clamp(64px,8vw,112px);background:var(--ground-2)}
+  .proof ul{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;padding:40px 0}
+  .proof li b{display:block;font-size:19px;font-weight:700;color:var(--teal);margin-bottom:6px}
+  .proof li{font-size:16px}
+
+  /* ---------- practices ---------- */
+  .practices{background:var(--accent);color:var(--navy-ink);padding:clamp(72px,8vw,112px) 0;margin-top:clamp(96px,11vw,160px)}
+  .practices .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,72px)}
+  .practices h2{font-size:var(--fs-head)}
+  .practices .intro{margin-top:18px;font-size:var(--fs-body);font-weight:500;max-width:22em}
+  .practices ul{list-style:none}
+  .practices li{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:baseline;padding:14px 0}
+  .practices li strong{font-size:clamp(26px,2.9vw,44px);font-weight:800;letter-spacing:-.03em;line-height:1.05;transition:transform .35s var(--ease)}
+  .practices li:hover strong{transform:translateX(10px)}
+  .practices li span{font-size:17px;font-weight:600}
+
+  /* ---------- case studies ---------- */
+  .sec-head{max-width:46em;margin-bottom:clamp(48px,6vw,80px)}
+  .sec-head h2{font-size:var(--fs-head)}
+  .sec-head p{margin-top:16px;font-size:var(--fs-sub);color:var(--muted);line-height:1.45}
+  .case{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:center}
+  .case + .case{margin-top:clamp(96px,10vw,150px)}
+  .case.flip .txt{order:2}
+  .case h3{font-size:clamp(26px,2.4vw,36px);margin-bottom:8px}
+  .case .tags{font-size:var(--fs-small);font-weight:600;color:var(--teal);margin-bottom:22px}
+  .case p{font-size:17px}
+  .case p + p{margin-top:12px}
+  .case p b{font-weight:700}
+  .case .res{margin-top:18px;padding:16px 18px;background:var(--ground-2);font-weight:600}
+  .case .res b{color:var(--accent)}
+  .case figure img{width:100%}
+  .case figcaption{margin-top:12px;font-size:var(--fs-small);color:var(--muted)}
+
+  /* interface fragments (data-ui keep their own borders) */
+  [data-ui].ui{background:#F7F9FC;color:#0B1A33;font-size:14px;padding:22px 22px 18px;overflow-x:auto}
+  .ui .ui-t{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+  .ui .ui-t b{font-size:17px;font-weight:700}
+  .ui .ui-t span{font-size:13px;color:#4B5B70;font-weight:500}
+  .ui table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+  .ui th{text-align:left;font-weight:600;color:#4B5B70;font-size:13px;padding:8px 8px;border-bottom:1px solid #D3DCE7}
+  .ui td{padding:9px 8px;border-bottom:1px solid #E6ECF3;vertical-align:top}
+  .ui .r{text-align:right}
+  .ui .pill{display:inline-block;font-size:12.5px;font-weight:700;padding:2px 8px;background:#E3F4F3;color:#0A6F74}
+  .ui .pill.warn{background:#FFF1DC;color:#9A5A00}
+  .ui .pill.off{background:#ECEFF3;color:#4B5B70}
+  .ui .pill.d{background:#FDECEC;color:#A33A2B}
+  .ui .strong{font-weight:700;color:#0A6F74}
+  .ui .dim{color:#55657A}
+  .ui tfoot td{font-weight:700;border-bottom:0;padding-top:12px}
+  .ui .note{margin-top:12px;font-size:13px;color:#4B5B70;line-height:1.5}
+  .ui .sub{font-size:12.5px;color:#55657A;display:block;font-weight:500}
+  .ui .kv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px}
+  .ui .kv div{background:#EDF2F8;padding:9px 11px;font-size:12.5px;color:#4B5B70}
+  .ui .kv div b{display:block;font-size:15px;color:#0B1A33}
+  .ui .total td{font-size:16px;color:#0B1A33;background:#EAF7F6}
+
+  /* ---------- SQL ---------- */
+  .sql .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:start}
+  .sql h2{font-size:var(--fs-head)}
+  .sql .lead{margin-top:16px;font-size:var(--fs-sub);color:var(--muted);line-height:1.45}
+  .rules{list-style:none;margin-top:32px;display:grid;gap:18px}
+  .rules li{font-size:17px}
+  .rules li b{display:block;color:var(--teal);font-weight:700}
+  pre{background:#081428;padding:26px 26px;overflow-x:auto;font-family:Consolas,'Cascadia Code',Menlo,monospace;font-size:14px;line-height:1.6;color:#D5E1F0;tab-size:4}
+  pre .k{color:#3CC8BE;font-weight:600}
+  pre .s{color:#F7B955}
+  pre .c{color:#7E94B0}
+  pre .n{color:#9FC2FF}
+  .sql figcaption{margin-top:12px;font-size:var(--fs-small);color:var(--muted)}
+
+  /* ---------- lookup ---------- */
+  .lookup .wrap{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,72px);align-items:center}
+  .lookup h2{font-size:var(--fs-head)}
+  .lookup .lead{margin-top:14px;color:var(--muted);font-size:var(--fs-sub);line-height:1.45}
+  .tbl-in{margin-top:28px}
+  .tbl-in input{all:unset;box-sizing:border-box;width:100%;font-size:clamp(52px,7vw,104px);font-weight:800;letter-spacing:-.04em;line-height:1.05;text-transform:uppercase;caret-color:var(--accent);padding:4px 0 8px;border-bottom:4px solid var(--ground-3);transition:border-color .25s}
+  .tbl-in input:focus{border-bottom-color:var(--accent)}
+  .examples{margin-top:24px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .examples > span{color:var(--muted);font-size:16px;margin-right:4px}
+  .examples button{all:unset;cursor:pointer;min-height:44px;padding:0 18px;display:inline-flex;align-items:center;background:var(--ground-2);font-weight:700;font-size:16px;transition:background .2s,color .2s}
+  .examples button:hover,.examples button:focus-visible{background:var(--teal);color:var(--navy-ink)}
+  .examples button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  .answer{background:var(--ground-2);padding:30px 32px;min-height:16em}
+  .answer .an{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .answer .an b{font-size:var(--fs-sub);font-weight:800;color:var(--teal)}
+  .answer .an span{font-weight:700}
+  .answer p{margin-top:14px;font-size:17px}
+  .answer p.use{color:var(--muted)}
+  .answer p.use strong{color:var(--ink);font-weight:700}
+
+  /* ---------- about ---------- */
+  .about .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,72px);align-items:start}
+  .about .badge{width:min(240px,100%)}
+  .about dl{margin-top:32px;display:grid;gap:16px;font-size:16px}
+  .about dt{color:var(--muted);font-size:var(--fs-small)}
+  .about dd{font-weight:700}
+  .about h2{font-size:var(--fs-head);margin-bottom:24px}
+  .about .body p{font-size:var(--fs-sub);line-height:1.5;max-width:34em}
+  .about .body p + p{margin-top:16px}
+  .kit{margin-top:48px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+  .kit h3{font-size:17px;letter-spacing:0;color:var(--teal);margin-bottom:12px}
+  .kit ul{list-style:none;display:grid;gap:8px;font-size:16px}
+
+  /* ---------- contact & footer ---------- */
+  .contact .box{background:var(--ground-2);padding:clamp(40px,6vw,88px) clamp(28px,5vw,80px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,72px);align-items:end}
+  .contact h2{font-size:var(--fs-display);letter-spacing:-.04em;line-height:1}
+  .contact h2 span{display:block;color:var(--teal)}
+  .contact p.lead{margin-top:20px;font-size:var(--fs-sub);max-width:26em}
+  .contact .cta{margin-top:32px}
+  .contact dl{display:grid;grid-template-columns:auto 1fr;gap:14px 24px;font-size:17px}
+  .contact dt{color:var(--muted)}
+  .contact dd{font-weight:700}
+  footer{padding:56px 0 40px}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:var(--fs-small);color:var(--muted)}
+  footer .wm{font-size:18px;color:var(--ink)}
+  footer .wm svg{width:24px;height:24px}
+
+  /* ---------- motion ---------- */
+  .js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+  .js .rv.in{opacity:1;transform:none}
+  .js h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+  .js h1 .ln > span{display:block;transform:translateY(105%);transition:transform .9s var(--ease)}
+  .js .loaded h1 .ln > span{transform:none}
+  .js .loaded h1 .ln:nth-child(2) > span{transition-delay:.11s}
+  .hero figure img{transition:transform 1.2s var(--ease)}
+  .hero figure:hover img{transform:scale(1.015)}
+
+  /* ---------- tablet & phone ---------- */
+  @media (max-width:960px){
+    .bar nav{display:none}
+    .bar .btn{margin-left:auto}
+    .hero > .wrap,.practices .wrap,.case,.sql .wrap,.lookup .wrap,.about .wrap,.contact .box{grid-template-columns:minmax(0,1fr)}
+    .case > *,.sql .wrap > *{min-width:0}
+    .case.flip .txt{order:0}
+    .proof ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .about .badge{width:160px}
+    .kit{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (max-width:560px){
+    .bar .wrap{height:68px}
+    .wm{font-size:19px}
+    h1{font-size:10.6vw}
+    .contact h2{font-size:9vw}
+    .proof ul{grid-template-columns:1fr;gap:22px}
+    .practices li{grid-template-columns:1fr;gap:4px;padding:12px 0}
+    .practices li strong{font-size:8.6vw}
+    .ui .kv{grid-template-columns:1fr 1fr}
+    [data-ui].ui{padding:16px 14px;font-size:13px}
+    .ui th,.ui td{padding:7px 5px}
+    .ui .hide-s{display:none}
+    .ui .sub{display:none}
+    .ui .kv{grid-template-columns:1fr 1fr 1fr;gap:6px}
+    .ui .kv div{padding:7px 8px}
+    pre{font-size:12.5px;padding:18px 16px}
+    .tbl-in input{font-size:17vw}
+    .kit{grid-template-columns:1fr}
+    .contact .btn{width:100%}
+    .contact dl{grid-template-columns:1fr;gap:2px}
+    .contact dd{margin-bottom:12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .js .rv,.js h1 .ln > span{opacity:1;transform:none;transition:none}
+    .btn,.practices li strong,.hero figure img{transition:none}
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+<div id="root">
+
+<header class="bar">
+  <div class="wrap">
+    <a href="#top" class="wm" aria-label="SAPlytics, back to top">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="17" width="5.5" height="12" rx="1" fill="#2D6BB0"/><rect x="10.5" y="12" width="5.5" height="17" rx="1" fill="#1A86B0"/><rect x="18" y="7" width="5.5" height="22" rx="1" fill="#13A6A0"/><circle cx="28" cy="5" r="3.2" fill="#F39C12"/></svg>
+      <span>SAP<b>lytics</b></span>
+    </a>
+    <nav aria-label="Primary">
+      <a class="tlink" href="#work">Case studies</a>
+      <a class="tlink" href="#sql">SQL</a>
+      <a class="tlink" href="#about">About</a>
+      <a class="tlink" href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">Message me</a>
+  </div>
+</header>
+
+<main id="main">
+  <a id="top"></a>
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap">
+      <div>
+        <h1 id="hero-h"><span class="ln"><span>Smarter insights</span></span><span class="ln"><span>for SAP B1.</span></span></h1>
+        <p class="lede rv" style="--d:.4s">I'm <b>Md Rishad Ahmed</b>, a BI and SAP Business One analyst in Laval, Québec. I turn SAP B1 data into SQL reports, Power BI dashboards and Excel automation people trust, and I handle the customs data behind cross-border trade.</p>
+        <div class="cta rv" style="--d:.5s">
+          <a class="btn" href="#work">See case studies</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">Message me on LinkedIn</a>
+        </div>
+      </div>
+      <figure class="rv" style="--d:.25s">
+        <img src="assets/dashboard-executive-sales-demo.jpg" alt="Executive Sales Overview dashboard in Power BI, built on demo data" width="1600" height="651">
+        <figcaption>Executive Sales Overview in Power BI. Demo data for a fictional distributor.</figcaption>
+      </figure>
+    </div>
+    <div class="proof" aria-label="How I work">
+      <div class="wrap">
+        <ul>
+          <li class="rv"><b>Read-only</b>I never write to your SAP database.</li>
+          <li class="rv" style="--d:.07s"><b>Reconciled</b>Totals tie to SAP's own Sales and Purchasing Analysis.</li>
+          <li class="rv" style="--d:.14s"><b>Documented</b>Every query is handed over. You own it.</li>
+          <li class="rv" style="--d:.21s"><b>Query Manager-ready</b>Runs inside SAP, with drill-down to documents.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="practices" role="region" aria-labelledby="prac-h">
+    <div class="wrap">
+      <div>
+        <h2 id="prac-h" class="rv">What I do</h2>
+        <p class="intro rv" style="--d:.06s">Five connected practices, all built on the same SAP Business One data.</p>
+      </div>
+      <ul>
+        <li class="rv"><strong>SAP B1 &amp; SQL</strong><span>T-SQL, Query Manager, document chains</span></li>
+        <li class="rv" style="--d:.06s"><strong>Power BI</strong><span>DAX, Power Query, data modelling</span></li>
+        <li class="rv" style="--d:.12s"><strong>Excel report automation</strong><span>Refreshable workbooks, reports emailed every morning</span></li>
+        <li class="rv" style="--d:.18s"><strong>Trade &amp; customs</strong><span>HTS classification, tariff exposure, CBSA drawback</span></li>
+        <li class="rv" style="--d:.24s"><strong>AI &amp; automation</strong><span>Custom AI skills, reconciliation, documentation</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <section id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="work-h" class="rv">Case studies</h2>
+        <p class="rv" style="--d:.06s">Four projects, shown with demo data for a fictional distributor. The numbers are invented; the methods are the ones I use.</p>
+      </div>
+
+      <article class="case" aria-labelledby="c1">
+        <div class="txt">
+          <h3 id="c1" class="rv">Sales analytics that ties to SAP</h3>
+          <p class="tags rv">SQL · Power BI · DAX · Power Query</p>
+          <p class="rv"><b>The problem.</b> Sales reports overstated revenue: cancelled invoices and their cancellation documents were both counted, credit memos were ignored and freight repeated on every line.</p>
+          <p class="rv"><b>What I built.</b> A line-level SAP B1 → Power BI model: invoices minus credit memos, freight at document level, same-pace YTD versus last year, and a many-to-many bridge so customers can sit in several segments at once.</p>
+          <p class="res rv"><b>Result:</b> one model that reconciles to SAP's Sales Analysis, with a data-quality page that proves it.</p>
+        </div>
+        <figure class="rv" style="--d:.1s">
+          <img src="assets/dashboard-customer-segmentation-demo.jpg" alt="Customer Segmentation dashboard: sales by customer property and a segment trend by year, demo data" width="1600" height="536" loading="lazy">
+          <figcaption>Customer segmentation through the property bridge. Demo data.</figcaption>
+        </figure>
+      </article>
+
+      <article class="case flip" aria-labelledby="c2">
+        <div class="txt">
+          <h3 id="c2" class="rv">Inventory min/max and reorder</h3>
+          <p class="tags rv">SQL · Power BI · Demand planning</p>
+          <p class="rv"><b>The problem.</b> Buyers reordered from memory, while stock sat in one warehouse and the other one backordered.</p>
+          <p class="rv"><b>What I built.</b> Min/max and reorder points from real lead times, measured purchase order to receipt; rolling 12-month average and peak demand; A/B/C/D/S movement classes; transfer suggestions that protect open sales orders; buy quantities rounded to the order multiple.</p>
+          <p class="res rv"><b>Result:</b> a buy-now list and a transfer list the team works from every day.</p>
+        </div>
+        <div class="rv" style="--d:.1s">
+          <div data-ui class="ui" role="img" aria-label="Reorder suggestions table with demo data">
+            <div class="ui-t"><b>Reorder suggestions</b><span>Main warehouse · demo data</span></div>
+            <table>
+              <thead><tr><th>Item</th><th>Class</th><th class="r">On hand</th><th class="r hide-s">Lead time</th><th class="r">Min</th><th class="r">Max</th><th class="r">Buy</th></tr></thead>
+              <tbody>
+                <tr><td>Hydraulic hose, 1/2 in</td><td><span class="pill">A</span></td><td class="r">14</td><td class="r hide-s">38 d</td><td class="r">40</td><td class="r">96</td><td class="r strong">84</td></tr>
+                <tr><td>Brake pad set</td><td><span class="pill">A</span></td><td class="r">63</td><td class="r hide-s">21 d</td><td class="r">55</td><td class="r">120</td><td class="r dim">0</td></tr>
+                <tr><td>Cable ties, 300 mm</td><td><span class="pill">B</span></td><td class="r">210</td><td class="r hide-s">45 d</td><td class="r">300</td><td class="r">720</td><td class="r strong">600</td></tr>
+                <tr><td>Air filter</td><td><span class="pill">C</span></td><td class="r">9</td><td class="r hide-s">30 d</td><td class="r">6</td><td class="r">18</td><td class="r dim">0</td></tr>
+                <tr><td>Fuel cap</td><td><span class="pill d">D</span></td><td class="r">48</td><td class="r hide-s">—</td><td class="r">0</td><td class="r">0</td><td class="r dim">0</td></tr>
+              </tbody>
+            </table>
+            <p class="note">Min = average daily demand × lead time + safety stock. Buy = Max − on hand − on order, rounded up to the order multiple (12 for hose, 100 for cable ties).</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="case" aria-labelledby="c3">
+        <div class="txt">
+          <h3 id="c3" class="rv">CBSA duty drawback, automated</h3>
+          <p class="tags rv">CBSA · K32 · CARM · CUSMA</p>
+          <p class="rv"><b>The problem.</b> Duty paid on goods imported into Canada can be recovered when the same goods are re-exported to the U.S. Matching thousands of export lines to the right import entries by hand made every claim slow and risky.</p>
+          <p class="rv"><b>What I built.</b> An SAP extract of Canada → U.S. export sales; a first-in, first-out match of each line to the B3 entry that paid its duty; the CUSMA lesser-of-two-duties rule; duty-free tariff headings dropped early, since they recover nothing but use up matching; and output straight into the CARM claim template.</p>
+          <p class="rv"><b>The rule that matters.</b> Same-condition goods are not processed, so their origin never changes. That one fact drives both the drawback claim and the U.S. tariff side.</p>
+          <p class="res rv"><b>Result:</b> repeatable, auditable claims, filed well inside the four-year limit.</p>
+        </div>
+        <div class="rv" style="--d:.1s">
+          <div data-ui class="ui" role="img" aria-label="Drawback matching table with demo data">
+            <div class="ui-t"><b>Drawback claim · line matching</b><span>Demo claim · CAD</span></div>
+            <div class="kv"><div>Export lines<b>3</b></div><div>Matched to B3<b>3 of 3</b></div><div>Duty-free dropped<b>1</b></div></div>
+            <table>
+              <thead><tr><th>Export line</th><th class="hide-s">B3 entry</th><th class="r">Duty paid in Canada</th><th class="r">Duty owed in U.S.</th><th class="r">Recoverable</th></tr></thead>
+              <tbody>
+                <tr><td>Steel lug nut M22 × 2,400<span class="sub">Invoice 10421 · line 1</span></td><td class="hide-s">…0412</td><td class="r">201.60</td><td class="r">1,512.00</td><td class="r strong">201.60</td></tr>
+                <tr><td>Toolbox latch × 300<span class="sub">Invoice 10421 · line 2</span></td><td class="hide-s">…0398</td><td class="r">183.00</td><td class="r">92.40</td><td class="r strong">92.40</td></tr>
+                <tr><td>LED marker lamp × 1,200<span class="sub">Invoice 10433 · line 1</span></td><td class="hide-s">…0377</td><td class="r">0.00</td><td class="r">0.00</td><td class="r"><span class="pill off">Free · dropped</span></td></tr>
+              </tbody>
+              <tfoot><tr class="total"><td colspan="4">Claim total, lesser of the two duties per line</td><td class="r">294.00</td></tr></tfoot>
+            </table>
+            <p class="note">Each line is refunded at the lesser of the duty paid into Canada and the duty owed on entry to the U.S. A duty-free heading recovers nothing, so it leaves the claim before matching.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="case flip" aria-labelledby="c4">
+        <div class="txt">
+          <h3 id="c4" class="rv">HTS classification and tariff exposure</h3>
+          <p class="tags rv">HTS / HS · Sections 232, 301, 338 · Landed cost</p>
+          <p class="rv"><b>The problem.</b> U.S. tariffs changed almost monthly in 2026. Landed-cost quotes left out Chapter 99 duties, and goods shipped from Canada were at risk of being declared Canadian origin by default.</p>
+          <p class="rv"><b>What I built.</b> A classification audit in SAP (missing HS codes, wrong lengths, missing origin); a duty stack per item (base rate, Chapter 99, MPF and HMF); an origin check, since re-exported goods keep their true origin; a Section 232 flag for steel and aluminum content; and a landed-cost check comparing duty paid with the expected rate on every purchase order line.</p>
+          <p class="res rv"><b>Result:</b> duty exposure is visible per item before anyone quotes a price, and overpayments are flagged before they happen.</p>
+        </div>
+        <div class="rv" style="--d:.1s">
+          <div data-ui class="ui" role="img" aria-label="Landed duty stack for one item, illustrative rates">
+            <div class="ui-t"><b>Landed duty stack</b><span>Illustrative rates · not a quote</span></div>
+            <div class="kv"><div>Item<b>Steel hub cover</b></div><div>Origin<b>China</b></div><div>Shipped from<b>Canada, by truck</b></div></div>
+            <table>
+              <thead><tr><th>Layer</th><th class="hide-s">Code</th><th class="r">Rate</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td>Base duty</td><td class="hide-s">8708.70</td><td class="r">2.5%</td><td><span class="pill">Applies</span></td></tr>
+                <tr><td>Section 301</td><td class="hide-s">9903.88</td><td class="r">+25.0%</td><td><span class="pill warn">China origin</span></td></tr>
+                <tr><td>Section 338</td><td class="hide-s">Canada</td><td class="r dim">0%</td><td><span class="pill off">Origin is not Canada</span></td></tr>
+                <tr><td>Section 232</td><td class="hide-s">Steel</td><td class="r dim">on metal value</td><td><span class="pill warn">Needs metal content</span></td></tr>
+                <tr><td>MPF</td><td class="hide-s">Fee</td><td class="r">0.3464%</td><td><span class="pill">Applies</span></td></tr>
+                <tr><td>HMF</td><td class="hide-s">Fee</td><td class="r dim">0%</td><td><span class="pill off">Ocean only</span></td></tr>
+              </tbody>
+              <tfoot><tr class="total"><td>Effective rate</td><td class="hide-s"></td><td class="r">27.85%</td><td>before Section 232</td></tr></tfoot>
+            </table>
+            <p class="note">The base code adds 2.5%; Chapter 99 adds 25. Without a declared metal-content value per item, Section 232 is charged on 100% of the value.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="sql" class="sql" aria-labelledby="sql-h">
+    <div class="wrap">
+      <div>
+        <h2 id="sql-h" class="rv">How I write SQL</h2>
+        <p class="lead rv" style="--d:.06s">Clean, auditable T-SQL that runs in SAP's Query Manager. The rules behind every query:</p>
+        <ul class="rules">
+          <li class="rv"><b>Cancelled means both documents</b>CANCELED = 'N' drops the cancelled invoice and the cancellation document that reverses it.</li>
+          <li class="rv" style="--d:.06s"><b>Credit memos are netted</b>Returns and price corrections come off sales, by the same customer, item and period.</li>
+          <li class="rv" style="--d:.12s"><b>Half-open date ranges</b>Never BETWEEN on a datetime, and no functions on indexed columns.</li>
+          <li class="rv" style="--d:.18s"><b>Freight at document level</b>Joined per line, freight repeats and inflates totals.</li>
+        </ul>
+      </div>
+      <figure class="rv" style="--d:.1s">
+<pre><code id="code">SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+SET NOCOUNT ON;
+
+WITH SalesLines AS (
+    SELECT H.CardCode, L.ItemCode,
+           +L.Quantity AS Qty, +L.LineTotal AS NetSales
+    FROM OINV H
+    JOIN INV1 L ON L.DocEntry = H.DocEntry
+    WHERE H.CANCELED = 'N'
+      AND H.DocDate >= '2026-01-01' AND H.DocDate < '2027-01-01'
+
+    UNION ALL
+
+    SELECT H.CardCode, L.ItemCode,
+           -L.Quantity, -L.LineTotal
+    FROM ORIN H
+    JOIN RIN1 L ON L.DocEntry = H.DocEntry
+    WHERE H.CANCELED = 'N'
+      AND H.DocDate >= '2026-01-01' AND H.DocDate < '2027-01-01'
+)
+SELECT S.CardCode       AS [Customer],
+       C.CardName       AS [Customer Name],
+       SUM(S.Qty)       AS [Net Qty],
+       SUM(S.NetSales)  AS [Net Sales]
+FROM SalesLines S
+JOIN OCRD C ON C.CardCode = S.CardCode
+GROUP BY S.CardCode, C.CardName;</code></pre>
+        <figcaption>Net sales by customer for 2026: invoices minus credit memos, cancelled documents excluded.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="lookup" aria-labelledby="look-h">
+    <div class="wrap">
+      <div>
+        <h2 id="look-h" class="rv">Name an SAP B1 table</h2>
+        <p class="lead rv" style="--d:.06s">Type a table code to see what it holds and how I use it.</p>
+        <label class="sr" for="tbl">SAP Business One table code</label>
+        <div class="tbl-in rv" style="--d:.12s"><input id="tbl" value="OINV" maxlength="6" autocomplete="off" spellcheck="false" aria-describedby="tbl-out"></div>
+        <div class="examples rv" style="--d:.18s"><span>Try</span><button type="button">ORDR</button><button type="button">OITM</button><button type="button">OPDN</button><button type="button">ORIN</button><button type="button">OPCH</button></div>
+      </div>
+      <div class="answer rv" data-ui id="tbl-out" aria-live="polite" style="--d:.1s">
+        <div class="an"><b>OINV</b><span>A/R invoices, header</span></div>
+        <p>One row per customer invoice: customer, dates, totals, currency and status.</p>
+        <p class="use"><strong>How I use it:</strong> the base of every sales figure, joined to INV1 for lines and netted against ORIN credit memos. Cancelled documents are filtered out, a common reason SAP sales reports overstate revenue.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <div>
+        <img class="badge rv" src="assets/saplytics-badge-dark.svg" alt="SAPlytics badge: Smarter insights for SAP B1" width="240" height="240" loading="lazy">
+        <dl class="rv" style="--d:.06s">
+          <div><dt>Role</dt><dd>BI &amp; SAP Data Analyst</dd></div>
+          <div><dt>Practice</dt><dd>SAPlytics</dd></div>
+          <div><dt>Based in</dt><dd>Laval, Québec, Canada</dd></div>
+          <div><dt>Focus</dt><dd>SAP B1 reporting &amp; trade data</dd></div>
+        </dl>
+      </div>
+      <div class="body">
+        <h2 id="about-h" class="rv">Data that reconciles</h2>
+        <p class="rv" style="--d:.06s">SAPlytics is how I package what I do: turning a live SAP Business One database into reporting people actually make decisions with.</p>
+        <p class="rv" style="--d:.12s">I write auditable SQL and deliver it through Power BI and Excel, across inventory, sales, purchasing, pricing and margin. For businesses that import into Canada and re-export to the U.S., I also handle the data side of trade: HTS classification, tariff exposure and duty drawback.</p>
+        <div class="kit rv" style="--d:.18s">
+          <div><h3>Data</h3><ul><li>SAP Business One 10</li><li>SQL Server, T-SQL</li><li>Query Manager</li><li>Python</li></ul></div>
+          <div><h3>Reporting</h3><ul><li>Power BI, DAX</li><li>Power Query (M)</li><li>Excel automation</li><li>Scheduled email reports</li></ul></div>
+          <div><h3>Trade</h3><ul><li>HTS / HS classification</li><li>Sections 232, 301, 338</li><li>CBSA drawback, CARM</li><li>CUSMA origin</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="box">
+        <div>
+          <h2 id="contact-h" class="rv">Numbers off?<span>Let's fix them.</span></h2>
+          <p class="lead rv" style="--d:.06s">Tell me which report doesn't match and what it should say. I'll show you why, on your own SAP screens.</p>
+          <div class="cta rv" style="--d:.12s"><a class="btn" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">Message me on LinkedIn</a></div>
+        </div>
+        <dl class="rv" style="--d:.12s">
+          <dt>LinkedIn</dt><dd><a class="tlink" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">md-rishad-ahmed</a></dd>
+          <dt>GitHub</dt><dd><a class="tlink" href="https://github.com/ahmrishad167" target="_blank" rel="noopener">ahmrishad167</a></dd>
+          <dt>Based in</dt><dd>Laval, Québec, Canada</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="wm" aria-label="SAPlytics, back to top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="17" width="5.5" height="12" rx="1" fill="#2D6BB0"/><rect x="10.5" y="12" width="5.5" height="17" rx="1" fill="#1A86B0"/><rect x="18" y="7" width="5.5" height="22" rx="1" fill="#13A6A0"/><circle cx="28" cy="5" r="3.2" fill="#F39C12"/></svg><span>SAP<b>lytics</b></span></a>
+    <span>Smarter insights for SAP B1 · © 2026 Md Rishad Ahmed</span>
+  </div>
+</footer>
+</div>
+
+<script>
+  document.documentElement.classList.add('js');
+  const root=document.getElementById('root');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.add('loaded')));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  // light SQL highlighting
+  const code=document.getElementById('code');
+  if(code){
+    const K='SET|TRANSACTION|ISOLATION|LEVEL|READ|UNCOMMITTED|NOCOUNT|ON|WITH|AS|SELECT|FROM|JOIN|WHERE|AND|UNION|ALL|SUM|GROUP|BY';
+    let h=code.textContent.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+    h=h.replace(/('[^']*')|(\[[^\]]*\])|\b(OINV|INV1|ORIN|RIN1|OCRD)\b|\b(K)\b/g,(m,s,b,t)=>s?'<span class="s">'+s+'</span>':b?'<span class="n">'+b+'</span>':t?'<span class="n">'+t+'</span>':m);
+    h=h.replace(new RegExp('\\b('+K+')\\b(?![^<]*<\\/span>)','g'),'<span class="k">$1</span>');
+    code.innerHTML=h;
+  }
+
+  // SAP B1 table lookup
+  const T={
+    OINV:['A/R invoices, header','One row per customer invoice: customer, dates, totals, currency and status.','the base of every sales figure, joined to INV1 for lines and netted against ORIN credit memos. Cancelled documents are filtered out, a common reason SAP sales reports overstate revenue.'],
+    INV1:['A/R invoice lines','One row per item on an invoice: quantity, price, discount, warehouse and line total.','line-level sales by item, rep and warehouse: the fact table of a sales model.'],
+    INV3:['A/R invoice expenses','Freight and other charges on an invoice, kept apart from the item lines.','added at document level so freight never repeats per line; needed to tie to SAP Sales Analysis.'],
+    ORIN:['A/R credit memos','Returns and price corrections issued to customers.','subtracted from invoices so sales are reported net, by the same customer, item and period.'],
+    ORDR:['Sales orders','Orders taken but not yet fully delivered or invoiced.','open-order and backorder reports, matched to incoming purchase orders for arrival dates.'],
+    ODLN:['Deliveries','Goods shipped to customers, usually copied from a sales order.','fill-rate reporting and tracing an order to its invoice through both document paths.'],
+    OITM:['Item master data','Every item: description, group, units, prices and user-defined fields.','the item dimension in every model; HTS code and country of origin are kept here for customs work.'],
+    OITW:['Item stock by warehouse','On-hand, committed and ordered quantity per item and warehouse.','the start of min/max: what is on the shelf against what demand says should be.'],
+    OCRD:['Business partners','Customers and vendors: names, groups, currency, terms and properties.','the customer dimension, with its property flags unpivoted into a segmentation bridge.'],
+    OPOR:['Purchase orders','What has been ordered from vendors and when it is promised.','incoming supply for reorder math, and duty versus FOB price for landed-cost checks.'],
+    OPDN:['Goods receipt PO','What actually arrived from a vendor, and when.','real lead times, measured from purchase order to receipt, which feed reorder points.'],
+    OPCH:['A/P invoices','Vendor bills for goods and services received.','spend by vendor that ties to SAP Purchasing Analysis, and duty amounts for drawback.'],
+    ORTT:['Exchange rates','Daily rates between the local currency and foreign currencies.','converting CAD and USD with the latest rate on or before each document date.'],
+    OWHS:['Warehouses','The list of warehouses and their settings.','splitting stock and demand by location so transfers come before buying.']
+  };
+  const tin=document.getElementById('tbl'),tout=document.getElementById('tbl-out');
+  const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  const render=()=>{
+    const k=tin.value.trim().toUpperCase(),d=T[k];
+    if(d) tout.innerHTML='<div class="an"><b>'+k+'</b><span>'+d[0]+'</span></div><p>'+d[1]+'</p><p class="use"><strong>How I use it:</strong> '+esc(d[2])+'</p>';
+    else if(!k) tout.innerHTML='<div class="an"><b>…</b><span>Type a table code</span></div><p>For example OINV, ORDR or OITM.</p>';
+    else tout.innerHTML='<div class="an"><b>'+esc(k)+'</b><span>Not in my list yet</span></div><p>Try one of these: '+Object.keys(T).join(', ')+'.</p>';
+  };
+  tin.addEventListener('input',render);
+  document.querySelectorAll('.examples button').forEach(b=>b.addEventListener('click',()=>{tin.value=b.textContent;render();tin.focus();}));
+</script>
+</body>
+</html>
