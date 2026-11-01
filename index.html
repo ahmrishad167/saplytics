@@ -32,7 +32,7 @@
 
     --m:clamp(20px,4vw,64px);
     --max:1280px;
-    --gap:clamp(72px,8vw,120px);
+    --gap:clamp(48px,5vw,80px);
     --fs-display:clamp(38px,4.7vw,76px);
     --fs-head:clamp(28px,2.8vw,42px);
     --fs-sub:clamp(19px,1.5vw,23px);
@@ -41,7 +41,9 @@
     --ease:cubic-bezier(.19,1,.22,1);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:96px}
+  html{scroll-behavior:smooth}
+  section[id]{scroll-margin-top:calc(88px - var(--gap))}
+  .contact[id]{scroll-margin-top:108px}
   body{background:var(--ground);color:var(--ink);font-family:'Montserrat',system-ui,sans-serif;font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit}
   img{display:block;max-width:100%;height:auto}
@@ -99,7 +101,7 @@
   .figs span{display:block;margin-top:6px;font-size:16px;color:var(--muted)}
 
   /* ---------- practices (accent field) ---------- */
-  .practices{margin-top:var(--gap);background:var(--accent);color:var(--navy-ink);padding:clamp(56px,6vw,88px) 0}
+  .practices{margin-top:var(--gap);background:var(--accent);color:var(--navy-ink);padding:clamp(44px,4.5vw,68px) 0}
   .practices .head p{color:var(--navy-ink);font-weight:500}
   .ptable{width:100%;border-collapse:collapse}
   .ptable th{text-align:left;font-size:var(--fs-small);font-weight:700;padding:0 16px 12px 0;border-bottom:2px solid rgba(11,26,51,.85)}
@@ -145,7 +147,7 @@
   .case{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:center}
   .case.flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
   .case.flip .txt{order:2}
-  .case + .case{margin-top:clamp(64px,7vw,104px)}
+  .case + .case{margin-top:clamp(48px,5vw,80px)}
   .case h3{font-size:clamp(23px,2vw,30px);margin-bottom:6px}
   @media (min-width:1200px){.case h3{white-space:nowrap}}
   .case .tags{font-size:var(--fs-small);font-weight:600;color:var(--teal);margin-bottom:16px}
@@ -265,7 +267,7 @@
   .c-mid .cta{justify-content:center}
   .c-mid .btn{min-height:52px;font-size:16px}
   .contact .li{margin-top:12px;font-size:var(--fs-small);color:var(--muted)}
-  footer{padding:clamp(48px,5vw,64px) 0 36px}
+  footer{padding:clamp(40px,4vw,56px) 0 32px}
   footer .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;font-size:var(--fs-small);color:var(--muted)}
   .f-brand{grid-column:2;display:flex;align-items:center;gap:24px}
   footer .wm img{width:88px;height:88px}
