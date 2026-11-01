@@ -42,8 +42,8 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  section[id]{scroll-margin-top:calc(88px - var(--gap))}
-  .contact[id]{scroll-margin-top:108px}
+  section[id]{scroll-margin-top:calc(88px + 24px - var(--gap))}
+  .contact[id]{scroll-margin-top:136px}
   body{background:var(--ground);color:var(--ink);font-family:'Montserrat',system-ui,sans-serif;font-size:var(--fs-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit}
   img{display:block;max-width:100%;height:auto}
@@ -345,6 +345,7 @@
 <body>
 <a href="#main" class="skip">Skip to content</a>
 <div id="root">
+<a id="top"></a>
 
 <header class="bar">
   <div class="wrap">
@@ -362,7 +363,6 @@
 </header>
 
 <main id="main">
-  <a id="top"></a>
 
   <section class="hero" aria-labelledby="hero-h">
     <div class="wrap">
