@@ -459,11 +459,12 @@
   .faq summary:hover{color:var(--teal)}
   .faq details p{padding:0 24px 22px;font-size:17px;color:var(--muted)}
   /* ---------- IT team ---------- */
-  .it .grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:stretch}
+  .it .grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(32px,5vw,72px);align-items:stretch}
   .it .grid > figure{display:flex;flex-direction:column;margin:0}
   .it .grid > figure pre{flex:1;display:flex;align-items:center}
   .rules{list-style:none;display:grid;gap:16px}
-  .rules li{font-size:17px}
+  .rules li{font-size:16px}
+  @media (min-width:1240px){.rules li{white-space:nowrap}}
   .rules b{display:block;color:var(--teal);font-weight:700}
   pre{background:#081428;padding:26px;overflow-x:auto;font-family:Consolas,'Cascadia Code',Menlo,monospace;font-size:14px;line-height:1.6;color:#D5E1F0;tab-size:4}
   pre .k{color:#3CC8BE;font-weight:600}
@@ -924,11 +925,11 @@
       </div>
       <div class="grid">
         <ul class="rules">
-          <li class="rv"><b>Environment Compatibility</b>Queries tailored to your SAP Business One version and database platform: Microsoft SQL Server or SAP HANA.</li>
+          <li class="rv"><b>Environment Compatibility</b>Queries tailored to your SAP Business One version and DB platform.</li>
           <li class="rv" style="--d:.06s"><b>Controlled Access</b>Uses approved reporting permissions and read-only queries.</li>
-          <li class="rv" style="--d:.12s"><b>Performance-Conscious Design</b>Scoped date ranges, deliberate joins, and appropriate aggregation help manage reporting workload.</li>
-          <li class="rv" style="--d:.18s"><b>Traceable Business Logic</b>Documented tables, filters, and calculations make results easier to audit and reconcile.</li>
-          <li class="rv" style="--d:.24s"><b>Maintainable Delivery</b>Clear naming, comments, and configurable filters make queries easier for your team to support.</li>
+          <li class="rv" style="--d:.12s"><b>Performance-Conscious Design</b>Scoped date ranges, deliberate joins, and appropriate aggregation.</li>
+          <li class="rv" style="--d:.18s"><b>Traceable Business Logic</b>Documented tables, filters, and calculated results.</li>
+          <li class="rv" style="--d:.24s"><b>Maintainable Delivery</b>Clear naming, comments, and configurable filters.</li>
         </ul>
         <figure class="rv" style="--d:.1s">
 <pre><code id="code">SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
@@ -944,7 +945,7 @@ WHERE H.CANCELED = 'N'
   AND H.DocDate <  DATEADD(DAY, 1,
                    CAST(GETDATE() AS date))
 GROUP BY YEAR(H.DocDate);</code></pre>
-          <figcaption>Sales Qty and $ by Year: All of 2025 and 2026 to Date, Cancelled Documents Excluded</figcaption>
+          <figcaption>Sales Qty and $ by Year: 2025 and 2026 to Date, Cancelled Excluded</figcaption>
         </figure>
       </div>
       <div class="lookup">
