@@ -52,7 +52,7 @@ HEAD = '''<!DOCTYPE html>
   <div class="wrap">
     <a href="{up}" class="wm" aria-label="SAPlytics home"><img src="{up}assets/saplytics-badge-dark.svg" alt="SAPlytics" width="64" height="64"></a>
     <p class="tagline">For Distributors and Manufacturers Running SAP Business One</p>
-    <nav aria-label="Primary">
+    <nav id="site-nav" aria-label="Primary">
       <a href="{up}#services">Services</a>
       <a href="{up}#work">Case Studies</a>
       <a href="{up}#about">About</a>
@@ -61,6 +61,7 @@ HEAD = '''<!DOCTYPE html>
       <a href="{up}blog/"{blogcur}>Blog</a>
     </nav>
     <a class="btn" href="{cal}" target="_blank" rel="noopener">Free Review</a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 <main id="main">
@@ -76,6 +77,15 @@ FOOT = '''</main>
     <span class="f-copy">© 2026 Rishad Ahmed</span>
   </div>
 </footer>
+<script>
+  // phone and tablet menu
+  (()=>{{const bar=document.querySelector('.bar'),btn=bar&&bar.querySelector('.menu-btn');if(!btn)return;
+    const set=o=>{{bar.classList.toggle('open',o);btn.setAttribute('aria-expanded',o);btn.setAttribute('aria-label',o?'Close menu':'Open menu');}};
+    btn.addEventListener('click',()=>set(!bar.classList.contains('open')));
+    bar.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>set(false)));
+    document.addEventListener('keydown',e=>{{if(e.key==='Escape'&&bar.classList.contains('open')){{set(false);btn.focus();}}}});
+    document.addEventListener('click',e=>{{if(!bar.contains(e.target))set(false);}});}})();
+</script>
 </body>
 </html>
 '''

@@ -304,6 +304,11 @@
   }
   @media (min-width:961px) and (max-width:1039px){.tagline{display:none}}
 
+  .menu-btn{display:none;flex:none;width:48px;height:48px;border:0;background:var(--ground-3);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+  .menu-btn span{display:block;width:22px;height:2px;background:var(--ink);transition:transform .25s,opacity .25s}
+  .bar.open .menu-btn span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .bar.open .menu-btn span:nth-child(2){opacity:0}
+  .bar.open .menu-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   /* ---------- hero ---------- */
   .hero{padding-top:clamp(40px,5vw,72px)}
   h1{font-size:var(--fs-display);letter-spacing:-.04em;line-height:1;white-space:nowrap}
@@ -348,6 +353,7 @@
   .svc-card h3{font-size:clamp(20px,1.6vw,23px);line-height:1.15;white-space:nowrap}
   .svc-sub{font-size:15px;color:var(--muted);line-height:1.45;text-wrap:balance}
   @media (min-width:1240px){.svc-list li span{white-space:nowrap}}
+  @media (min-width:1360px){.svc-done{white-space:nowrap}}
   .svc-list{list-style:none;display:grid;gap:9px;font-size:clamp(14px,1.05vw,15.5px);line-height:1.45;margin-top:2px}
   .svc-list li{display:flex;gap:9px;align-items:flex-start}
   .svc-list .ck{width:15px;height:15px;flex:none;margin-top:3px}
@@ -356,13 +362,10 @@
   .svc-go:hover,.svc-go:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:4px}
   .svc-card.core .svc-go{color:var(--accent)}
   .svc-art{width:100%;max-width:320px;height:40px}
-  .deliv-wrap{margin-top:clamp(40px,4vw,56px)}
-  .deliv-wrap h3{font-size:var(--fs-sub);margin-bottom:16px}
-  .deliv-t{width:100%;border-collapse:collapse;font-size:16px}
-  .deliv-t th{text-align:left;font-size:var(--fs-small);font-weight:700;color:var(--muted);padding:0 16px 10px 0;border-bottom:2px solid var(--line)}
-  .deliv-t td{padding:12px 16px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
-  .deliv-t td:first-child{font-weight:700;color:var(--teal);white-space:nowrap}
-  .deliv-note{margin-top:14px;font-size:16px;color:var(--muted)}
+  .svc-done{margin-top:auto;padding-top:12px;font-size:14.5px;font-weight:600;color:var(--ink)}
+  .svc-done b{color:var(--accent);font-weight:700}
+  .svc-done + .svc-foot{margin-top:12px}
+  .quote-note{margin-top:22px;text-align:center;font-size:16px;color:var(--muted)}
   .quality{margin-top:clamp(40px,4vw,56px)}
   .quality h3{font-size:var(--fs-sub);margin-bottom:18px}
   .quality ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 40px}
@@ -432,8 +435,6 @@
   .ui .kv div b{display:block;font-size:15px;color:#0B1A33}
   .ui .kv.big div b{font-size:28px;line-height:1.1;margin-top:2px}
   .ui .total td{font-size:16px;color:#0B1A33;background:#EAF7F6}
-  .ui .deliv{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px}
-  .ui .deliv li{background:#EAF7F6;padding:10px 12px;font-weight:600;font-size:14px}
 
   /* ---------- about ---------- */
   .about .wrap{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,5vw,72px);align-items:start}
@@ -534,7 +535,12 @@
     .svc{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
   }
   @media (max-width:960px){
-    .bar nav{display:none}
+    .bar .wrap{position:relative}
+    .menu-btn{display:flex}
+    .bar nav{display:none;position:absolute;top:100%;left:0;right:0;margin:0;flex-direction:column;gap:0;background:var(--ground);padding:6px var(--m) 18px;box-shadow:0 14px 30px rgba(0,0,0,.45)}
+    .bar.open nav{display:flex}
+    .bar nav a{display:flex;align-items:center;min-height:52px;font-size:18px;border-bottom:1px solid var(--line)}
+    .bar nav a:last-child{border-bottom:0}
     .bar .btn{margin-left:auto}
     .faq-grid,.hero-grid,.case,.case.flip,.it .grid,.lookup,.about .wrap,.contact .box,.exp{grid-template-columns:minmax(0,1fr)}
     .case > *,.it .grid > *{min-width:0}
@@ -549,12 +555,7 @@
     h1{white-space:normal;font-size:10.6vw}
     .case h3,.svc-card h3,.edu b,.jobs b,.jobs span{white-space:normal}
     .exp > div{padding:22px 20px}
-    .ptable thead,.deliv-t thead{display:none}
-    .deliv-t,.deliv-t tbody,.deliv-t tr,.deliv-t td{display:block}
-    .deliv-t tr{padding:12px 0;border-bottom:1px solid var(--line)}
-    .deliv-t td{border:0;padding:2px 0}
-    .deliv-t td:nth-child(3)::before{content:"Needs: ";color:var(--muted)}
-    .deliv-t td:nth-child(4)::before{content:"Done: ";color:var(--muted)}
+    .ptable thead{display:none}
     .ptable,.ptable tbody,.ptable tr,.ptable td{display:block}
     .ptable tr{padding:14px 0;border-bottom:1px solid rgba(11,26,51,.22)}
     .ptable td{border:0;padding:2px 0}
@@ -571,7 +572,6 @@
     .figs strong{font-size:12vw}
     .ui .kv{grid-template-columns:1fr 1fr 1fr;gap:6px}
     .ui .kv div{padding:7px 8px}
-    .ui .deliv{grid-template-columns:1fr}
     [data-ui].ui{padding:16px 14px;font-size:13px}
     .ui th,.ui td{padding:7px 5px}
     .ui .hide-s,.ui .sub{display:none}
@@ -600,7 +600,7 @@
   <div class="wrap">
     <a href="#top" class="wm" aria-label="SAPlytics, back to top"><img src="assets/saplytics-badge-dark.svg" alt="SAPlytics" width="72" height="72"></a>
     <p class="tagline">For Distributors and Manufacturers Running SAP Business One</p>
-    <nav aria-label="Primary">
+    <nav id="site-nav" aria-label="Primary">
       <a class="tlink" href="#services">Services</a>
       <a class="tlink" href="#work">Case Studies</a>
       <a class="tlink" href="#about">About</a>
@@ -609,6 +609,7 @@
       <a class="tlink" href="blog/">Blog</a>
     </nav>
     <a class="btn" href="https://calendly.com/saplytics/30min" target="_blank" rel="noopener">Free Review</a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -692,6 +693,7 @@
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Item Master Data</span></li>
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Business Partner Master Data</span></li>
   </ul>
+  <p class="svc-done"><b>Done:</b> Findings Reviewed With You</p>
           <div class="svc-foot"><a class="svc-go" href="https://calendly.com/saplytics/30min?utm_source=saplytics.ca&amp;utm_medium=website&amp;utm_content=data-health-check" target="_blank" rel="noopener">Start Here →</a><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true"><polygon points="67,4 73,4 70,9" fill="#F2F6FB"></polygon><rect x="0" y="14" width="44" height="12" rx="4" fill="#FF8A8A"></rect><rect x="49" y="14" width="44" height="12" rx="4" fill="#FFB86B"></rect><rect x="98" y="14" width="44" height="12" rx="4" fill="#F39C12" opacity="0.55"></rect><rect x="147" y="14" width="44" height="12" rx="4" fill="#13A6A0" opacity="0.55"></rect><rect x="196" y="14" width="44" height="12" rx="4" fill="#3CC8BE" opacity="0.55"></rect><rect x="0" y="32" width="120" height="3" rx="1.5" fill="#3A5070"></rect><rect x="0" y="32" width="70" height="3" rx="1.5" fill="#A9B6C8"></rect></svg></div>
         </article>
         <article class="svc-card core rv" style="--d:0.07s" aria-labelledby="sv2">
@@ -706,6 +708,7 @@
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Inventory Status Report</span></li>
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>AI-Assisted Reporting</span></li>
   </ul>
+  <p class="svc-done"><b>Done:</b> Reconciled to SAP, Signed Off</p>
           <div class="svc-foot"><a class="svc-go" href="https://calendly.com/saplytics/30min?utm_source=saplytics.ca&amp;utm_medium=website&amp;utm_content=reporting-stack" target="_blank" rel="noopener">Build It Right →</a><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="36" height="32" rx="7" stroke="#3CC8BE" stroke-width="2"></rect><ellipse cx="20" cy="14" rx="9" ry="3.5" stroke="#3CC8BE" stroke-width="1.8"></ellipse><path d="M11 14v12c0 2 4 3.5 9 3.5s9-1.5 9-3.5V14" stroke="#3CC8BE" stroke-width="1.8"></path><line x1="46" y1="20" x2="92" y2="20" stroke="#6B7F99" stroke-width="2" stroke-dasharray="3 4"></line><polyline points="88 16 93 20 88 24" stroke="#6B7F99" stroke-width="2"></polyline><rect x="102" y="4" width="36" height="32" rx="7" stroke="#13A6A0" stroke-width="2"></rect><line x1="110" y1="14" x2="130" y2="14" stroke="#13A6A0" stroke-width="1.8"></line><line x1="110" y1="20" x2="130" y2="20" stroke="#13A6A0" stroke-width="1.8"></line><line x1="110" y1="26" x2="130" y2="26" stroke="#13A6A0" stroke-width="1.8"></line><line x1="118" y1="10" x2="118" y2="30" stroke="#13A6A0" stroke-width="1.8"></line><line x1="146" y1="20" x2="192" y2="20" stroke="#6B7F99" stroke-width="2" stroke-dasharray="3 4"></line><polyline points="188 16 193 20 188 24" stroke="#6B7F99" stroke-width="2"></polyline><rect x="202" y="4" width="36" height="32" rx="7" stroke="#F39C12" stroke-width="2"></rect><rect x="210" y="20" width="4" height="9" fill="#F39C12" stroke="none"></rect><rect x="217" y="15" width="4" height="14" fill="#F39C12" stroke="none"></rect><rect x="224" y="10" width="4" height="19" fill="#F39C12" stroke="none"></rect></svg></div>
         </article>
         <article class="svc-card rv" style="--d:0.14s" aria-labelledby="sv3">
@@ -719,6 +722,7 @@
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Forecast PO Qty</span></li>
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>GM by Customer and Item</span></li>
   </ul>
+  <p class="svc-done"><b>Done:</b> Signed Off After a Test Cycle</p>
           <div class="svc-foot"><a class="svc-go" href="https://calendly.com/saplytics/30min?utm_source=saplytics.ca&amp;utm_medium=website&amp;utm_content=business-analytics" target="_blank" rel="noopener">Go Deeper →</a><svg class="svc-art" viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="0" y1="26" x2="240" y2="26" stroke="#F39C12" stroke-width="1.5" stroke-dasharray="5 5"></line><polyline points="0,8 30,12 60,10 90,17 120,21 150,28 170,31" stroke="#3CC8BE" stroke-width="2.4"></polyline><polyline points="170,31 185,10 215,12 240,16" stroke="#13A6A0" stroke-width="2.4"></polyline><circle cx="170" cy="31" r="4" fill="#F39C12"></circle></svg></div>
         </article>
         <article class="svc-card rv" style="--d:0.21s" aria-labelledby="sv4">
@@ -731,22 +735,11 @@
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Landed-Cost Calculation</span></li>
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>CBSA Drawback Claims</span></li>
   </ul>
+  <p class="svc-done"><b>Done:</b> Reviewed With Your Broker</p>
           <div class="svc-foot"><a class="svc-go" href="https://calendly.com/saplytics/30min?utm_source=saplytics.ca&amp;utm_medium=website&amp;utm_content=trade-customs" target="_blank" rel="noopener">Recover Duty →</a><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="0" y="10" width="34" height="26" rx="4" fill="#3CC8BE" opacity="0.55" stroke="none"></rect><rect x="42" y="4" width="34" height="32" rx="4" fill="#3CC8BE" opacity="0.75" stroke="none"></rect><rect x="84" y="14" width="34" height="22" rx="4" fill="#3CC8BE" stroke="none"></rect><path d="M128 20 H200" stroke="#7C93B2" stroke-width="2" stroke-dasharray="3 4"></path><polyline points="196 15 202 20 196 25" stroke="#7C93B2" stroke-width="2"></polyline><circle cx="222" cy="20" r="13" fill="#F39C12" stroke="none"></circle><path d="M226 14 a6 6 0 1 0 2 8" stroke="#0B1A33" stroke-width="2.4"></path><polyline points="229 10 228 15 223 14" stroke="#0B1A33" stroke-width="2.4"></polyline></svg></div>
         </article>
       </div>
-      <div class="deliv-wrap rv">
-        <h3>What You Get</h3>
-        <table class="deliv-t">
-          <thead><tr><th scope="col">Service</th><th scope="col">You Receive</th><th scope="col">We Need From You</th><th scope="col">Done When</th></tr></thead>
-          <tbody>
-            <tr><td>Data Health Check</td><td>Findings report and a ranked fix list, walked through on a call</td><td>A read-only SAP login and your key reports</td><td>Findings are reviewed with you</td></tr>
-            <tr><td>Reporting Stack</td><td>Agreed reports in Excel or Power BI, refreshing on schedule, with documentation</td><td>A read-only login, your report wish list and one person to test</td><td>Each report reconciles to SAP and you sign off</td></tr>
-            <tr><td>Business Analytics</td><td>Min/max and stock model, margin and supplier analysis, with documentation</td><td>A read-only login and your lead-time and ordering rules</td><td>You sign off after a test cycle on your own data</td></tr>
-            <tr><td>Trade &amp; Customs</td><td>HTS and origin data review, landed-cost model, drawback claim file</td><td>A read-only login and your broker's import (B3) files</td><td>Reviewed with you and your customs broker</td></tr>
-          </tbody>
-        </table>
-        <p class="deliv-note">Every project is scoped and quoted in writing after the free review, before any work starts.</p>
-      </div>
+      <p class="quote-note rv">Every project is quoted in writing after the free review, before any work starts.</p>
       <div class="quality rv">
         <h3>Quality Built In</h3>
         <ul>
@@ -1038,6 +1031,14 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
   const fitVis=()=>{document.querySelectorAll('.vis > [data-ui].ui').forEach(u=>{u.style.zoom='';if(innerWidth<=960)return;let z=1;while(u.scrollHeight>u.clientHeight+1&&z>.8){z-=.01;u.style.zoom=z.toFixed(2);}});};
   addEventListener('load',fitVis);addEventListener('resize',fitVis);
 
+
+  // phone and tablet menu
+  (()=>{const bar=document.querySelector('.bar'),btn=bar&&bar.querySelector('.menu-btn');if(!btn)return;
+    const set=o=>{bar.classList.toggle('open',o);btn.setAttribute('aria-expanded',o);btn.setAttribute('aria-label',o?'Close menu':'Open menu');};
+    btn.addEventListener('click',()=>set(!bar.classList.contains('open')));
+    bar.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>set(false)));
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&bar.classList.contains('open')){set(false);btn.focus();}});
+    document.addEventListener('click',e=>{if(!bar.contains(e.target))set(false);});})();
 
   // click any dashboard to see it full size
   const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img'),lbCap=document.getElementById('lb-cap');
