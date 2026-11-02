@@ -1,0 +1,36 @@
+<!--meta
+{
+ "slug": "cbsa-duty-drawback-automation",
+ "status": "published",
+ "date": "2026-11-02",
+ "title": "Automating CBSA Duty Drawback Claims From SAP Business One",
+ "seo_title": "Automating CBSA Duty Drawback Claims From SAP B1 | SAPlytics",
+ "description": "A case study: replacing a manual spreadsheet drawback process with a SQL pipeline that matches export lines to import entries and applies the CUSMA rule.",
+ "kicker": "Case Study",
+ "keywords": "CBSA duty drawback, K32, CARM, CUSMA, SAP Business One, Canadian importer",
+ "lede": "Duty paid on goods imported into Canada can be recovered when the same goods are re-exported. Matching thousands of export lines by hand made every claim slow and risky, so the process was rebuilt in SQL."
+}
+-->
+<figure>
+  <img src="../../assets/blog-drawback-matching.png" alt="Drawback claim line matching: two export lines matched to B3 import entries, one duty-free line dropped, claim total 294.00 CAD" width="1410" height="570">
+  <figcaption>Illustrative figures. Each line recovers the lesser of the two duties.</figcaption>
+</figure>
+
+<h2>The Problem</h2>
+<p>A Canadian importer that re-exports goods to the U.S. can claim back the duty it paid on import. But each export line has to be matched to the import entry (B3) that paid its duty, checked for eligibility, and calculated correctly. Done in spreadsheets, every claim took days and carried the risk of errors in a filing to CBSA.</p>
+
+<h2>What I Built</h2>
+<ul>
+  <li><strong>An SAP extract</strong> of Canada-to-U.S. export sales.</li>
+  <li><strong>First-in, first-out matching</strong> of each export line to the B3 entry that paid its duty.</li>
+  <li><strong>Five eligibility gates</strong>, including dropping duty-free lines early: they recover nothing but would use up matching capacity.</li>
+  <li><strong>The CUSMA rule</strong>: each line is refunded at the lesser of the duty paid into Canada and the duty owed on entry to the U.S.</li>
+  <li><strong>Output in the claim format</strong>, ready to file through CARM.</li>
+</ul>
+
+<h2>The Result</h2>
+<p>A manual spreadsheet process became an end-to-end SQL pipeline: repeatable, auditable, and fast enough to file claims well inside the four-year limit.</p>
+
+<div class="note">
+  <p><strong>Importing into Canada and selling into the U.S.?</strong> The Trade &amp; Customs service covers HTS classification, landed cost and drawback claims. This article isn't customs advice; claims with real money at stake should be confirmed with a licensed customs broker.</p>
+</div>

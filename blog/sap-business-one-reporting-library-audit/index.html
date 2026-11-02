@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP Business One Reporting Library Audit: 260 Issues Found | SAPlytics</title>
+<meta name="description" content="A case study: reviewing 93 saved SAP Business One queries for correctness and performance, the issues found, and the standard that keeps new reports clean.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Rishad Ahmed">
+<link rel="canonical" href="https://ahmrishad167.github.io/saplytics/blog/sap-business-one-reporting-library-audit/">
+<meta name="theme-color" content="#0B1A33">
+<link rel="icon" type="image/svg+xml" href="../../assets/saplytics-badge-dark.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="SAPlytics">
+<meta property="og:locale" content="en_CA">
+<meta property="og:title" content="Auditing an SAP Business One Reporting Library: 93 Queries, 260 Issues">
+<meta property="og:description" content="A case study: reviewing 93 saved SAP Business One queries for correctness and performance, the issues found, and the standard that keeps new reports clean.">
+<meta property="og:url" content="https://ahmrishad167.github.io/saplytics/blog/sap-business-one-reporting-library-audit/">
+<meta property="og:image" content="https://ahmrishad167.github.io/saplytics/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Auditing an SAP Business One Reporting Library: 93 Queries, 260 Issues">
+<meta name="twitter:description" content="A case study: reviewing 93 saved SAP Business One queries for correctness and performance, the issues found, and the standard that keeps new reports clean.">
+<meta name="twitter:image" content="https://ahmrishad167.github.io/saplytics/og-image.png">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "BlogPosting",
+   "headline": "Auditing an SAP Business One Reporting Library: 93 Queries, 260 Issues",
+   "description": "A case study: reviewing 93 saved SAP Business One queries for correctness and performance, the issues found, and the standard that keeps new reports clean.",
+   "datePublished": "2026-11-02",
+   "dateModified": "2026-11-02",
+   "inLanguage": "en-CA",
+   "mainEntityOfPage": "https://ahmrishad167.github.io/saplytics/blog/sap-business-one-reporting-library-audit/",
+   "image": "https://ahmrishad167.github.io/saplytics/og-image.png",
+   "wordCount": 198,
+   "keywords": "SAP Business One query audit, SAP B1 Query Manager, report accuracy, SQL review",
+   "author": {
+    "@type": "Person",
+    "name": "Rishad Ahmed",
+    "url": "https://ahmrishad167.github.io/saplytics/#about",
+    "sameAs": [
+     "https://www.linkedin.com/in/md-rishad-ahmed-8633b5231"
+    ]
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "SAPlytics",
+    "logo": {
+     "@type": "ImageObject",
+     "url": "https://ahmrishad167.github.io/saplytics/assets/icon-512.png"
+    }
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://ahmrishad167.github.io/saplytics/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://ahmrishad167.github.io/saplytics/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Auditing an SAP Business One Reporting Library: 93 Queries, 260 Issues",
+     "item": "https://ahmrishad167.github.io/saplytics/blog/sap-business-one-reporting-library-audit/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/blog.css">
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+<header class="bar">
+  <div class="wrap">
+    <a href="../../" class="wm" aria-label="SAPlytics home"><img src="../../assets/saplytics-badge-dark.svg" alt="SAPlytics" width="64" height="64"></a>
+    <p class="tagline">For Distributors and Manufacturers Running SAP Business One</p>
+    <nav aria-label="Primary">
+      <a href="../../#services">Services</a>
+      <a href="../../#work">Case Studies</a>
+      <a href="../../#about">About</a>
+      <a href="../../#faq">FAQ</a>
+      <a href="../../#contact">Contact</a>
+      <a href="../../blog/" aria-current="page">Blog</a>
+    </nav>
+    <a class="btn" href="https://calendly.com/saplytics/30min" target="_blank" rel="noopener">Free Review</a>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+<article>
+  <p class="crumb"><a href="../../">Home</a> · <a href="../../blog/">Blog</a></p>
+  <header class="a-head">
+    <p class="k">Case Study</p>
+    <h1>Auditing an SAP Business One Reporting Library: 93 Queries, 260 Issues</h1>
+    <p class="lede">Years of saved SAP queries, written by different people with no shared rules. Nobody knew which reports could be trusted. Here's how the library was reviewed, and what changed.</p>
+    <p class="by"><img src="../../assets/rishad-ahmed.jpg" alt="" width="44" height="44"><span><b>Rishad Ahmed</b> · November 2, 2026 · 1 min read</span></p>
+  </header>
+  <div class="prose">
+<figure>
+  <img src="../../assets/blog-reporting-audit.png" alt="SAP Reporting Library Audit summary: 93 queries reviewed, 260 issues flagged, 2.8 per query, delivered as a three-sheet workbook" width="1400" height="635">
+</figure>
+
+<h2>The Problem</h2>
+<p>Over the years, the company's SAP Business One reporting library had grown to <strong>93 saved queries</strong> in Query Manager, written by different people at different times, with no shared rules. Totals disagreed between reports, some queries slowed SAP down for everyone, and nobody could say which numbers to trust.</p>
+
+<h2>What I Did</h2>
+<ul>
+  <li><strong>An automated review</strong> that scored every query for correctness and performance.</li>
+  <li><strong>260 issues flagged</strong>, about 2.8 per query. Common ones: cancelled documents counted as sales, credit memos left out, freight repeated on every line, and date ranges that silently dropped the last day.</li>
+  <li><strong>A prioritized remediation workbook</strong> in three sheets, so the most damaging issues were fixed first and every fix was tracked.</li>
+</ul>
+
+<h2>What Stays in Place</h2>
+<p>Fixing old reports is only half the job. The audit also produced <strong>coding conventions</strong>, a <strong>review standard</strong> and a <strong>change log</strong>. Every report written since follows the same rules and passes the same checklist before it goes live, so the library stays trustworthy.</p>
+
+<div class="note">
+  <p><strong>Is your report library in the same state?</strong> A Data Health Check starts with exactly this kind of review: a read-only scan of your saved reports, with a ranked fix list.</p>
+</div>
+  </div>
+<aside class="a-cta">
+  <h2>Numbers Off? <span>Let's Fix Them</span></h2>
+  <p>Book a free 30-minute review. Show me the SAP report that doesn't match, and I'll show you why, on your own screens.</p>
+  <div class="row">
+    <a class="btn" href="https://calendly.com/saplytics/30min" target="_blank" rel="noopener">Book a Free 30-Min Review</a>
+    <a class="btn ghost" href="mailto:ahm.rishad@outlook.com?subject=SAPlytics%20Enquiry">Email Me</a>
+  </div>
+</aside>
+</article>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <a href="../../" aria-label="SAPlytics home"><img src="../../assets/saplytics-badge-dark.svg" alt="SAPlytics" width="72" height="72"></a>
+      <p class="f-tag">Your ERP Knows Everything. <span>Your Reports Should Too.</span></p>
+    </div>
+    <span class="f-copy">© 2026 Rishad Ahmed</span>
+  </div>
+</footer>
+</body>
+</html>

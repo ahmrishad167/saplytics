@@ -1,0 +1,33 @@
+<!--meta
+{
+ "slug": "sap-business-one-reporting-library-audit",
+ "status": "published",
+ "date": "2026-11-02",
+ "title": "Auditing an SAP Business One Reporting Library: 93 Queries, 260 Issues",
+ "seo_title": "SAP Business One Reporting Library Audit: 260 Issues Found | SAPlytics",
+ "description": "A case study: reviewing 93 saved SAP Business One queries for correctness and performance, the issues found, and the standard that keeps new reports clean.",
+ "kicker": "Case Study",
+ "keywords": "SAP Business One query audit, SAP B1 Query Manager, report accuracy, SQL review",
+ "lede": "Years of saved SAP queries, written by different people with no shared rules. Nobody knew which reports could be trusted. Here's how the library was reviewed, and what changed."
+}
+-->
+<figure>
+  <img src="../../assets/blog-reporting-audit.png" alt="SAP Reporting Library Audit summary: 93 queries reviewed, 260 issues flagged, 2.8 per query, delivered as a three-sheet workbook" width="1400" height="635">
+</figure>
+
+<h2>The Problem</h2>
+<p>Over the years, the company's SAP Business One reporting library had grown to <strong>93 saved queries</strong> in Query Manager, written by different people at different times, with no shared rules. Totals disagreed between reports, some queries slowed SAP down for everyone, and nobody could say which numbers to trust.</p>
+
+<h2>What I Did</h2>
+<ul>
+  <li><strong>An automated review</strong> that scored every query for correctness and performance.</li>
+  <li><strong>260 issues flagged</strong>, about 2.8 per query. Common ones: cancelled documents counted as sales, credit memos left out, freight repeated on every line, and date ranges that silently dropped the last day.</li>
+  <li><strong>A prioritized remediation workbook</strong> in three sheets, so the most damaging issues were fixed first and every fix was tracked.</li>
+</ul>
+
+<h2>What Stays in Place</h2>
+<p>Fixing old reports is only half the job. The audit also produced <strong>coding conventions</strong>, a <strong>review standard</strong> and a <strong>change log</strong>. Every report written since follows the same rules and passes the same checklist before it goes live, so the library stays trustworthy.</p>
+
+<div class="note">
+  <p><strong>Is your report library in the same state?</strong> A Data Health Check starts with exactly this kind of review: a read-only scan of your saved reports, with a ranked fix list.</p>
+</div>

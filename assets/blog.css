@@ -73,6 +73,9 @@ article{max-width:760px;margin:0 auto}
 .prose table{width:100%;border-collapse:collapse;margin:6px 0 24px;font-size:16px}
 .prose th{text-align:left;font-weight:700;padding:10px 12px;background:var(--ground-3)}
 .prose td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.prose figure{margin:0 0 28px}
+.prose figure img{width:100%;height:auto}
+.prose figcaption{margin-top:10px;font-size:14px;color:var(--muted);text-align:center}
 .prose .note{background:var(--ground-2);border-left:4px solid var(--accent);padding:18px 22px;margin:0 0 22px}
 .prose .note p:last-child{margin:0}
 .a-cta{margin:48px 0 clamp(56px,6vw,96px);background:var(--ground-2);padding:clamp(28px,4vw,44px);text-align:center}

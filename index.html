@@ -166,6 +166,14 @@
     },
     {
      "@type": "Question",
+     "name": "How Much Does It Cost?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Every project is different, so it is quoted after a short assessment. After the free review, you get a written scope and a quote covering what you will receive and when, before any work starts. No obligation."
+     }
+    },
+    {
+     "@type": "Question",
      "name": "How Long Does It Take?",
      "acceptedAnswer": {
       "@type": "Answer",
@@ -344,9 +352,17 @@
   .svc-list li{display:flex;gap:9px;align-items:flex-start}
   .svc-list .ck{width:15px;height:15px;flex:none;margin-top:3px}
   .svc-foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:grid;gap:10px}
-  .svc-foot span{font-size:15px;font-weight:700;color:var(--muted)}
-  .svc-card.core .svc-foot span{color:var(--accent)}
+  .svc-go{font-size:15px;font-weight:700;color:var(--teal);text-decoration:none;transition:color .2s,transform .2s;justify-self:start}
+  .svc-go:hover,.svc-go:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:4px}
+  .svc-card.core .svc-go{color:var(--accent)}
   .svc-art{width:100%;max-width:320px;height:40px}
+  .deliv-wrap{margin-top:clamp(40px,4vw,56px)}
+  .deliv-wrap h3{font-size:var(--fs-sub);margin-bottom:16px}
+  .deliv-t{width:100%;border-collapse:collapse;font-size:16px}
+  .deliv-t th{text-align:left;font-size:var(--fs-small);font-weight:700;color:var(--muted);padding:0 16px 10px 0;border-bottom:2px solid var(--line)}
+  .deliv-t td{padding:12px 16px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  .deliv-t td:first-child{font-weight:700;color:var(--teal);white-space:nowrap}
+  .deliv-note{margin-top:14px;font-size:16px;color:var(--muted)}
   .quality{margin-top:clamp(40px,4vw,56px)}
   .quality h3{font-size:var(--fs-sub);margin-bottom:18px}
   .quality ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 40px}
@@ -365,6 +381,8 @@
   .case{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:center}
   .case.flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
   .case.flip .txt{order:2}
+  .more-cases{margin-top:clamp(40px,4vw,56px);font-size:17px;color:var(--muted);text-align:center}
+  .more-cases a{color:var(--teal)}
   .case + .case{margin-top:clamp(48px,5vw,80px)}
   .case h3{font-size:clamp(23px,2vw,30px);margin-bottom:6px}
   @media (min-width:1200px){.case h3{white-space:nowrap}}
@@ -496,6 +514,14 @@
   /* justified explanations, only where the column is wide enough */
   .case .txt p:not(.tags):not(.src):not(.outcome),.about .body > p,.faq details p,.rules li,.answer p{text-align:justify;hyphens:manual}
 
+  img.zoom{cursor:zoom-in}
+  img.zoom:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+  #lightbox{border:0;padding:0;background:transparent;max-width:min(1500px,94vw);max-height:92vh;margin:auto;overflow:visible}
+  #lightbox::backdrop{background:rgba(6,14,28,.88)}
+  #lightbox figure{margin:0}
+  #lightbox img{display:block;max-width:100%;max-height:82vh;width:auto;height:auto;margin:0 auto}
+  #lightbox figcaption{margin-top:14px;text-align:center;color:var(--ink);font-size:17px;font-weight:600}
+  #lb-close{position:absolute;top:-46px;right:0;width:40px;height:40px;border:0;background:var(--accent);color:var(--navy-ink);font-size:26px;font-weight:700;line-height:1;cursor:pointer}
   /* ---------- motion ---------- */
   .js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
   .js .rv.in{opacity:1;transform:none}
@@ -523,7 +549,12 @@
     h1{white-space:normal;font-size:10.6vw}
     .case h3,.svc-card h3,.edu b,.jobs b,.jobs span{white-space:normal}
     .exp > div{padding:22px 20px}
-    .ptable thead{display:none}
+    .ptable thead,.deliv-t thead{display:none}
+    .deliv-t,.deliv-t tbody,.deliv-t tr,.deliv-t td{display:block}
+    .deliv-t tr{padding:12px 0;border-bottom:1px solid var(--line)}
+    .deliv-t td{border:0;padding:2px 0}
+    .deliv-t td:nth-child(3)::before{content:"Needs: ";color:var(--muted)}
+    .deliv-t td:nth-child(4)::before{content:"Done: ";color:var(--muted)}
     .ptable,.ptable tbody,.ptable tr,.ptable td{display:block}
     .ptable tr{padding:14px 0;border-bottom:1px solid rgba(11,26,51,.22)}
     .ptable td{border:0;padding:2px 0}
@@ -603,8 +634,8 @@
           </div>
         </div>
         <figure class="hero-fig rv" style="--d:.2s">
-          <img src="assets/dashboard-executive-sales-demo.jpg" alt="Executive Sales Overview dashboard in Power BI" width="1600" height="651" fetchpriority="high">
-          <img src="assets/dashboard-customer-segmentation-demo.jpg" alt="Customer Segmentation dashboard in Power BI" width="1600" height="536" loading="lazy">
+          <img class="zoom" tabindex="0" role="button" data-cap="Executive Sales Overview: is the business ahead of last year, and which quarter carried it?" src="assets/dashboard-executive-sales-demo.jpg" alt="Executive Sales Overview dashboard in Power BI" width="1600" height="651" fetchpriority="high">
+          <img class="zoom" tabindex="0" role="button" data-cap="Customer Segmentation: which customer groups are growing, and where sales should focus." src="assets/dashboard-customer-segmentation-demo.jpg" alt="Customer Segmentation dashboard in Power BI" width="1600" height="536" loading="lazy">
         </figure>
       </div>
     </div>
@@ -617,7 +648,7 @@
         <p class="rv" style="--d:.06s">Delivered In-House on SAP Business One.</p>
       </div>
       <ul class="figs">
-        <li class="rv"><strong>260</strong><b>Report Defects Found</b><span>In a 93-query SAP reporting library, then closed with a review standard.</span></li>
+        <li class="rv"><strong>260</strong><b>Report Defects Found</b><span>In a 93-query SAP reporting library, with every fix tracked in a remediation workbook. <a class="tlink" href="blog/sap-business-one-reporting-library-audit/">Read the case study</a>.</span></li>
         <li class="rv" style="--d:.07s"><strong>½ Day</strong><b>Cut to Minutes</b><span>Supplier price files merged into one master price list with AI-assisted tooling.</span></li>
         <li class="rv" style="--d:.14s"><strong>2</strong><b>Countries Planned</b><span>A demand-driven min/max model plans U.S. and Canadian replenishment.</span></li>
         <li class="rv" style="--d:.21s"><strong>5+</strong><b>Years Professional Experience</b><span>Including 3+ years on SAP Business One: reporting, master data and import compliance.</span></li>
@@ -661,7 +692,7 @@
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Item Master Data</span></li>
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Business Partner Master Data</span></li>
   </ul>
-          <div class="svc-foot"><span>Start Here</span><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true"><polygon points="67,4 73,4 70,9" fill="#F2F6FB"></polygon><rect x="0" y="14" width="44" height="12" rx="4" fill="#FF8A8A"></rect><rect x="49" y="14" width="44" height="12" rx="4" fill="#FFB86B"></rect><rect x="98" y="14" width="44" height="12" rx="4" fill="#F39C12" opacity="0.55"></rect><rect x="147" y="14" width="44" height="12" rx="4" fill="#13A6A0" opacity="0.55"></rect><rect x="196" y="14" width="44" height="12" rx="4" fill="#3CC8BE" opacity="0.55"></rect><rect x="0" y="32" width="120" height="3" rx="1.5" fill="#3A5070"></rect><rect x="0" y="32" width="70" height="3" rx="1.5" fill="#A9B6C8"></rect></svg></div>
+          <div class="svc-foot"><a class="svc-go" href="https://calendly.com/saplytics/30min?utm_source=saplytics.ca&amp;utm_medium=website&amp;utm_content=data-health-check" target="_blank" rel="noopener">Start Here →</a><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true"><polygon points="67,4 73,4 70,9" fill="#F2F6FB"></polygon><rect x="0" y="14" width="44" height="12" rx="4" fill="#FF8A8A"></rect><rect x="49" y="14" width="44" height="12" rx="4" fill="#FFB86B"></rect><rect x="98" y="14" width="44" height="12" rx="4" fill="#F39C12" opacity="0.55"></rect><rect x="147" y="14" width="44" height="12" rx="4" fill="#13A6A0" opacity="0.55"></rect><rect x="196" y="14" width="44" height="12" rx="4" fill="#3CC8BE" opacity="0.55"></rect><rect x="0" y="32" width="120" height="3" rx="1.5" fill="#3A5070"></rect><rect x="0" y="32" width="70" height="3" rx="1.5" fill="#A9B6C8"></rect></svg></div>
         </article>
         <article class="svc-card core rv" style="--d:0.07s" aria-labelledby="sv2">
           <span class="svc-tag">Core Offer</span>
@@ -675,7 +706,7 @@
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Inventory Status Report</span></li>
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>AI-Assisted Reporting</span></li>
   </ul>
-          <div class="svc-foot"><span>Build It Right</span><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="36" height="32" rx="7" stroke="#3CC8BE" stroke-width="2"></rect><ellipse cx="20" cy="14" rx="9" ry="3.5" stroke="#3CC8BE" stroke-width="1.8"></ellipse><path d="M11 14v12c0 2 4 3.5 9 3.5s9-1.5 9-3.5V14" stroke="#3CC8BE" stroke-width="1.8"></path><line x1="46" y1="20" x2="92" y2="20" stroke="#6B7F99" stroke-width="2" stroke-dasharray="3 4"></line><polyline points="88 16 93 20 88 24" stroke="#6B7F99" stroke-width="2"></polyline><rect x="102" y="4" width="36" height="32" rx="7" stroke="#13A6A0" stroke-width="2"></rect><line x1="110" y1="14" x2="130" y2="14" stroke="#13A6A0" stroke-width="1.8"></line><line x1="110" y1="20" x2="130" y2="20" stroke="#13A6A0" stroke-width="1.8"></line><line x1="110" y1="26" x2="130" y2="26" stroke="#13A6A0" stroke-width="1.8"></line><line x1="118" y1="10" x2="118" y2="30" stroke="#13A6A0" stroke-width="1.8"></line><line x1="146" y1="20" x2="192" y2="20" stroke="#6B7F99" stroke-width="2" stroke-dasharray="3 4"></line><polyline points="188 16 193 20 188 24" stroke="#6B7F99" stroke-width="2"></polyline><rect x="202" y="4" width="36" height="32" rx="7" stroke="#F39C12" stroke-width="2"></rect><rect x="210" y="20" width="4" height="9" fill="#F39C12" stroke="none"></rect><rect x="217" y="15" width="4" height="14" fill="#F39C12" stroke="none"></rect><rect x="224" y="10" width="4" height="19" fill="#F39C12" stroke="none"></rect></svg></div>
+          <div class="svc-foot"><a class="svc-go" href="https://calendly.com/saplytics/30min?utm_source=saplytics.ca&amp;utm_medium=website&amp;utm_content=reporting-stack" target="_blank" rel="noopener">Build It Right →</a><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="36" height="32" rx="7" stroke="#3CC8BE" stroke-width="2"></rect><ellipse cx="20" cy="14" rx="9" ry="3.5" stroke="#3CC8BE" stroke-width="1.8"></ellipse><path d="M11 14v12c0 2 4 3.5 9 3.5s9-1.5 9-3.5V14" stroke="#3CC8BE" stroke-width="1.8"></path><line x1="46" y1="20" x2="92" y2="20" stroke="#6B7F99" stroke-width="2" stroke-dasharray="3 4"></line><polyline points="88 16 93 20 88 24" stroke="#6B7F99" stroke-width="2"></polyline><rect x="102" y="4" width="36" height="32" rx="7" stroke="#13A6A0" stroke-width="2"></rect><line x1="110" y1="14" x2="130" y2="14" stroke="#13A6A0" stroke-width="1.8"></line><line x1="110" y1="20" x2="130" y2="20" stroke="#13A6A0" stroke-width="1.8"></line><line x1="110" y1="26" x2="130" y2="26" stroke="#13A6A0" stroke-width="1.8"></line><line x1="118" y1="10" x2="118" y2="30" stroke="#13A6A0" stroke-width="1.8"></line><line x1="146" y1="20" x2="192" y2="20" stroke="#6B7F99" stroke-width="2" stroke-dasharray="3 4"></line><polyline points="188 16 193 20 188 24" stroke="#6B7F99" stroke-width="2"></polyline><rect x="202" y="4" width="36" height="32" rx="7" stroke="#F39C12" stroke-width="2"></rect><rect x="210" y="20" width="4" height="9" fill="#F39C12" stroke="none"></rect><rect x="217" y="15" width="4" height="14" fill="#F39C12" stroke="none"></rect><rect x="224" y="10" width="4" height="19" fill="#F39C12" stroke="none"></rect></svg></div>
         </article>
         <article class="svc-card rv" style="--d:0.14s" aria-labelledby="sv3">
           <div class="svc-top"><svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 17 9 11 13 15 21 7"></polyline><polyline points="15 7 21 7 21 13"></polyline></svg><span class="svc-n">03</span></div>
@@ -688,7 +719,7 @@
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Forecast PO Qty</span></li>
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>GM by Customer and Item</span></li>
   </ul>
-          <div class="svc-foot"><span>Go Deeper</span><svg class="svc-art" viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="0" y1="26" x2="240" y2="26" stroke="#F39C12" stroke-width="1.5" stroke-dasharray="5 5"></line><polyline points="0,8 30,12 60,10 90,17 120,21 150,28 170,31" stroke="#3CC8BE" stroke-width="2.4"></polyline><polyline points="170,31 185,10 215,12 240,16" stroke="#13A6A0" stroke-width="2.4"></polyline><circle cx="170" cy="31" r="4" fill="#F39C12"></circle></svg></div>
+          <div class="svc-foot"><a class="svc-go" href="https://calendly.com/saplytics/30min?utm_source=saplytics.ca&amp;utm_medium=website&amp;utm_content=business-analytics" target="_blank" rel="noopener">Go Deeper →</a><svg class="svc-art" viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="0" y1="26" x2="240" y2="26" stroke="#F39C12" stroke-width="1.5" stroke-dasharray="5 5"></line><polyline points="0,8 30,12 60,10 90,17 120,21 150,28 170,31" stroke="#3CC8BE" stroke-width="2.4"></polyline><polyline points="170,31 185,10 215,12 240,16" stroke="#13A6A0" stroke-width="2.4"></polyline><circle cx="170" cy="31" r="4" fill="#F39C12"></circle></svg></div>
         </article>
         <article class="svc-card rv" style="--d:0.21s" aria-labelledby="sv4">
           <div class="svc-top"><svg class="svc-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"></path></svg><span class="svc-n">04</span></div>
@@ -700,8 +731,21 @@
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>Landed-Cost Calculation</span></li>
     <li><svg class="ck" viewBox="0 0 24 24" fill="none" stroke="#F39C12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 12 10 18 20 6"></polyline></svg><span>CBSA Drawback Claims</span></li>
   </ul>
-          <div class="svc-foot"><span>Recover Duty</span><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="0" y="10" width="34" height="26" rx="4" fill="#3CC8BE" opacity="0.55" stroke="none"></rect><rect x="42" y="4" width="34" height="32" rx="4" fill="#3CC8BE" opacity="0.75" stroke="none"></rect><rect x="84" y="14" width="34" height="22" rx="4" fill="#3CC8BE" stroke="none"></rect><path d="M128 20 H200" stroke="#7C93B2" stroke-width="2" stroke-dasharray="3 4"></path><polyline points="196 15 202 20 196 25" stroke="#7C93B2" stroke-width="2"></polyline><circle cx="222" cy="20" r="13" fill="#F39C12" stroke="none"></circle><path d="M226 14 a6 6 0 1 0 2 8" stroke="#0B1A33" stroke-width="2.4"></path><polyline points="229 10 228 15 223 14" stroke="#0B1A33" stroke-width="2.4"></polyline></svg></div>
+          <div class="svc-foot"><a class="svc-go" href="https://calendly.com/saplytics/30min?utm_source=saplytics.ca&amp;utm_medium=website&amp;utm_content=trade-customs" target="_blank" rel="noopener">Recover Duty →</a><svg class="svc-art" viewBox="0 0 240 40" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="0" y="10" width="34" height="26" rx="4" fill="#3CC8BE" opacity="0.55" stroke="none"></rect><rect x="42" y="4" width="34" height="32" rx="4" fill="#3CC8BE" opacity="0.75" stroke="none"></rect><rect x="84" y="14" width="34" height="22" rx="4" fill="#3CC8BE" stroke="none"></rect><path d="M128 20 H200" stroke="#7C93B2" stroke-width="2" stroke-dasharray="3 4"></path><polyline points="196 15 202 20 196 25" stroke="#7C93B2" stroke-width="2"></polyline><circle cx="222" cy="20" r="13" fill="#F39C12" stroke="none"></circle><path d="M226 14 a6 6 0 1 0 2 8" stroke="#0B1A33" stroke-width="2.4"></path><polyline points="229 10 228 15 223 14" stroke="#0B1A33" stroke-width="2.4"></polyline></svg></div>
         </article>
+      </div>
+      <div class="deliv-wrap rv">
+        <h3>What You Get</h3>
+        <table class="deliv-t">
+          <thead><tr><th scope="col">Service</th><th scope="col">You Receive</th><th scope="col">We Need From You</th><th scope="col">Done When</th></tr></thead>
+          <tbody>
+            <tr><td>Data Health Check</td><td>Findings report and a ranked fix list, walked through on a call</td><td>A read-only SAP login and your key reports</td><td>Findings are reviewed with you</td></tr>
+            <tr><td>Reporting Stack</td><td>Agreed reports in Excel or Power BI, refreshing on schedule, with documentation</td><td>A read-only login, your report wish list and one person to test</td><td>Each report reconciles to SAP and you sign off</td></tr>
+            <tr><td>Business Analytics</td><td>Min/max and stock model, margin and supplier analysis, with documentation</td><td>A read-only login and your lead-time and ordering rules</td><td>You sign off after a test cycle on your own data</td></tr>
+            <tr><td>Trade &amp; Customs</td><td>HTS and origin data review, landed-cost model, drawback claim file</td><td>A read-only login and your broker's import (B3) files</td><td>Reviewed with you and your customs broker</td></tr>
+          </tbody>
+        </table>
+        <p class="deliv-note">Every project is scoped and quoted in writing after the free review, before any work starts.</p>
       </div>
       <div class="quality rv">
         <h3>Quality Built In</h3>
@@ -713,7 +757,7 @@
           <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h11l-3-3"></path><path d="M20 17H9l3 3"></path></svg><span>Migrated? Old and New Databases in One View</span></li>
           <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line></svg><span>Runs in SAP Query Manager, With Drill-Down to Documents</span></li>
           <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h9l5 5v15H6z"></path><path d="M15 2v5h5"></path><line x1="9" y1="13" x2="16" y2="13"></line><line x1="9" y1="17" x2="14" y2="17"></line></svg><span>Documented and Handed Over: You Own Every Query</span></li>
-          <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"></polyline></svg><span>Built Not to Slow Down Your Users' SAP</span></li>
+          <li><svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="#3CC8BE" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"></polyline></svg><span>Performance-Tested Before It Runs on Live SAP</span></li>
         </ul>
       </div>
     </div>
@@ -728,7 +772,7 @@
       <ol class="steps">
         <li class="rv"><h3>Free 30-Min Review</h3><p>On your own SAP screens, you show me the report that's off. I explain why, and what fixing it takes. No obligation.</p></li>
         <li class="rv" style="--d:.07s"><h3>Read-Only Access</h3><p>You create a login for me with only the access the work needs.</p></li>
-        <li class="rv" style="--d:.14s"><h3>Build and Reconcile</h3><p>Reports are built and every figure is checked against SAP before you see it.</p></li>
+        <li class="rv" style="--d:.14s"><h3>Build and Reconcile</h3><p>Totals are reconciled to SAP's own reports, within a tolerance agreed with you, before sign-off.</p></li>
         <li class="rv" style="--d:.21s"><h3>Handover and Support</h3><p>You get the reports, the documentation and rollout support in English or French.</p></li>
       </ol>
     </div>
@@ -741,20 +785,7 @@
         <p class="rv" style="--d:.06s">Projects Delivered on SAP Business One. Client Figures Kept Confidential.</p>
       </div>
 
-      <article class="case" aria-labelledby="c1">
-        <div class="txt">
-          <h3 id="c1" class="rv">SAP Reporting Library Audit</h3>
-          <p class="tags rv">SQL · Query Review · Documentation</p>
-          <p class="outcome rv">A reporting library the whole company can trust again.</p>
-          <p class="rv"><b>The Problem.</b> Years of saved SAP queries, written by different people, with no shared rules. Nobody knew which reports could be trusted.</p>
-          <p class="rv"><b>What I Built.</b> An automated review that scored every query for correctness and performance, and a prioritized remediation workbook.</p>
-        </div>
-        <figure class="vis img rv" style="--d:.1s">
-          <img src="assets/case-reporting-audit.png" alt="SAP Reporting Library Audit: 93 queries reviewed, 260 defects flagged, 2.8 defects per query, 3 workbook sheets; delivered coding conventions, review standard, change log and remediation workbook" width="1400" height="635" loading="lazy">
-        </figure>
-      </article>
-
-      <article class="case flip" aria-labelledby="c2">
+      <article class="case" aria-labelledby="c2">
         <div class="txt">
           <h3 id="c2" class="rv">Inventory Min/Max Model</h3>
           <p class="tags rv">SQL Server · Power BI · Demand Planning</p>
@@ -766,21 +797,21 @@
           <div data-ui class="ui" role="img" aria-label="Reorder suggestions table">
             <div class="ui-t"><b>Reorder Suggestions</b><span>Main Warehouse</span></div>
             <table>
-              <thead><tr><th>Item</th><th>Class</th><th class="r">On Hand</th><th class="r hide-s">Lead Time</th><th class="r">Min</th><th class="r">Max</th><th class="r">Buy</th></tr></thead>
+              <thead><tr><th>Item</th><th>Class</th><th class="r">On Hand</th><th class="r hide-s">Lead Time</th><th class="r">Min</th><th class="r">Max</th><th class="r">Multiple</th><th class="r">Buy</th></tr></thead>
               <tbody>
-                <tr><td>Hydraulic hose, 1/2 in</td><td><span class="pill">A</span></td><td class="r">14</td><td class="r hide-s">38 d</td><td class="r">40</td><td class="r">96</td><td class="r strong">84</td></tr>
-                <tr><td>Brake pad set</td><td><span class="pill">A</span></td><td class="r">63</td><td class="r hide-s">21 d</td><td class="r">55</td><td class="r">120</td><td class="r dim">0</td></tr>
-                <tr><td>Cable ties, 300 mm</td><td><span class="pill">B</span></td><td class="r">210</td><td class="r hide-s">45 d</td><td class="r">300</td><td class="r">720</td><td class="r strong">600</td></tr>
-                <tr><td>Air filter</td><td><span class="pill">C</span></td><td class="r">9</td><td class="r hide-s">30 d</td><td class="r">6</td><td class="r">18</td><td class="r dim">0</td></tr>
-                <tr><td>Fuel cap</td><td><span class="pill d">D</span></td><td class="r">48</td><td class="r hide-s">—</td><td class="r">0</td><td class="r">0</td><td class="r dim">0</td></tr>
+                <tr><td>Hydraulic hose, 1/2 in</td><td><span class="pill">A</span></td><td class="r">14</td><td class="r hide-s">38 d</td><td class="r">40</td><td class="r">96</td><td class="r">12</td><td class="r strong">84</td></tr>
+                <tr><td>Brake pad set</td><td><span class="pill">A</span></td><td class="r">63</td><td class="r hide-s">21 d</td><td class="r">55</td><td class="r">120</td><td class="r">10</td><td class="r dim">0</td></tr>
+                <tr><td>Cable ties, 300 mm</td><td><span class="pill">B</span></td><td class="r">210</td><td class="r hide-s">45 d</td><td class="r">300</td><td class="r">720</td><td class="r">100</td><td class="r strong">600</td></tr>
+                <tr><td>Air filter</td><td><span class="pill">C</span></td><td class="r">9</td><td class="r hide-s">30 d</td><td class="r">6</td><td class="r">18</td><td class="r">6</td><td class="r dim">0</td></tr>
+                <tr><td>Fuel cap</td><td><span class="pill d">D</span></td><td class="r">48</td><td class="r hide-s">—</td><td class="r">0</td><td class="r">0</td><td class="r">—</td><td class="r dim">0</td></tr>
               </tbody>
             </table>
-            <p class="note">Min = average daily demand × lead time + safety stock. Buy = Max − on hand − on order.</p>
+            <p class="note">When on hand falls below Min, Buy = Max − on hand, rounded up to the order multiple. Hose: 96 − 14 = 82 → 84. Cable ties: 720 − 210 = 510 → 600. No open POs in this example.</p>
           </div>
         </div>
       </article>
 
-      <article class="case" aria-labelledby="c3">
+      <article class="case flip" aria-labelledby="c3">
         <div class="txt">
           <h3 id="c3" class="rv">Multi-Level Pricing Model</h3>
           <p class="tags rv">Pricing · Landed Cost · Excel · AI-Assisted Tooling</p>
@@ -789,34 +820,8 @@
           <p class="rv"><b>What I Built.</b> A single landed-cost base price that drives every level's price and margin automatically, plus a tool that merges multi-format supplier files into one master price list.</p>
         </div>
         <figure class="vis img rv" style="--d:.1s">
-          <img src="assets/case-price-ladder.png" alt="Price ladder: landed cost from FOB, freight and duty, and the price for OEM, warehouse distributor and OES customers at 30% and 55% tariff" width="1400" height="744" loading="lazy">
+          <img class="zoom" tabindex="0" role="button" data-cap="Price Ladder: what every customer level pays when landed cost or tariffs change." src="assets/case-price-ladder.png" alt="Price ladder: landed cost from FOB, freight and duty, and the price for OEM, warehouse distributor and OES customers at 30% and 55% tariff" width="1400" height="744" loading="lazy">
         </figure>
-      </article>
-
-      <article class="case flip" aria-labelledby="c4">
-        <div class="txt">
-          <h3 id="c4" class="rv">Duty Drawback Automation</h3>
-          <p class="tags rv">CBSA · K32 · CARM · CUSMA</p>
-          <p class="outcome rv">A manual spreadsheet claim process replaced by an end-to-end SQL pipeline.</p>
-          <p class="rv"><b>The Problem.</b> Duty paid on goods imported into Canada can be recovered when the same goods are re-exported to the U.S., but matching thousands of export lines by hand made every claim slow and risky.</p>
-          <p class="rv"><b>What I Built.</b> First-in, first-out matching of each export line to the import entry that paid its duty, five eligibility gates, the CUSMA lesser-of-two-duties rule and the claim arithmetic, all in SQL.</p>
-        </div>
-        <div class="vis rv" style="--d:.1s">
-          <div data-ui class="ui" role="img" aria-label="Drawback matching table">
-            <div class="ui-t"><b>Drawback Claim · Line Matching</b><span>CAD</span></div>
-            <div class="kv"><div>Export Lines<b>3</b></div><div>Matched to B3<b>3 of 3</b></div><div>Duty-Free Dropped<b>1</b></div></div>
-            <table>
-              <thead><tr><th>Export Line</th><th class="hide-s">B3 Entry</th><th class="r">Duty Paid in Canada</th><th class="r">Duty Owed in U.S.</th><th class="r">Recoverable</th></tr></thead>
-              <tbody>
-                <tr><td>Steel lug nut M22 × 2,400</td><td class="hide-s">…0412</td><td class="r">201.60</td><td class="r">1,512.00</td><td class="r strong">201.60</td></tr>
-                <tr><td>Toolbox latch × 300</td><td class="hide-s">…0398</td><td class="r">183.00</td><td class="r">92.40</td><td class="r strong">92.40</td></tr>
-                <tr><td>LED marker lamp × 1,200</td><td class="hide-s">…0377</td><td class="r">0.00</td><td class="r">0.00</td><td class="r"><span class="pill off">Free · dropped</span></td></tr>
-              </tbody>
-              <tfoot><tr class="total"><td colspan="3">Claim total, lesser of the two duties per line</td><td class="hide-s"></td><td class="r">294.00</td></tr></tfoot>
-            </table>
-            <p class="note">A duty-free heading recovers nothing, so it leaves the claim before matching.</p>
-          </div>
-        </div>
       </article>
 
       <article class="case" aria-labelledby="c5">
@@ -856,9 +861,10 @@
           <p class="rv"><b>What I Built.</b> A line-level SAP B1 → Power BI model: invoices minus credit memos, freight at document level, same-pace year-to-date versus last year, and a customer bridge so one customer can sit in several segments.</p>
         </div>
         <figure class="vis img rv" style="--d:.1s">
-          <img src="assets/case-sales-product-rep.png" alt="Product and rep performance in Power BI: net sales by item group and by sales rep, 2026 year to date" width="1410" height="778" loading="lazy">
+          <img class="zoom" tabindex="0" role="button" data-cap="Product &amp; Rep Performance: which product lines and reps drive sales this year." src="assets/case-sales-product-rep.png" alt="Product and rep performance in Power BI: net sales by item group and by sales rep, 2026 year to date" width="1410" height="778" loading="lazy">
         </figure>
       </article>
+      <p class="more-cases rv">More case studies on the blog: <a class="tlink" href="blog/sap-business-one-reporting-library-audit/">SAP Reporting Library Audit</a> · <a class="tlink" href="blog/cbsa-duty-drawback-automation/">CBSA Duty Drawback Automation</a></p>
     </div>
   </section>
 
@@ -909,6 +915,7 @@
       <div class="faq-grid">
         <div class="rv">
           <details><summary>What Do I Get at the End?</summary><p>Working reports your team uses every day: SAP queries, Excel workbooks that refresh themselves, Power BI dashboards, or all three. Each one comes with documentation and a reconciliation that shows its totals match SAP. You own all of it.</p></details>
+          <details><summary>How Much Does It Cost?</summary><p>Every project is different, so it is quoted after a short assessment. After the free review, you get a written scope and a quote covering what you will receive and when, before any work starts. No obligation.</p></details>
           <details><summary>How Long Does It Take?</summary><p>It depends on the scope: a Data Health Check is quicker than a full reporting stack. After the free review you get a short written scope with what you'll receive and a delivery date, before any work starts.</p></details>
           <details><summary>How Does the Work Happen?</summary><p>Free review, then a read-only login, then build and reconcile, then handover with rollout support. I work remotely anywhere, or on site in Montréal and within about 300 km, including Ottawa, in English or French.</p></details>
           <details><summary>What Does the Free 30-Min Review Include?</summary><p>You share your screen and show me a report that doesn't match, or a question SAP can't answer. I explain why, and what fixing it would involve. No obligation. <a class="tlink" href="https://calendly.com/saplytics/30min" target="_blank" rel="noopener">Pick a time on Calendly</a>.</p></details>
@@ -1016,6 +1023,10 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
 </footer>
 </div>
 
+<dialog id="lightbox" aria-label="Enlarged image">
+  <figure><img id="lb-img" src="" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <button type="button" id="lb-close" aria-label="Close">×</button>
+</dialog>
 <script>
   document.documentElement.classList.add('js');
   const root=document.getElementById('root');
@@ -1027,6 +1038,13 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
   const fitVis=()=>{document.querySelectorAll('.vis > [data-ui].ui').forEach(u=>{u.style.zoom='';if(innerWidth<=960)return;let z=1;while(u.scrollHeight>u.clientHeight+1&&z>.8){z-=.01;u.style.zoom=z.toFixed(2);}});};
   addEventListener('load',fitVis);addEventListener('resize',fitVis);
 
+
+  // click any dashboard to see it full size
+  const lb=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img'),lbCap=document.getElementById('lb-cap');
+  const openLb=i=>{lbImg.src=i.src;lbImg.alt=i.alt;lbCap.textContent=i.dataset.cap||i.alt;lb.showModal();};
+  document.querySelectorAll('img.zoom').forEach(i=>{i.addEventListener('click',()=>openLb(i));i.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openLb(i);}});});
+  document.getElementById('lb-close').addEventListener('click',()=>lb.close());
+  lb.addEventListener('click',e=>{if(e.target===lb)lb.close();});
 
   // light SQL highlighting
   const code=document.getElementById('code');
