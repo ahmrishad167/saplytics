@@ -1013,6 +1013,14 @@ GROUP BY YEAR(H.DocDate);</code></pre>
   addEventListener('load',fitVis);addEventListener('resize',fitVis);
 
 
+  // logo always returns to the very top (mobile browsers can ignore empty anchors)
+  document.querySelectorAll('a[href="#top"]').forEach(a=>a.addEventListener('click',e=>{
+    e.preventDefault();
+    const bar=document.querySelector('.bar');if(bar)bar.classList.remove('open');
+    window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    if(location.hash)history.replaceState(null,'',location.pathname+location.search);
+  }));
+
   // phone and tablet menu
   (()=>{const bar=document.querySelector('.bar'),btn=bar&&bar.querySelector('.menu-btn');if(!btn)return;
     const set=o=>{bar.classList.toggle('open',o);btn.setAttribute('aria-expanded',o);btn.setAttribute('aria-label',o?'Close menu':'Open menu');};
