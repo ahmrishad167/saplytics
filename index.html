@@ -358,7 +358,7 @@
       <a class="tlink" href="#faq">FAQ</a>
       <a class="tlink" href="#contact">Contact</a>
     </nav>
-    <a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Free Review</a>
+    <a class="btn" href="https://calendly.com/saplytics/30min" target="_blank" rel="noopener">Free Review</a>
   </div>
 </header>
 
@@ -379,7 +379,7 @@
           </ul>
           <p class="meta rv" style="--d:.42s">English &amp; French · Remote, or On Site Within 300 km of Montréal</p>
           <div class="cta rv" style="--d:.48s">
-            <a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Book a Free 30-Min Reporting Review</a>
+            <a class="btn" href="https://calendly.com/saplytics/30min" target="_blank" rel="noopener">Book a Free 30-Min Reporting Review</a>
             <a class="btn ghost" href="#services">See Services</a>
           </div>
         </div>
@@ -692,7 +692,7 @@
           <details><summary>What Do I Get at the End?</summary><p>Working reports your team uses every day: SAP queries, Excel workbooks that refresh themselves, Power BI dashboards, or all three. Each one comes with documentation and a reconciliation that shows its totals match SAP. You own all of it.</p></details>
           <details><summary>How Long Does It Take?</summary><p>It depends on the scope: a Data Health Check is quicker than a full reporting stack. After the free review you get a short written scope with what you'll receive and a delivery date, before any work starts.</p></details>
           <details><summary>How Does the Work Happen?</summary><p>Free review, then a read-only login, then build and reconcile, then handover with rollout support. I work remotely anywhere, or on site in Montréal and within about 300 km, including Ottawa, in English or French.</p></details>
-          <details><summary>What Does the Free 30-Min Review Include?</summary><p>You share your screen and show me a report that doesn't match, or a question SAP can't answer. I explain why, and what fixing it would involve. No obligation.</p></details>
+          <details><summary>What Does the Free 30-Min Review Include?</summary><p>You share your screen and show me a report that doesn't match, or a question SAP can't answer. I explain why, and what fixing it would involve. No obligation. <a class="tlink" href="https://calendly.com/saplytics/30min" target="_blank" rel="noopener">Pick a time on Calendly</a>.</p></details>
         </div>
         <div class="rv" style="--d:.08s">
           <details><summary>Is My SAP Data Safe?</summary><p>Yes. You create the login, with only the access the work needs, and you can switch it off at any time. I only read from SAP; nothing is ever written back, and every query is checked for performance before it runs on your live database.</p></details>
@@ -774,7 +774,7 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
           <svg class="cta-art" viewBox="0 0 210 90" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="84" x2="206" y2="84" stroke="#2B4468" stroke-width="2"></line><path d="M6 74 C 40 70, 55 52, 85 56 S 135 30, 160 32 S 190 14, 204 8" stroke="#3CC8BE" stroke-width="3"></path><circle cx="85" cy="56" r="4.5" fill="#3CC8BE" stroke="none"></circle><circle cx="160" cy="32" r="4.5" fill="#3CC8BE" stroke="none"></circle><circle cx="204" cy="8" r="5.5" fill="#F39C12" stroke="none"></circle></svg>
           <div class="c-mid">
             <div class="cta">
-              <a class="btn js-review" href="mailto:ahm.rishad@outlook.com?subject=Free%2030-Min%20Reporting%20Review">Book a Free 30-Min Review</a>
+              <a class="btn" href="https://calendly.com/saplytics/30min" target="_blank" rel="noopener">Book a Free 30-Min Review</a>
               <a class="btn ghost" href="mailto:ahm.rishad@outlook.com?subject=SAPlytics%20Enquiry">Email Me</a>
             </div>
             <p class="li">Free, No Obligation · Or Connect on <a class="tlink" href="https://www.linkedin.com/in/md-rishad-ahmed-8633b5231" target="_blank" rel="noopener">LinkedIn</a></p>
@@ -808,9 +808,6 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
   const fitVis=()=>{document.querySelectorAll('.vis > [data-ui].ui').forEach(u=>{u.style.zoom='';if(innerWidth<=960)return;let z=1;while(u.scrollHeight>u.clientHeight+1&&z>.8){z-=.01;u.style.zoom=z.toFixed(2);}});};
   addEventListener('load',fitVis);addEventListener('resize',fitVis);
 
-  // free review emails arrive with a short brief already written
-  const brief='Hi Rishad,\n\nWe run SAP Business One and would like a free 30-minute reporting review.\n\nCompany:\nThe report that is off:\nWhat it should show:\nBest days and times:\n';
-  document.querySelectorAll('.js-review').forEach(a=>{a.href='mailto:ahm.rishad@outlook.com?subject='+encodeURIComponent('Free 30-Min Reporting Review')+'&body='+encodeURIComponent(brief);});
 
   // light SQL highlighting
   const code=document.getElementById('code');
