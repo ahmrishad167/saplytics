@@ -224,7 +224,7 @@
   .faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px;align-items:start}
   .faq-grid > div{display:grid;gap:12px}
   .faq details{background:var(--ground-2)}
-  .faq summary{cursor:pointer;list-style:none;padding:20px 60px 20px 24px;font-size:18px;font-weight:700;position:relative}
+  .faq summary{cursor:pointer;list-style:none;padding:20px 50px 20px 22px;font-size:clamp(15px,1.15vw,16.5px);font-weight:700;position:relative}
   .faq summary::-webkit-details-marker{display:none}
   .faq summary::after{content:"+";position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:28px;font-weight:600;color:var(--accent);transition:transform .25s var(--ease)}
   .faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
@@ -697,7 +697,7 @@
         <div class="rv" style="--d:.08s">
           <details><summary>Is My SAP Data Safe?</summary><p>Yes. You create the login, with only the access the work needs, and you can switch it off at any time. I only read from SAP; nothing is ever written back, and every query is checked for performance before it runs on your live database.</p></details>
           <details><summary>Do You Work With SAP B1 on HANA?</summary><p>Yes. SAP Business One on SQL Server or HANA, as long as I can connect to a valid company database.</p></details>
-          <details><summary>We Just Migrated to a New Database. Can You Still Report on History?</summary><p>Yes. Old and new SAP databases can be combined into one view, including open orders and backorders rebuilt across the changeover.</p></details>
+          <details><summary>Migrated to a New Database. Can We Still Report on History?</summary><p>Yes. Your old and new SAP databases, or several company databases, are combined in the same report, so history and current data sit side by side. Open orders and backorders are rebuilt across the changeover, so nothing is lost or counted twice.</p></details>
           <details><summary>Who Maintains the Reports Afterwards?</summary><p>Your team can. Every query and model is documented and handed over, and I stay available for changes and support when you need them.</p></details>
         </div>
       </div>
