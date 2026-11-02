@@ -459,7 +459,9 @@
   .faq summary:hover{color:var(--teal)}
   .faq details p{padding:0 24px 22px;font-size:17px;color:var(--muted)}
   /* ---------- IT team ---------- */
-  .it .grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:start}
+  .it .grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:stretch}
+  .it .grid > figure{display:flex;flex-direction:column;margin:0}
+  .it .grid > figure pre{flex:1;display:flex;align-items:center}
   .rules{list-style:none;display:grid;gap:16px}
   .rules li{font-size:17px}
   .rules b{display:block;color:var(--teal);font-weight:700}
@@ -928,34 +930,17 @@
           <li class="rv" style="--d:.18s"><b>Freight at Document Level</b>Joined per line, freight repeats and inflates totals.</li>
         </ul>
         <figure class="rv" style="--d:.1s">
-<pre><code id="code">SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
-SET NOCOUNT ON;
-
-WITH SalesLines AS (
-    SELECT H.CardCode, L.ItemCode,
-           +L.Quantity AS Qty, +L.LineTotal AS NetSales
-    FROM OINV H
-    JOIN INV1 L ON L.DocEntry = H.DocEntry
-    WHERE H.CANCELED = 'N'
-      AND H.DocDate >= '2026-01-01' AND H.DocDate < '2027-01-01'
-
-    UNION ALL
-
-    SELECT H.CardCode, L.ItemCode,
-           -L.Quantity, -L.LineTotal
-    FROM ORIN H
-    JOIN RIN1 L ON L.DocEntry = H.DocEntry
-    WHERE H.CANCELED = 'N'
-      AND H.DocDate >= '2026-01-01' AND H.DocDate < '2027-01-01'
-)
-SELECT S.CardCode       AS [Customer],
-       C.CardName       AS [Customer Name],
-       SUM(S.Qty)       AS [Net Qty],
-       SUM(S.NetSales)  AS [Net Sales]
-FROM SalesLines S
-JOIN OCRD C ON C.CardCode = S.CardCode
-GROUP BY S.CardCode, C.CardName;</code></pre>
-          <figcaption>Net Sales by Customer: Invoices Minus Credit Memos, Cancelled Documents Excluded</figcaption>
+<pre><code id="code">SELECT YEAR(H.DocDate)  AS [Year],
+       SUM(L.Quantity)  AS [Sales Qty],
+       SUM(L.LineTotal) AS [Sales $]
+FROM OINV H
+JOIN INV1 L ON L.DocEntry = H.DocEntry
+WHERE H.CANCELED = 'N'
+  AND H.DocDate >= '2025-01-01'
+  AND H.DocDate <  DATEADD(DAY, 1,
+                   CAST(GETDATE() AS date))
+GROUP BY YEAR(H.DocDate);</code></pre>
+          <figcaption>Sales Qty and $ by Year: All of 2025 and 2026 to Date, Cancelled Documents Excluded</figcaption>
         </figure>
       </div>
       <div class="lookup">
@@ -1041,7 +1026,7 @@ GROUP BY S.CardCode, C.CardName;</code></pre>
   // light SQL highlighting
   const code=document.getElementById('code');
   if(code){
-    const K='SET|TRANSACTION|ISOLATION|LEVEL|READ|UNCOMMITTED|NOCOUNT|ON|WITH|AS|SELECT|FROM|JOIN|WHERE|AND|UNION|ALL|SUM|GROUP|BY';
+    const K='SELECT|FROM|JOIN|ON|WHERE|AND|AS|SUM|YEAR|DATEADD|CAST|GETDATE|DAY|date|GROUP|BY';
     let h=code.textContent.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
     h=h.replace(/('[^']*')|(\[[^\]]*\])|\b(OINV|INV1|ORIN|RIN1|OCRD)\b/g,(m,s,b,t)=>s?'<span class="s">'+s+'</span>':'<span class="n">'+(b||t)+'</span>');
     h=h.replace(new RegExp('\\b('+K+')\\b(?![^<]*<\\/span>)','g'),'<span class="k">$1</span>');
