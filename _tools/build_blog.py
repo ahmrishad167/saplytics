@@ -51,6 +51,7 @@ HEAD = '''<!DOCTYPE html>
 <header class="bar">
   <div class="wrap">
     <a href="{up}" class="wm" aria-label="SAPlytics home"><img src="{up}assets/saplytics-badge-dark.svg" alt="SAPlytics" width="64" height="64"></a>
+    <p class="tagline">For Distributors and Manufacturers Running SAP Business One</p>
     <nav aria-label="Primary">
       <a href="{up}#services">Services</a>
       <a href="{up}#work">Case Studies</a>
