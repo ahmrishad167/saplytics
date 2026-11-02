@@ -569,7 +569,7 @@
     [data-ui].ui{padding:16px 14px;font-size:13px}
     .ui th,.ui td{padding:7px 5px}
     .ui .hide-s,.ui .sub{display:none}
-    pre{font-size:12.5px;padding:18px 16px}
+    pre{font-size:11.5px;padding:16px 14px}
     .tbl-in input{font-size:17vw}
     .contact .btn{width:100%}
     .hero .cta .btn{width:100%;padding:0 14px;font-size:15px}
@@ -920,17 +920,21 @@
     <div class="wrap">
       <div class="head">
         <h2 id="it-h" class="rv">For Your IT Team</h2>
-        <p class="rv" style="--d:.06s">Clean, Auditable SQL That Runs in SAP's Query Manager.</p>
+        <p class="rv" style="--d:.06s">SQL Your Team Can Review, Validate, and Maintain.</p>
       </div>
       <div class="grid">
         <ul class="rules">
-          <li class="rv"><b>Cancelled Means Both Documents</b>CANCELED = 'N' drops the cancelled invoice and the cancellation document that reverses it.</li>
-          <li class="rv" style="--d:.06s"><b>Credit Memos Are Netted</b>Returns and price corrections come off sales, by the same customer, item and period.</li>
-          <li class="rv" style="--d:.12s"><b>Half-Open Date Ranges</b>Never BETWEEN on a datetime, and no functions on indexed columns.</li>
-          <li class="rv" style="--d:.18s"><b>Freight at Document Level</b>Joined per line, freight repeats and inflates totals.</li>
+          <li class="rv"><b>Environment Compatibility</b>Queries tailored to your SAP Business One version and database platform: Microsoft SQL Server or SAP HANA.</li>
+          <li class="rv" style="--d:.06s"><b>Controlled Access</b>Uses approved reporting permissions and read-only queries.</li>
+          <li class="rv" style="--d:.12s"><b>Performance-Conscious Design</b>Scoped date ranges, deliberate joins, and appropriate aggregation help manage reporting workload.</li>
+          <li class="rv" style="--d:.18s"><b>Traceable Business Logic</b>Documented tables, filters, and calculations make results easier to audit and reconcile.</li>
+          <li class="rv" style="--d:.24s"><b>Maintainable Delivery</b>Clear naming, comments, and configurable filters make queries easier for your team to support.</li>
         </ul>
         <figure class="rv" style="--d:.1s">
-<pre><code id="code">SELECT YEAR(H.DocDate)  AS [Year],
+<pre><code id="code">SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+SET NOCOUNT ON;
+
+SELECT YEAR(H.DocDate)  AS [Year],
        SUM(L.Quantity)  AS [Sales Qty],
        SUM(L.LineTotal) AS [Sales $]
 FROM OINV H
@@ -1026,7 +1030,7 @@ GROUP BY YEAR(H.DocDate);</code></pre>
   // light SQL highlighting
   const code=document.getElementById('code');
   if(code){
-    const K='SELECT|FROM|JOIN|ON|WHERE|AND|AS|SUM|YEAR|DATEADD|CAST|GETDATE|DAY|date|GROUP|BY';
+    const K='SET|TRANSACTION|ISOLATION|LEVEL|READ|UNCOMMITTED|NOCOUNT|SELECT|FROM|JOIN|ON|WHERE|AND|AS|SUM|YEAR|DATEADD|CAST|GETDATE|DAY|date|GROUP|BY';
     let h=code.textContent.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
     h=h.replace(/('[^']*')|(\[[^\]]*\])|\b(OINV|INV1|ORIN|RIN1|OCRD)\b/g,(m,s,b,t)=>s?'<span class="s">'+s+'</span>':'<span class="n">'+(b||t)+'</span>');
     h=h.replace(new RegExp('\\b('+K+')\\b(?![^<]*<\\/span>)','g'),'<span class="k">$1</span>');
