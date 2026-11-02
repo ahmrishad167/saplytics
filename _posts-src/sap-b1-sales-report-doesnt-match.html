@@ -1,0 +1,75 @@
+<!--meta
+{
+ "slug": "sap-business-one-sales-report-doesnt-match",
+ "status": "published",
+ "date": "2026-11-01",
+ "title": "Why Your SAP Business One Sales Report Doesn't Match",
+ "seo_title": "Why Your SAP Business One Sales Report Doesn't Match | SAPlytics",
+ "description": "Seven reasons SAP B1 sales reports disagree with Sales Analysis: cancelled invoices, credit memos, freight, discounts, currency, dates and service lines. With a checklist.",
+ "kicker": "SAP B1 Reporting",
+ "keywords": "SAP Business One sales report, Sales Analysis, cancelled invoices, credit memos, OINV, ORIN, reconciliation",
+ "lede": "Two reports, two different sales totals, and a meeting spent arguing about which one is right. Here are the seven reasons this happens in SAP Business One, and how to make every report agree."
+}
+-->
+<p>It's one of the most common questions I hear from owners and controllers: <strong>"Why doesn't this report match SAP?"</strong> The saved query says one number, SAP's own Sales Analysis says another, and the Power BI dashboard says a third.</p>
+<p>Usually nobody made a mistake. Each report is answering a slightly different question. Once you know the seven places where they quietly differ, you can make them agree, and keep them agreeing.</p>
+
+<h2>1. Cancelled Invoices Are Counted Twice</h2>
+<p>When you cancel an A/R invoice in SAP Business One, SAP doesn't delete it. It keeps the original and creates a new <strong>cancellation document</strong> that reverses it. In the invoice table (<code>OINV</code>), the field <code>CANCELED</code> tells them apart:</p>
+<ul>
+  <li><code>N</code>: a normal invoice</li>
+  <li><code>Y</code>: the original invoice that was cancelled</li>
+  <li><code>C</code>: the cancellation document</li>
+</ul>
+<p>A query that filters out only <code>Y</code> still counts the cancellation document, so the reversal shows up as negative sales. A query with no filter counts both. The fix is simple: keep only <code>CANCELED = 'N'</code>. That drops both halves of every cancellation.</p>
+
+<h2>2. Credit Memos Are Left Out</h2>
+<p>Returns and price corrections live in a different table: A/R credit memos (<code>ORIN</code> and its lines, <code>RIN1</code>). A report built only on invoices shows <strong>gross</strong> sales. If the figure you compare it to is <strong>net</strong> of returns, the gap is exactly your credit memos for the period.</p>
+<p>To report net sales, add credit memo lines as negatives, for the same customer, item and period.</p>
+
+<h2>3. Freight Is Missing, or Repeated on Every Line</h2>
+<p>Freight and other document charges don't sit on the invoice lines. They're stored separately (<code>INV3</code> for invoices, <code>RIN3</code> for credit memos). This causes two opposite errors:</p>
+<ul>
+  <li>A line-level report ignores freight entirely, so it comes in <strong>low</strong>.</li>
+  <li>A report that joins freight to the lines repeats the same freight on every line, so it comes in <strong>high</strong>. A 10-line invoice with $50 of freight suddenly has $500.</li>
+</ul>
+<p>Freight belongs at the document level: add it once per invoice, never per line.</p>
+
+<h2>4. The Document Discount Is Ignored</h2>
+<p>A discount entered at the bottom of the invoice is stored on the document header (<code>DiscSum</code>), not spread across the lines. Summing line totals alone overstates sales by the value of every document-level discount.</p>
+<p>A document's net value, before tax, is roughly:</p>
+<pre><code>Sum of line totals
++ freight and other charges (once per document)
+- document-level discount</code></pre>
+
+<h2>5. Different Currencies</h2>
+<p>If you sell in more than one currency, check which one each report uses. In SAP B1, line totals are stored in your <strong>local currency</strong>. Sales Analysis can show amounts in local or system currency. If the report shows one and your query converts to the other, they'll never tie.</p>
+<p>When you do convert, use the exchange rate for each document's date, not today's rate.</p>
+
+<h2>6. Different Date Fields</h2>
+<p>An SAP B1 document carries several dates, and they can fall in different months:</p>
+<ul>
+  <li><strong>Posting date</strong> (the <code>DocDate</code> field): the date that drives the accounting period</li>
+  <li><strong>Document date</strong> (<code>TaxDate</code>): often the date on the paper invoice</li>
+  <li><strong>Due date</strong> (<code>DocDueDate</code>)</li>
+</ul>
+<p>An invoice posted on March 31 with a document date of April 2 lands in March in one report and April in another. Pick one date basis, usually posting date, and use it everywhere.</p>
+
+<h2>7. Service Lines Disappear</h2>
+<p>Invoices for services, or lines without an item, have no item code. A report that joins invoice lines to the item master and requires a match quietly drops those lines. If you bill installation, labour or handling as service lines, an item-based sales report will always come in low.</p>
+
+<h2>How to Make Your Reports Agree</h2>
+<p>Pick SAP's Sales Analysis report as your reference, because it's the number your finance team already trusts. Then check each report against it with the same settings:</p>
+<ol>
+  <li>Same period, using the same date field.</li>
+  <li>Same currency setting.</li>
+  <li>Credit memos treated the same way in both: netted or excluded.</li>
+  <li>Cancelled originals and cancellation documents both excluded.</li>
+  <li>Freight and document discounts at document level, not per line.</li>
+  <li>Service and non-item lines included.</li>
+</ol>
+<p>Once a report ties out, keep a small reconciliation check next to it: one figure from your report, one from SAP, and the difference. When that difference is zero, nobody has to argue about the numbers again.</p>
+
+<div class="note">
+  <p><strong>A quick test you can run today:</strong> take one month, run Sales Analysis in local currency, and compare it to your sales report for the same month. If they differ, the size of the gap usually points straight to the cause: about the value of your returns means credit memos, a round multiple of freight means repeated freight, and a negative swing means cancellation documents.</p>
+</div>
