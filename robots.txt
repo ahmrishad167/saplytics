@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ahmrishad167.github.io/saplytics/sitemap.xml
